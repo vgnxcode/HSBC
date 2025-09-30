@@ -1,0 +1,17 @@
+.body-content .key-people h4{
+    /* font-family: 'Assistant', sans-serif; */
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: .6px;
+    font-size: 14px;
+    color:#000 !important;
+}
+
+.body-content h4{
+    /* color : #3b1953 !important; */
+    color: #000;
+    font-weight:500;
+    margin-bottom: 5px;
+}
+

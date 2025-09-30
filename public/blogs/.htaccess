@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteEngine On
+
+# Redirect old query URLs to new pretty URLs (301 Redirect for SEO)
+RewriteCond %{THE_REQUEST} \s/blogs/blog_details\?slug=([^\s&]+) [NC]
+RewriteRule ^blogs/blog_details$ /blogs/%1? [R=301,L]
+
+# Internally rewrite pretty URLs to actual script
+RewriteRule ^blogs/([^/]+)$ /blogs/blog_details?slug=$1 [L,QSA]

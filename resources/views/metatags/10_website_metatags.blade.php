@@ -1,0 +1,1 @@
+<meta name="description" content="Beating all builders in Gerugambakkam, we give you the best residential property in Gerugambakkam at krona with state-of-the-art amenities and infrastructure!">

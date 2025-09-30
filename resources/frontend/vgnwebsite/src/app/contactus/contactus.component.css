@@ -1,0 +1,12 @@
+.address h3{
+    /* font-family: 'Lora', serif; */
+    /* font-weight: 700; */
+    /* color:#3b1953 !important; */
+    color: #000;
+    text-transform: uppercase;
+  }
+  .address h4{
+    /* font-family: 'Noto Sans', sans-serif; */
+    /* font-weight: 600; */
+    color:#000 !important;
+  }

@@ -1,0 +1,161 @@
+.loan-calculator {
+  font-family: "poppins";
+  width: 700px;
+  margin: 24px auto;
+  background: #fff;
+  box-shadow: 0 12px 50px -11px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  color: #14213d;
+  overflow: hidden;
+  margin-top: 36px;
+}
+
+.loan-calculator,
+.loan-calculator * {
+  box-sizing: border-box;
+}
+
+.loan-calculator .top {
+  background: #e02227;
+  color: #fff;
+  padding: 32px;
+}
+
+.loan-calculator .top h2 {
+  margin-top: 0;
+}
+
+.loan-calculator form {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.loan-calculator .title {
+  margin-bottom: 16px;
+  font-family: poppins;
+}
+
+.loan-calculator .title span{
+  font-family: Verdana;
+  margin: 0 1px;
+}
+
+.loan-calculator form input {
+  font-size: 16px;
+  padding: 8px 24px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  font-family: poppins;
+}
+
+.loan-calculator .result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loan-calculator .result .left {
+  width: 100%;
+  padding: 8px 32px;
+}
+
+.loan-calculator .left h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-family: poppins;
+  margin-top: 10px;
+}
+
+.loan-calculator .result .value {
+  font-size: 23px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(20, 33, 61, 0.2);
+  font-family: poppins;
+  color: #000;
+}
+
+.loan-calculator .result .value::before {
+  content: "₹";
+  font-size: 22px;
+  font-weight: 400;
+  margin-right: 6px;
+  opacity: 0.8;
+  font-family: Verdana;
+}
+
+.loan-calculator .calculate-btn {
+  background: #e02227;
+  color: #fff;
+  border: none;
+  padding: 8px 32px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 24px 0;
+  font-family: poppins;
+}
+
+.loan-calculator .right {
+  width: 310px;
+}
+
+.loan-calculator .calculate-btn:hover {
+  background: #c6292d;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+.group input::-webkit-outer-spin-button,
+.group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.group input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.emi-section .right p{
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-family: poppins;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  color: #686464;
+}
+
+
+@media (max-width: 650px) {
+  
+  .loan-calculator .result .value::before {
+  font-size: 18px;
+  }
+
+  .loan-calculator .result .value {
+  font-size: 18px;
+  }
+
+  .loan-calculator {
+    width: 90%;
+    max-width: 500px;
+    padding-bottom: 30px;
+  }
+
+  .loan-calculator form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .loan-calculator .result {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}

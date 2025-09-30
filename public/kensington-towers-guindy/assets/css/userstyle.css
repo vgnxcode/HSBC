@@ -1,0 +1,237 @@
+.enquiry-btn {
+  display: flex;
+  text-align: center;
+  padding: 10px 0px;
+  background-color: #4a4848;
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  bottom: 0px;
+}
+
+.enquiry-btn a {
+  width: 50%;
+  color: #fff !important;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+@media (min-width: 767px) {
+  .mbl-view {
+    display: none !important;
+  }
+
+  #spec-left-column {
+    /* padding-right: 5px; */
+    border-right: 2px solid #727271;
+  }
+
+  #spec-right-column {
+    padding-left: 40px;
+  }
+}
+
+#specifications h3 {
+  font-size: 24px !important;
+  color: #000 !important;
+  text-align: center;
+}
+
+#specifications .col-md-6 h3 {
+  text-align: left;
+}
+
+/* Styles for desktop */
+.carousel-container {
+  display: block;
+}
+
+.fixed-image {
+  display: none;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .carousel-container {
+    display: none;
+  }
+
+  .fixed-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  /* 
+    #contact_form{
+        display: none;
+    } */
+
+  #location-adv {
+    height: 300px !important;
+  }
+
+  .price-table {
+    font-size: 11px !important;
+    font-weight: 500;
+    white-space: nowrap !important;
+  }
+
+  #highlightCarousel .carousel-item img {
+    height: 34vh !important;
+    width: 120%;
+  }
+
+  .heading {
+    font-size: 32px !important;
+  }
+
+  .head1 {
+    margin-top: 0px !important;
+    font-size: 1.7rem !important;
+    padding-left: 0px !important;
+  }
+}
+
+#location-adv {
+  width: 760px;
+}
+
+.adv-locations li {
+  margin-bottom: 10px;
+}
+
+@font-face {
+  font-family: Vercetti;
+  src: url("../fonts/Vercetti-Regular.ttf") format("truetype");
+}
+
+.head1 {
+  margin-top: 30px;
+  padding-left: 18px;
+}
+.head1 {
+  font-weight: 500;
+  text-align: left;
+  font-family: "Sarala", Helvetica, sans-serif;
+  font-size: 1.8rem;
+  margin: 30px 0;
+  padding-left: 18px;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+#price-fulltable tr td {
+  text-align: center;
+}
+
+#price-fulltable tr th {
+  text-align: center;
+}
+
+#highlightCarousel .carousel-item img {
+  width: auto;
+  height: 400px;
+}
+/* rera img cmda img custom style starts here */
+.rera-img {
+  width: 75%;
+  height: 75%;
+}
+@media (max-width: 600px) {
+  .rera-img {
+    width: 50%;
+    height: 50%;
+  }
+}
+.heading {
+  font-size: 52px;
+  font-family: "Bebas Neue", sans-serif !important;
+  text-align: center !important;
+  margin: 8px;
+  text-decoration: underline;
+}
+
+#specifications,
+#advantages,
+#plans,
+#highlights {
+  scroll-margin-top: 85px !important;
+}
+
+/* carousel indicators */
+#carouselExampleSlidesOnly .carousel-indicators {
+  /* bottom: 10px; */
+}
+
+.carousel-indicators {
+  bottom: -48px;
+}
+
+.carousel-indicators li {
+  background-color: rgba(255, 255, 255);
+}
+
+.carousel-inner h3 {
+  color: white;
+  background-color: #4a4848;
+}
+
+#about-fairmont ol li {
+  display: list-item;
+  list-style: decimal;
+  font-family: "Lato", sans-serif;
+}
+
+/* floorplan image gallery */
+@media (min-width: 768px) {
+  .thumbnail-image {
+    width: 60px !important;
+  }
+
+  .main-image {
+    width: 595px !important;
+    height: 400px !important;
+  }
+}
+
+.image-slider {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image {
+  width: 250px;
+  height: 250px;
+}
+
+.thumbnail-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.thumbnail-image {
+  width: 75px;
+  border: 1px solid black;
+  padding: 5px;
+  height: auto;
+  margin: 0 10px;
+  cursor: pointer;
+  margin: 10px;
+}

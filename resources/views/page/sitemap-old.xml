@@ -1,0 +1,695 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+<loc>{{ url()->full() }}/</loc>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/about-us</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/projects/fairmont-guindy-chennai</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/projects/notting-hill-nungambakkam-chennai</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/projects/brixton-irungattukottai-chennai</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/careers</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/customerzone/customerlogin</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/employeezone/employeelogin</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vendorzone/vendorlogin</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vendorzone/registration</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/landownersform</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/investors</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/brochure/fairmont/Fairmont-E-Brochure-2025.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/brochure/notting-hills/notting-hills-brochure.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/brochure/brixton/brixton-brochure.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-foreman-civil</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-engineer</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-supervisor</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-front-office-exec</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/history_of_vgn</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/sponsorships</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/awards</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/search</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/Premium-Real-Estate-Developers-in-Chennai</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/Flat-Builders-Chennai</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/contact</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/fairmont/Buy-premium-flats-Guindy</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/notting_hill/Flats-for-sale-nungambakkam</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/oval_gardens</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/victoria_park</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/ch40</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/monte_carlo</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/windsor_park_phase_v</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/spring_field_phase_ii</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/mayfield_park</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/royale</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/crofton_gardens_phase_ii</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgnsitemap</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/disclaimer</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/privacy_policy</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/terms_and_conditions</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=2</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=3</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=4</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=5</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=6</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=7</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=8</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=17</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=18</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/varna_bhoomi</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/brixton/Residential-Property-Irungattukottai</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/coasta/Luxury-Apartments-in-ECR</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/dynasty</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/imperia</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/stafford/Luxury-apartment-ambattur</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/temple_town/Flats-for-sale-thiruverkadu</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/blooming_dale_phase_ii</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/southern_garden_extension</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/santhosh_nagar_extension</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/sarang_avenue</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/harmony</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/mahalakshmi_nagar_phase_ix_and_x</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/southern_meadows</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/fairmont</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/fairmont</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/notting_hill</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/notting_hill</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/victoria_park</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/ch40</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/monte_carlo</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/spring_field_phase_ii</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/mayfield_park</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/royale</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/royale</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/crofton_gardens_phase_ii</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=16</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/hollyhock</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/cosmopolis</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/minter_garden_phase_ii</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/brent_park</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/project/orville</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/2/fairmont.pdf</loc>
+<lastmod>2019-12-11T05:06:42+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/1/notting_hill.pdf</loc>
+<lastmod>2020-03-17T05:23:27+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/118/Victoria_Park.pdf</loc>
+<lastmod>2019-12-11T05:02:56+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/116/Mayfield_Park.pdf</loc>
+<lastmod>2019-12-11T05:02:10+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/115/croftongardensphaseii.pdf</loc>
+<lastmod>2019-12-11T04:59:58+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=1</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/VGN%20fairmont%20dispute%20at%20Guindy.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/melrose_launch.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/MAK-20170928-CT8-CTM.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/MAK-20170928-cm2-CMK.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/Article%20in%20Deccan%20Chronicle.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/MK--1.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/TM--8.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/MK--7.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/TM--1.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/VGN%20new%20logo%20-%20media%203.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/VGN%20new%20logo%20-%20media%201.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/VGN%20new%20logo%20-%20media%202.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/credai%20fairpro%202017.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=9</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=10</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/car_rally.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/xander.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/2_file1.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/1_file1.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/3_file4.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/3_file3.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/3_file1.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=11</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=15</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=12</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=13</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/news?page=14</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/brixton</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/brixton</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/4/Brixton%20E%20Brochure.pdf</loc>
+<lastmod>2019-12-11T05:07:39+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/coasta</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/coasta</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/5/coasta.pdf</loc>
+<lastmod>2020-03-21T15:15:53+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/dynasty</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/hollyhock</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/7/hollyhock.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/imperia</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/8/Imperia_Brochure.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/11/Royale-min.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/stafford</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/stafford</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/13/stafford.pdf</loc>
+<lastmod>2019-12-11T05:04:16+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/temple_town</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/temple_town</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/14/templetown.pdf</loc>
+<lastmod>2019-12-11T05:04:44+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/16/cosmopolis.pdf</loc>
+<lastmod>2019-12-11T05:05:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/17/E-Broc.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/18/bommingdale-min.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/19/southern%20garden-min.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/harmony</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/108/spring%20field-min.pdf</loc>
+<lastmod>2019-08-26T08:44:28+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/constructionimages/brent_park</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/109/brentpark.pdf</loc>
+<lastmod>2019-12-11T04:51:39+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/110/VGN%20Mahalakshmi%20Nagar(Phase%20IX)_Tri%20fold%20Brochure_Open%20Size_42w%20x%2029.7h%20....pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/110/VGN%20Mahalakshmi%20Nagar(Phase%20X)_Tri%20fold%20Brochure_Open%20Size_42w%20x%2029.7h%20c....pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/floorimages/orville</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/ebrochure/117/Windsor%20Park%20-%20(E)%20Brochure1.pdf</loc>
+<lastmod>2019-08-26T08:44:29+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/3_file2.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/the-hindu-property-plus.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/MD-Speach-PR.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/ISO_Certificate.pdf</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/vgn-launches.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/musalman.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/VGNLAUNCHED_MINERVA.pdf</loc>
+<lastmod>2019-08-26T08:44:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/images/newsfiles/vgnlaunchesminerva.pdf</loc>
+<lastmod>2019-08-26T08:44:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-2bhk-flats-in-chennai</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-3bhk-flats-in-chennai</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/vgn-4bhk-flats-in-chennai</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/infra</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/commercial</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/sports</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/projects/kensington-towers-guindy-chennai
+</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/projects/marble-arch-tambaram-chennai</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/completed-projects</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>{{ url()->full() }}/media-corner</loc>
+<priority>0.64</priority>
+</url>
+</urlset>

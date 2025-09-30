@@ -1,0 +1,1306 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Distrampler";
+  src: url(./assets/Distrampler.ttf);
+}
+
+:root {
+  --primary-color: #756337;
+}
+
+html,
+body {
+  font-family: "Libre Franklin", sans-serif !important;
+  background-color: #fff !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Default Styles */
+main {
+  overflow: hidden;
+}
+
+h1 {
+  font-family: "Distrampler" !important;
+  font-size: 73px !important;
+  line-height: 83px !important;
+  font-weight: 400 !important;
+}
+h2 {
+  font-family: "Distrampler" !important;
+  font-size: 40px !important;
+  line-height: 48px !important;
+  font-weight: 400 !important;
+}
+h3 {
+  font-family: "Distrampler" !important;
+  font-size: 32px !important;
+  line-height: 40px !important;
+}
+h4 {
+  font-family: "Distrampler" !important;
+  font-size: 24px !important;
+  line-height: 32px !important;
+}
+h5 {
+  font-size: 18px !important;
+  line-height: 32px !important;
+}
+h6 {
+  font-family: "Distrampler" !important;
+  font-size: 16px !important;
+  line-height: 28px !important;
+  font-weight: 600 !important;
+}
+
+.container {
+  max-width: 1440px !important;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+  margin: auto;
+}
+
+.mob-br {
+  display: none;
+}
+
+.btn {
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+  position: relative !important;
+  background-color: var(--primary-color) !important;
+  color: #e6e8ec !important;
+  border: none !important;
+  border-radius: 3px !important;
+  padding: 15px 22px !important;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+.btn::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #b9b099;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* ------------ Navbar ------------ */
+
+.navbar {
+  background-color: #ffffff;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 20px 0 !important;
+  border-bottom: 1px solid #756337;
+  z-index: 999;
+}
+.navbar .container {
+  display: flex;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  gap: 52px;
+}
+.menu .nav-menu {
+  color: #23262f;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+/* ------ Popup ------ */
+
+.modal-body {
+  background-color: #f6f7ef;
+  padding: 0 !important;
+  overflow-y: visible !important;
+}
+.modal-body .container {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+.modal-body .container .row {
+  height: 100%;
+}
+.modal-body .popup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.popup-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.popup-form h6 {
+  font-family: "Distrampler" !important;
+  font-size: 40px !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+}
+.popup-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
+.popup-form label {
+  font-size: 18px !important;
+  line-height: 28px !important;
+  font-weight: 500 !important;
+}
+.popup-form input,
+.popup-form select {
+  width: 65%;
+  border: 0 !important;
+  border-bottom: 1px solid #b1b5c3 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  background-color: transparent;
+}
+input::placeholder {
+  color: #b1b5c3;
+}
+
+.popup-img {
+  position: absolute;
+  width: auto;
+  height: 100%;
+}
+.modal-backdrop {
+  display: none;
+}
+.modal-backdrop.show {
+  opacity: 0;
+}
+.modal-header {
+  position: absolute;
+  right: 0;
+  border: 0 !important;
+  z-index: 9;
+}
+/* ------ Popup End ------ */
+/* ------------ Navbar End ------------ */
+
+/* New Banner */
+.hero-desk-banner {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-mob-banner {
+  display: none;
+}
+
+.hb-cont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  margin-right: -80px;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+}
+.hb-cont h1 {
+  color: #c48e18;
+  margin-bottom: 0;
+}
+.hb-cont p {
+  color: #23262f;
+  font-size: 22px;
+  line-height: 28px;
+  margin-right: -80px;
+}
+.hb-cont a {
+  display: inline-block;
+  color: #c48e18 !important;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 0;
+  font-weight: 600;
+  border-bottom: 2px solid #c48e18;
+}
+
+.hero-banner {
+  position: relative;
+  margin-top: 92px;
+  /* height: 46vw; */
+}
+
+.banner-cont {
+  display: flex;
+  height: 100%;
+}
+.banner-cont h1 {
+  color: #756337;
+}
+.banner-cont img {
+  width: 58%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.hero-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hb-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  cursor: default !important;
+}
+.offers {
+  width: 65%;
+}
+.offers-popup {
+  width: 50%;
+}
+
+/* Hero Enquiry Form Styles*/
+.hero-enq-form {
+  position: relative;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 10px 0px rgba(226, 226, 226, 0.25);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: -50px;
+  z-index: 10;
+}
+
+.all-fields {
+  display: flex;
+  gap: 24px;
+}
+
+.all-fields .fields {
+  display: flex;
+  padding: 3.704px 0px 3.704px 14.815px;
+  align-items: flex-start;
+  flex: 1 0 0;
+  border-radius: 3.704px;
+  border: 0.926px solid #b1b5c3 !important;
+  width: 250px;
+  height: 52px;
+}
+select.fields {
+  border-radius: 3.704px;
+  border: 0.926px solid #b1b5c3 !important;
+  width: 250px;
+  height: 52px;
+  padding: 14.815px 0px 3.704px 14.815px !important;
+}
+
+/* About Section */
+.about-section {
+  position: relative;
+  padding-left: 60px;
+  padding-bottom: 70px;
+  color: #23262f;
+  background-color: #f6f7ef;
+  /* background: url("./assets/about-pattern.svg"); */
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding: 80px 0;
+}
+
+.about-section .container {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.about-img {
+  width: 60%;
+}
+/* .about-img img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: auto;
+} */
+
+.about-overlay {
+  border: 1px solid var(--primary-color);
+  border-radius: 0px 0px 0px 24px;
+  border-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  padding-right: 70px;
+  width: 450px;
+}
+
+.about-overlay .content {
+  background: #f6f7ef;
+  margin-left: -120px;
+  padding-top: 20px;
+}
+
+.about-section .content h2 {
+  padding-top: 10px;
+}
+.about-section .content p {
+  padding-top: 10px;
+  max-width: 396px;
+}
+
+.about-section .about-image {
+  width: 100%;
+  height: auto;
+}
+
+.all-details {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.all-details .details p {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+/* About Ends */
+
+/* ------------ Club house Starts ----------- */
+.ch-slider {
+  padding: 50px 0 60px 0;
+}
+
+.ch-slider-title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 64px;
+}
+.ch-slider-title h2 {
+  font-family: "Maglony Free Version";
+  font-weight: 300;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ch-slider .swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+.ch-slider .swiper-slide div {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ch-slider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: grab;
+  border-radius: 6px;
+}
+
+.ch-slider .swiper-slide {
+  width: 100%;
+}
+
+.ch-slider .swiper-pagination {
+  margin-bottom: -44px;
+}
+
+.ch-slider .swiper-pagination-bullet-active {
+  background: #c48e18 !important;
+}
+/* ------------ Club house Ends ----------- */
+
+/* ------------ Retail Section ------------ */
+.retail {
+  position: relative;
+  padding: 40px 0;
+}
+
+.retail-titl {
+  position: relative;
+  text-align: center;
+  margin-bottom: 64px;
+}
+.retail-titl h2 {
+  font-family: "Maglony Free Version";
+  font-size: 40px;
+  font-weight: 300;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.retail .retail-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.retail .retail-cont div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 164px;
+}
+/* ------------ Retail Section End ------------ */
+
+/* ------------ PP Section ------------ */
+
+.pp-section {
+  position: relative;
+  background: url("./assets/about-pattern.svg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+.pp-section .container {
+  padding-right: 0 !important;
+}
+
+.pp-overlay {
+  background-color: #f6f7ef;
+  border: 1px solid var(--primary-color);
+  border-radius: 0px 0px 0px 24px;
+  /* border-right: 0; */
+  margin-left: 50px;
+  padding: 68px 60px 68px 0;
+}
+
+.pp-content {
+  background-color: #f6f7ef;
+  margin-left: -1px;
+}
+.pp-content h2 {
+  color: var(--primary-color);
+  /* background-color: #fffbf8; */
+  margin-left: -50px;
+}
+
+.pp-cards {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding-top: 100px;
+  padding-left: 100px;
+}
+.pp-card {
+  width: 100%;
+}
+.pp-card:nth-child(2) {
+  margin-top: -50px;
+}
+.pp-card:nth-child(3) {
+  margin-top: -100px;
+}
+.pp-card:nth-child(4) {
+  margin-top: -150px;
+}
+.pp-card h6 {
+  color: #23262f;
+}
+.pp-card img {
+  width: 100%;
+}
+.pp-card ul {
+  color: #23262f;
+  padding-left: 18px;
+}
+/* ------------ PP Section End ------------ */
+
+/* ------------ Common Section ------------ */
+
+.common {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  padding: 40px 0;
+}
+.common .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.common-titl {
+  position: relative;
+  text-align: center;
+  margin-bottom: 90px;
+}
+.common-titl h2 {
+  font-family: "Maglony Free Version";
+  font-size: 40px;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.common .row {
+  width: 100%;
+  gap: 80px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  padding-bottom: 80px;
+}
+.common .row-2 {
+  width: 80%;
+  gap: 80px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+
+.common .common-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  text-align: center;
+}
+
+/* ------------ Common Section End ------------ */
+
+/* ------------ Location Section ------------ */
+
+.location {
+  position: relative;
+  border-bottom: 1px solid #756337;
+  padding: 40px 0 80px 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+.location iframe {
+  position: relative;
+  width: 100%;
+}
+
+.location .col-lg-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.location .location-cont {
+  position: relative;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.location .location-cont h2,
+.location .location-cont h6 {
+  margin-bottom: 0;
+  font-family: "Maglony Free Version";
+}
+.location-cont .btn {
+  margin-top: 24px;
+}
+
+.location-nearby {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 80px;
+  margin-top: 72px;
+}
+.location-nearby-cont h5 {
+  display: inline-block;
+  margin-bottom: 22px;
+}
+.location-nearby-cont p {
+  line-height: 20px !important;
+  margin-bottom: 6px;
+}
+.location-nearby-cont img {
+  margin-bottom: 16px;
+}
+/* ------------ Location Section End ------------ */
+
+/* ------------ Price Section Starts ------------ */
+.price-slider {
+  padding: 82px 0 80px 0;
+  text-align: center;
+}
+
+.navi-arrow {
+  padding: 46px 6px 46px 6px;
+}
+
+.price-slider .swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.price-slider .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-slider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-slider .swiper-slide {
+  width: 60%;
+}
+
+.price-slider .swiper-pagination {
+  margin-bottom: -44px;
+}
+
+.price-slider .swiper-pagination-bullet-active {
+  background: #c48e18 !important;
+}
+
+.price-slider .swiper-slide-prev img {
+  opacity: 0.4;
+}
+
+.price-slider .swiper-slide-next img {
+  opacity: 0.4;
+}
+
+.price-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 82px;
+  /* padding-bottom: 140px; */
+}
+
+.price-details p {
+  font-family: "Distrampler" !important;
+  font-size: 32px;
+}
+
+.def-btn {
+  padding: 10px 16px;
+  background-color: #c48e18;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #e6e8ec;
+}
+
+.price-details a {
+  color: #23262f;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.price-details a:hover {
+  font-weight: 600;
+  color: #c48e18;
+}
+/* ------------ Price Section ends ------------ */
+
+/* ------------ Site Plan Section ------------ */
+
+.site-plan {
+  position: relative;
+  padding-bottom: 120px;
+}
+.site-plan .container {
+  padding-right: 0 !important;
+}
+.sp-overlay {
+  display: flex;
+  align-items: start;
+  background-color: #fffbf8;
+  border: 1px solid var(--primary-color);
+  border-radius: 0px 0px 0px 24px;
+  /* border-right: 0; */
+  margin-left: 50px;
+  padding: 50px 0 0 0;
+}
+
+.sp-overlay .content {
+  position: relative;
+  background-color: #fffbf8;
+  width: 400px;
+  margin-left: -50px;
+  padding: 20px 20px 20px 0;
+}
+.sp-overlay .content h2 {
+  color: var(--primary-color);
+}
+
+.sp-overlay .site-overlay {
+  margin-bottom: -80px;
+}
+/* ------------ Site Plan Section ends ------------ */
+
+/* ------------ Floor Plan Section ------------ */
+
+.floor-plan {
+  position: relative;
+  padding-top: 0 !important;
+}
+.floor-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 40px;
+  /* padding-bottom: 140px; */
+}
+.floor-details h3 {
+  margin-bottom: 0;
+}
+.floor-details p {
+  color: #23262f;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 30px;
+}
+/* ------------ Floor Plan Section ends ------------ */
+
+/* ------------ Specifications Section ------------ */
+
+.Specifications {
+  position: relative;
+  background-color: #f6f7ef;
+  padding: 60px 0;
+}
+
+.Specifications .heading {
+  font-family: "Maglony Free Version";
+}
+
+.accordion {
+  padding-top: 60px;
+}
+.accordion-item {
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid #ebebeb !important;
+  border-radius: 0;
+}
+.accordion-item:first-of-type {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.accordion-button {
+  background-color: transparent !important;
+  font-size: 24px !important;
+  line-height: 30px !important;
+  font-weight: 400 !important;
+  padding: 18px 0 !important;
+}
+
+.accordion-button::after {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  background-size: 0.75rem !important;
+}
+.accordion-button:focus {
+  z-index: 3;
+  border-color: transparent !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+.accordion-button:not(.collapsed) {
+  color: #23262f !important;
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+.accordion-button::after {
+  background-image: url("./../assets/arrow-down.svg") !important;
+  transition: all 0.5s;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("./../assets/arrow-up.svg") !important;
+}
+.accordion-button::after {
+  transition: all 0.5s;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(0deg) !important;
+}
+
+.accordion-body {
+  position: relative;
+  padding: 18px 26px !important;
+}
+
+.accordion-header {
+  font-family: "DM Sans", serif !important;
+  text-transform: capitalize !important;
+}
+.accordion-header button {
+  text-transform: capitalize !important;
+}
+
+.accordion-body p {
+  position: relative;
+}
+.accordion-body p::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #23262f;
+  position: absolute;
+  top: 10px;
+  left: -16px;
+  border-radius: 50px;
+}
+/* ------------ Specifications Section End ------------ */
+
+/* WHy Vgn Section Starts */
+.why-vgn-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 576px;
+  color: var(--primary-color);
+  /* background-color: #9a3f81; */
+  overflow: hidden;
+}
+
+.why-vgn-section .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 60px;
+  /* width: 60%; */
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.why-vgn-section h2 {
+  font-family: "Maglony Free Version";
+  font-size: 64px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 65px;
+  max-width: 620px;
+}
+
+.why-vgn-section .reasons {
+  width: 40%;
+  padding-top: 144px;
+  padding-bottom: 144px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.reasons div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #b3b3b3;
+  padding-top: 20px;
+}
+.reasons div:last-child {
+  border-bottom: none;
+}
+
+.reasons h4 {
+  font-size: 48px !important;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 87px;
+}
+
+.reasons p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 87px;
+}
+/* WHy Vgn Section Ends */
+
+/* ------------ FAQ Section ------------ */
+.faq {
+  position: relative;
+  padding: 60px 0;
+}
+.faq .accordion-body {
+  padding: 18px 0 !important;
+}
+/* ------------ FAQ Section End ------------ */
+
+/* ------------ Footer ------------ */
+.footer {
+  position: relative;
+  padding: 80px 0;
+  border-top: 1px solid var(--primary-color);
+}
+.footer .col-lg-10 {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.foot-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.foot-logo-numb {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.foot-addr {
+  display: flex;
+  gap: 96px;
+}
+.foot-addr .enqu p {
+  font-size: 18px;
+}
+.foot-logo-numb .enqu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.foot-logo-numb .enqu a {
+  font-family: "Distrampler" !important;
+  color: #c48e18 !important;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+/* ------------ Footer End ------------ */
+
+/* ------------ Thank You Page ------------ */
+
+.tq-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f6f7ef;
+}
+
+.tq-page .row {
+  position: relative;
+}
+
+.tq-page-cont {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 160px 0;
+  z-index: 99;
+}
+.tq-page-cont h2 {
+  margin-bottom: 0;
+}
+.tq-page-cont p {
+  font-size: 18px;
+  line-height: 26px;
+}
+.tq-page-cont .btn {
+  padding: 10px 18px !important;
+}
+
+.tq-page-img img {
+  position: absolute;
+  right: -60px;
+  bottom: -50px;
+  width: 55%;
+}
+
+@media (max-width: 1024px) {
+  .tq-page-img img {
+    width: 70%;
+  }
+}
+@media (max-width: 768px) {
+  .tq-page-cont h2 {
+    font-size: 40px !important;
+    line-height: 48px !important;
+  }
+
+  .tq-page-img img {
+    width: 100%;
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .tq-page-cont h2 {
+    width: 224px;
+  }
+}
+/* ------------ Thank You Page End ------------ */
+
+.iti {
+  display: block !important;
+}
+
+.thumbs-lightbox {
+  position: relative;
+  padding: 60px 0 0 0;
+}
+.thumbs-lightbox-titl {
+  text-align: center;
+  padding-bottom: 40px;
+}
+.thumbs-lightbox .carousel-item.active {
+  display: flex;
+  justify-content: center;
+}
+.thumbs-img {
+  width: 92%;
+}
+.carousel-indicators {
+  margin-bottom: -4rem !important;
+}
+.carousel-indicators button img {
+  display: block;
+  width: 85px;
+}
+.carousel-indicators [data-bs-target] {
+  width: auto;
+  height: auto !important;
+  border: 1px solid #deb968 !important;
+}
+.carousel-indicators button.thumbnail {
+  width: 150px;
+}
+.carousel-indicators button.thumbnail:not(.active) {
+  opacity: 0.7;
+}
+.carousel-indicators {
+  position: static;
+}
+@media screen and (min-width: 992px) {
+  .carousel {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* The Modal (background) */
+.thumbs-lightbox .modal {
+  display: none;
+  position: fixed;
+  z-index: 1009;
+  padding-top: 30px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+/* Modal Content */
+.thumbs-lightbox .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.thumbs-lightbox .close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.thumbs-lightbox .close:hover,
+.thumbs-lightbox .close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hide the slides by default */
+.thumbs-lightbox .mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.thumbs-lightbox .prev,
+.thumbs-lightbox .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.thumbs-lightbox .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.thumbs-lightbox .prev:hover,
+.thumbs-lightbox .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.thumbs-lightbox .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  background: black;
+  color: white;
+  width: 100%;
+}
+
+.thumbs-lightbox .active,
+.thumbs-lightbox .demo:hover {
+  opacity: 1;
+}
+
+.thumbs-lightbox img.hover-shadow {
+  transition: 0.3s;
+}
+
+.thumbs-lightbox .hover-shadow:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* ------------- Lightbox Test -------------  */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  text-align: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.close-btn {
+  color: #fff;
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.container img {
+  cursor: pointer;
+}
+
+/* .fancybox__slide .fancybox__content {
+  cursor: zoom-in !important;
+} */
+/* ------------- Lightbox Text ends ------------- */

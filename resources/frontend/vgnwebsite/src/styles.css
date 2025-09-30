@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html, body { 
+    height: 100%;
+    width: auto!important; 
+    overflow-x: hidden!important;  
+    overflow-y: auto; 
+    scroll-behavior: smooth;
+    background-color: #e21f25;
+}
+body { 
+    margin: 0; 
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    /* font-family: 'Arimo', sans-serif; */
+    /* background-color: #fff; */
+    /* background-color: #e21f25; */
+    letter-spacing: .1px;
+}
+a{ color: inherit !important; text-decoration: none !important;}
+.slick-dots{
+    position: relative !important;
+    bottom: 0px !important;
+}
+.slick-dots li {
+    margin: 0 -3px !important;
+}
+.slick-dots li.slick-active button:before{
+    color: #e21f25 !important;
+}
+ol, ul {
+    list-style: none;
+}
+
+.h1_title{
+    font-family: 'Arial', sans-serif;
+    /* font-family: 'Arimo', sans-serif !important; */
+    color: #e21f25;
+}
+
+.centered {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    width: 90%;
+    bottom: 50%;
+    /* color: #e21f25; */
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+
+
+.banner_text h1{
+    /* font-family: 'Lora', serif; */
+    color:#fff;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
+.banner_text h4{
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-size: 18px;
+  color: #fff;
+}
+
+.body-content h1{
+    /* font-family: 'Lora', serif; */
+    color: #e21f25;
+    font-size: 28px;
+    /* text-transform:lowercase; */
+}
+
+.body-content h2,h3{
+    /* font-family: 'Lora', serif; */
+    font-size: 24px;
+    font-weight: 700;
+    /* color:#3b1953; */
+}
+
+.body-content p,label{
+    font-family: 'Arial', sans-serif;
+    /* font-family: 'Noto Sans', sans-serif; */
+    color : #000 !important;
+    font-size: 15px;
+    line-height: 24px;
+    
+}
+
+/* Project card */
+.project-card ul li{
+    font-family: 'Arial', sans-serif;
+    /* font-family: 'Assistant', sans-serif; */
+    font-weight:600;
+    line-height: 30px !important;
+    /* letter-spacing: .6px; */
+    /* letter-spacing: 1px; */
+    font-size: 14px;
+    text-transform: capitalize;
+    color:#000;
+}
+.project-card ul li p{
+    color: #000; 
+}
+.project-card ul li p i{
+    color: #000 ; 
+    font-size: 18px;
+}
+
+.project-card ul li a{
+    color: #000; 
+}
+.project-card ul li a i{
+    color: #000 ; 
+    font-size: 18px;
+}
+
+.project-card i{
+    color: #707479 ; 
+    font-size: 18px;
+}
+.project-card .badge{
+  right: 20px;
+  top:20px;
+  z-index: 10;
+}
+.visually-show{
+    z-index: 8;
+}
+
+.project-card ul li:first-child p{
+  font-weight: 600;
+  font-size: 18px;
+}
+.social-media li a i{
+    font-size: 22px;
+}
+
+
+.cta-btn--parent:before {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: .1rem;
+    content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNS42IDExSDE1bC0zLTNhLjguOCAwIDAxLS4xLS41YzAtLjIgMC0uNC4yLS42bC40LS40LjYtLjNjLjIgMCAuNC4xLjUuM2w1IDUgLjIuNWMwIC4yIDAgLjQtLjIuNWwtNSA1Yy0uMS4yLS4zLjMtLjUuM2wtLjYtLjMtLjQtLjRhLjguOCAwIDAxMC0xbDMtM0g1LjVhLjguOCAwIDAxLS43LS44di0uNmMwLS41LjMtLjguNy0uOCIvPjwvZz48L3N2Zz4=);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.cta-btn--parent{
+    padding-left: 21px;
+    color: #fff !important;
+    font-weight: bold;
+    top: 1rem;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.usr_response {
+    text-align: right;
+    clear: both;
+}
+
+.bot_chat {
+    clear: both;
+}
+.badge_css{
+    min-width: 3rem;
+      padding: 3px;
+      text-align: center;
+      font-size: 1rem;
+      line-height: inherit;
+      float: right;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background: red;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 3px;
+  }
+  
+  .red {
+      background-color: #F44336 !important;
+  }
+
+  
+.newultagbtn{
+    float: left;
+    margin: 0 25px;
+  }
+  .newultagbtn > li{
+    list-style-type: none;
+      background: #26a69a;
+      cursor: pointer;
+      padding: 5px;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 3px;
+      margin: 3px;
+      float: left;
+  }
+  .newlitagbtn{
+      background: #26a69a;
+      cursor: pointer;
+      padding: 3px;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 3px;
+      margin: 3px 0px;
+  }
+  

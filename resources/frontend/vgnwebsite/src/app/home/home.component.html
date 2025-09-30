@@ -1,0 +1,730 @@
+<!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+
+
+
+<div class="container-fluid m-0">
+  <ul class="nav justify-content-end sub-menu mb-2">
+    <li class="nav-item ">
+        <a class="nav-link p-0 ms-2" routerLink="/ongoingproject"><h3>ONGOING</h3></a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link p-0 me-2 ms-4" routerLink="/readytomoveproject"><h3>READY TO MOVE-IN</h3></a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link p-0 me-2 ms-4" routerLink="/completedproject"><h3>COMPLETED</h3></a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container-fluid p-0 m-0 mb-5" style="position: relative;">
+  <!-- <div class="container"> -->
+  <picture>
+      <source media="(max-width: 768px)"  srcset="https://cdn.vgn.in/nodeserver/website/banner/mobile/360x480.jpg">
+      <source media="(min-width: 768px)"  srcset="https://cdn.vgn.in/nodeserver/website/banner/1200x600.jpg">
+      <img src="https://cdn.vgn.in/nodeserver/website/banner/mobile/360x480.jpg" alt="VGN" title="VGN" style="width:100%;min-height:480px;max-height:600px;height:auto;border-radius:0% 100% 0% 100% / 50% 0% 100% 15%;">
+  </picture>
+  <!-- <form class="centered banner_text" role="search">
+    <h1 class="banner_text mb-4">Get more from your move</h1>
+    <h6 class="mb-4 text-white">Find new build homes for sale near you</h6>
+    <div class="input-group border-0">
+      <span class="input-group-text border-0 bg-light"><i class="material-icons" style="font-size: 16px;color: #e21f25;">search</i></span>
+      <input type="text" class="form-control border-0" aria-label="">
+    </div>
+  </form> -->
+  <div class=" centered banner_text">
+    <h1 class="banner_text mb-4">World Class Homes at the heart of Chennai</h1>
+    <!-- <h6 class="mb-4 text-white">Find new build homes for sale near you</h6> -->
+    <form #searchData="ngForm" (ngSubmit)="onSubmit(searchData)">
+      <div class="row mb-3">
+        <div class="col-md-4 mb-2">
+          <select class="form-select" name="Type"  [(ngModel)]="type">
+            <option selected>Project Type <i class="fa fa-caret-up fa-fw pull-right"></i></option>
+            <option value="apartments">Apartments</option>
+            <option value="plots">Plots</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-2">
+          <select class="form-select" name="Location"  [(ngModel)]="location">
+            <option selected disabled>Location <i class="fa fa-caret-up fa-fw pull-right"></i></option>
+            <option value="Ambattur">Ambattur</option>
+            <option value="Anna Nagar">Anna Nagar</option>
+            <option value="Guindy">Guindy</option>
+            <option value="Muttukadu ECR">Muttukadu ECR</option>
+            <option value="Nungambakkam">Nungambakkam</option>
+            <option value="Pudupakkam">Pudupakkam</option>
+            <option value="Tambaram">Tambaram</option>
+            <option value="Thiruneermalai">Thiruneermalai</option>
+            <option value="Thiruverkadu">Thiruverkadu</option>
+          </select>
+        </div>
+        <div class="col-md-4 ">
+          <select class="form-select"  name="Startingrange"  [(ngModel)]="startingrange">
+            <option selected>Budget <i class="fa fa-caret-up fa-fw pull-right"></i></option>
+            <option value="2000000">10 - 20 Lakhs</option>
+            <option value="4000000">21 - 40 Lakhs</option>
+            <option value="6000000">41 - 60 Lakhs</option>
+            <option value="8000000">61 - 80 Lakhs</option>
+            <option value="9900000">81 - 99 Lakhs</option>
+            <option value="100000000">1 Crore Plus</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn">Search</button>
+    </form>
+    <!-- <form class="form-inline" action="/search" method="post">
+      <div class="row">
+        <div class="col">
+          <select class="browser-default" name="projecttype" id="projecttype">
+            <option value="" selected>Project Type <i class="fa fa-caret-up fa-fw pull-right"></i>
+            </option>
+            <option value="apartments">Apartments</option>
+            <option value="plots">Plots</option>
+          </select>
+        </div>
+        <div class="col s10 m4">
+          <select class="browser-default" name="location" id="location">
+            <option value="" selected>Location <i class="fa fa-caret-up fa-fw pull-right"></i>
+          </select>
+        </div>
+        <div class="col s10 m4">
+          <select class="browser-default" name="budget" id="budget">
+            <option value="" selected>Budget <i class="fa fa-caret-up fa-fw pull-right"></i></option>
+            <option value="10L-20L">10 - 20 Lakhs</option>
+            <option value="21L-40L">21 - 40 Lakhs</option>
+            <option value="41L-60L">41 - 60 Lakhs</option>
+            <option value="61L-80L">61 - 80 Lakhs</option>
+            <option value="81L-99L">81 - 99 Lakhs</option>
+            <option value="1C">1 Crore Plus</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s10 m12 ">
+          <br>
+          <button type="submit" class="btn waves-effect red waves-light btn-small pull-right" style="text-transform: initial;">
+            <i class="mdi-action-search"></i> Submit </button>
+        </div>
+      </div>
+    </form> -->
+  </div>
+<!-- </div> -->
+</div>
+
+
+<!-- <div class="container-fluid mb-5 mt-5 p-0 pb-5">
+  <div class="container-lg">
+    <h1 class="h1_title mb-4">FEATURED PROJECTS</h1>
+  </div>
+  <div class="container-lg">
+    <div class="row">
+        <ng-container *ngFor='let list of featuredProjectURL'>
+          <div class="col-md-3" *ngIf="list.featured_projects == '1'" >
+              <div class="card border-0 rounded shadow mb-4 project-card">
+                <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/350_200/{{list.id}}.jpg" alt="{{list.Project_name}}">
+                <span class="position-absolute badge rounded-circle bg-white">
+                  <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+                </span>
+                <div class="card-body p-0">
+                    <ul class="list-group border-0 list-group-flush ">
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >{{list.Project_name}}</p></li>
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>{{list.Location}}</p></li>
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>2 & 3 BHK</p></li>
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>30 Lakhs Onwards*</p></li>
+                      <li class="list-group-item rounded border-0 p-2 clearfix"><p class="d-inline-block ms-3 m-0 float-start view-more">View More<i class="material-icons align-middle ms-2">exit_to_app</i></p><p class="d-inline-block me-3 m-0 float-end"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</p></li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+        </ng-container>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container-fluid  pt-3 mt-5 p-0" style="border-radius: 50px 50px 0px 400px / 0px 0px 0px 75px;">
+  <div class="container-lg">
+    <h1 class="h1_title mb-4 fw-bold">Featured Projects</h1>
+  </div>
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card border-0 rounded  mb-4 project-card">
+          <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/featuredprojects/2.jpg" alt="">
+          <!-- <span class="position-absolute badge rounded-circle bg-white">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </span> -->
+          <a data-a2a-url="https://cdn.vgn.in/images/ebrochure/2/fairmont.pdf"  data-a2a-title="VGN Fairmont" href="javascript:void(0)"  class="a2a_dd position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/2/fairmont.pdf')">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </a>
+          <div class="card-body p-0">
+              <ul class="list-group border-0 list-group-flush ">
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >VGN Fairmont</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>Guindy</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>2 & 3 BHK Apartments</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>1.05 Crore Onwards*</p></li>
+                <li class="list-group-item rounded border-0 p-2 clearfix"><a class="d-inline-block ms-3 m-0 float-start view-more" href="/project/fairmont">View More<i class="material-icons align-middle ms-2">exit_to_app</i></a><a class="d-inline-block me-3 m-0 float-end" target="_blank" href="https://cdn.vgn.in/images/ebrochure/2/fairmont.pdf"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"  >
+          <div class="card border-0 rounded mb-4 project-card">
+            <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/featuredprojects/1.jpg" alt="">
+            <!-- <button class="position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/1/notting_hill.pdf')">
+              <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true" ></i></span>
+            </button> -->
+            <a  data-a2a-title="VGN Notting Hill" data-a2a-url="https://cdn.vgn.in/images/ebrochure/1/notting_hill.pdf" href="javascript:void(0)" class="a2a_dd position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/1/notting_hill.pdf')">
+              <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true" ></i></span>
+            </a>
+            <div class="card-body p-0">
+                <ul class="list-group border-0 list-group-flush">
+                  <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >VGN Notting Hill</p></li>
+                  <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>Nungambakkam</p></li>
+                  <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>3 BHK Apartments</p></li>
+                  <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>5.84 Crore Onwards*</p></li>
+                  <li class="list-group-item rounded border-0 p-2 clearfix"><a class="d-inline-block ms-3 m-0 float-start view-more" href="/project/notting_hill">View More<i class="material-icons align-middle ms-2">exit_to_app</i></a><a class="d-inline-block me-3 m-0 float-end" target="_blank" href="https://cdn.vgn.in/images/ebrochure/1/notting_hill.pdf"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</a></li>
+                </ul>
+            </div>
+          </div>
+      </div>
+      
+      <div class="col-md-3"  >
+        <div class="card border-0 rounded  mb-4 project-card">
+          <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/featuredprojects/5.jpg" alt="">
+          <!-- <span class="position-absolute badge rounded-circle bg-white">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </span> -->
+          <a data-a2a-url="https://cdn.vgn.in/images/ebrochure/5/coasta.pdf" data-a2a-title="VGN Coasta"  href="javascript:void(0)"  class="a2a_dd position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/5/coasta.pdf')">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </a>
+          <div class="card-body p-0">
+              <ul class="list-group border-0 list-group-flush ">
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >VGN Coasta</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>Muttukadu ECR</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>3 BHK Apartments</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>3.33 Crore Onwards*</p></li>
+                <li class="list-group-item rounded border-0 p-2 clearfix"><a class="d-inline-block ms-3 m-0 float-start view-more" href="/project/coasta">View More<i class="material-icons align-middle ms-2">exit_to_app</i></a><a class="d-inline-block me-3 m-0 float-end" target="_blank" href="https://cdn.vgn.in/images/ebrochure/5/coasta.pdf"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"  >
+        <div class="card border-0 rounded  mb-4 project-card">
+          <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/featuredprojects/14.jpg" alt="">
+          <!-- <span class="position-absolute badge rounded-circle bg-white">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </span> -->
+          <a data-a2a-url="https://cdn.vgn.in/images/ebrochure/14/temple_town.pdf" data-a2a-title="VGN Temple Town" href="javascript:void(0)"  class="a2a_dd position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/14/temple_town.pdf')">
+            <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+          </a>
+          <div class="card-body p-0">
+              <ul class="list-group border-0 list-group-flush ">
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >VGN Temple Town</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>Thiruverkadu</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>3 BHK Apartments</p></li>
+                <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>67.8 Lakhs Onwards*</p></li>
+                <li class="list-group-item rounded border-0 p-2 clearfix"><a class="d-inline-block ms-3 m-0 float-start view-more" href="/project/temple_town">View More<i class="material-icons align-middle ms-2">exit_to_app</i></a><a class="d-inline-block me-3 m-0 float-end" target="_blank" href="https://cdn.vgn.in/images/ebrochure/14/temple_town.pdf"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="container-lg text-left">
+    <img class="card-img-top"  src="https://cdn.vgn.in/nodeserver/website/logo/brush-stroke-banner.svg" style="width:100px;height:60px;transform: rotate(180deg);">
+  </div>
+</div>
+
+
+<div class="container-fluid  ">
+  <div class="container-lg pb-5">
+    <div class="row award">
+      <div class="col-md-4 d-flex justify-content-center ">
+        <div class="card border-0 mb-3" style="width: 18rem;">
+          <div class="card-body text-center">
+            <h1 class="card-title"><i class="fa fa-smile-o" aria-hidden="true"></i></h1>
+            <h1 class="card-subtitle mb-2 text-muted">60000</h1>
+            <h3 class="card-text">HAPPY CLIENTS</h3>
+          </div>
+        </div>
+      </div> 
+      <div class="col-md-4 d-flex justify-content-center">
+        <div class="card border-0 mb-3" style="width: 18rem;">
+          <div class="card-body text-center">
+            <h1 class="card-title"><i class="fa fa-building-o" aria-hidden="true"></i></h1>
+            <h1 class="card-subtitle mb-2 text-muted">200</h1>
+            <h3 class="card-text">PROJECTS COMPLETED</h3>
+          </div>
+        </div>
+      </div> 
+      <div class="col-md-4 d-flex justify-content-center ">
+        <div class="card border-0 mb-3" style="width: 18rem;">
+          <div class="card-body text-center">
+            <h1 class="card-title ">
+              <!-- <i class="fa fa-trophy-o" aria-hidden="true"></i> -->
+              <img class=""  src="https://cdn.vgn.in/nodeserver/website/logo/trophy-sportive-cup-outline.png" style="width:65px;height:auto;">
+            </h1>
+            <h1 class="card-subtitle mb-2 text-muted">47</h1>
+            <h3 class="card-text">AWARDS WON</h3>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div> 
+
+
+<div class="container-fluid">
+  <div class="container-lg text-left">
+    <img class="card-img-top"  src="https://cdn.vgn.in/nodeserver/website/logo/brush-stroke-banner.svg" style="width:100px;height:60px;transform: rotate(180deg);">
+  </div>
+</div>
+
+<div class="container-fluid mb-5 pb-4 mt-5 p-0" style="border-radius: 50px 50px 200px 200px / 0px 0px 50px 50px;">
+  <div class="container-lg ">
+    <h1 class="h1_title mb-4 fw-bold">Testimonials</h1>
+    <p class="regular-text">Here is what some of our prestigious clients have to say about us. Customer satisfaction is a very useful metric in managing and monitoring our business. </p>
+  </div>
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-md-5 col-lg-4"  >
+        <div class="card border-0 rounded  mb-4 p-3 project-card">
+          <div >
+          <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/2_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+          <h6 class="fw-bold">Dr Lawrence Prabhakar Williams (Proud Customer of VGN Brent Park, Ambattur)</h6>
+          <p class="fst-italic">"Dear CRM Team, We thank you sincerely for your excellent facilitation and systematic support for the purchase of the property as well as its process till completion of sale deed registration in VGN Brent Park, Ambattur. </p><p class="fst-italic">Yourself and your sales Team were very helpful and very prompt to my queries and supported me at every stage of my Pre sales and Post sales process support for the process. </p><p class="fst-italic mb-0">I place on record appreciation for you." </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4"  >
+        <div class="card border-0 rounded  mb-4 p-3 project-card">
+          <div>
+          <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/6_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+          <h6 class="fw-bold">Mr. Deenadayalan (Proud Customer of VGN Cosmopolis, Ambattur)</h6>
+          <p class="fst-italic">"Thank you for your dedication and support throughout the process right from booking a plot till completion of sale deed registration and handing over documents. We are extremely grateful to the entire sales and customer care team for helping us to invest in a prime property VGN Cosmopolis in Ambattur. I have not seen any large parcels of land within Chennai Corporation limits and very close to city. </p><p class="fst-italic mb-0">We successfully completed the registration process yesterday and I would like to thank each one of you at this moment for your great support, flexibility and cooperation for achieving this final milestone." </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4">
+          <div class="card border-0 rounded mb-4 p-3 project-card">
+            <div >
+              <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/1_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+              <h6 class="fw-bold">Mr. Subramanian (Proud Customer of VGN Notting Hill, Nungambakkam)</h6>
+              <p class="fst-italic" id="read">"Dear CRM Team, I honestly appreciate the excellent service provided during the post-sales process by VGN Customer Care team. </p><p class="fst-italic mb-0">They were always Polite, Courteous, and Prompt in responding to telephone calls and mails. Besides they are meticulous in attending to all points raised during discussions."</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-5 col-lg-4"  >
+        <div class="card border-0 rounded  mb-4 p-3 project-card">
+          <div>
+          <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/3_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+          <h6 class="fw-bold">Mrs. Vijayalakshmi (Proud Customer of VGN Oval Gardens, Ambattur)</h6>
+          <p class="fst-italic">"Hello CRM and Sales Team, I am happy that the registration of my Plot no: 105 in VGN Oval Garden was successfully done on 5th Mar, 2020.</p><p class="fst-italic "> We are impressed with your professionalism and way of handling the customer. Listening to our queries / concern and giving explanation in proper manner are awesome. </p><p class="fst-italic mb-0">We would like to thank both of you and very much appreciate your coordination to ensure the registration is done smoothly. I would say VGN CRM Team is a classic example / role model for how to handle customer queries in proper way and make Customer satisfied. Once again a Great Thanks to Sales & CRM Team for their wonderful service!!! Keep up your good work."</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-5 col-lg-4"  >
+      <div class="card border-0 rounded  mb-4 p-3 project-card">
+        <div>
+        <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/4_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+        <h6 class="fw-bold">Mr. R.Mohan (Proud Customer of VGN Coasta, ECR)</h6>
+        <p class="fst-italic mb-0">"CRM Team, Whenever I visit VGN Coasta, I see the Labours and engineers are working hard day & night to complete the project soon. Here I wish to say the Customer care team of VGN are extremely nice, and very understanding to the crux of the subject, and their prompt responses makes me very happy and replies are to the point balancing the VGN management and the Customer point of view, which I see very few in my vast experience in the Customer management field. Here again, I need to add that the Sales and Marketing of VGN Coasta are also excellent in convincing me to buy a flat. As for as I am concerned I see very efficient customer care attention has been given, and I give 5/5 Star for their service."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-lg-4"  >
+      <div class="card border-0 rounded mb-4 p-3 project-card">
+        <div>
+        <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/5_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+        <h6 class="fw-bold">Mr. Amit jyothi (Proud Customer of VGN Stafford, Ambattur)</h6>
+        <p class="fst-italic">"At the outset, we wish to congratulate VGN and its team for their wonderful project and services. I bought an apartment in VGN STAFFORD, Thirumullaivoyal, Ambattur and was taken aback by the excellent way the transaction was completed. I must say the level of transparency and quality of resources is excellent. VGN sales and customer care has been on constant follow up, regularly updated me on the various processes stage by stage, especially customer care team is extremely efficient and I thought it’s important for me to applaud their sincerity. The entire experience was a quite touching and sweet memory. Club house was excellent. </p><p class="fst-italic">It was a right decision to have invested in VGN Stafford. </p><p class="fst-italic">Overall it was an excellent work done by VGN people to get me a dream home. </p><p class="fst-italic mb-0">Keep up the good work."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-lg-4"  >
+      <div class="card border-0 rounded  mb-4 p-3 project-card">
+        <div>
+        <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/7_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+        <h6 class="fw-bold">Mr. Thomas (Proud Customer of VGN Temple Town,Thiruverkadu)</h6>
+        <p class="fst-italic mb-0">"It is indeed a matter of prestige to own an apartment in VGN Temple Town, Thiruverkadu. Our experience while carrying out the various procedures related to the purchase of my flat and handover keys was indeed excellent. We were particularly touched by the warm services and support by the customer care team. Now we are looking forward to similar standards regarding the interior work from the VGN Interiors department."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-lg-4"  >
+      <div class="card border-0 rounded  mb-4 p-3 project-card">
+        <div>
+        <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/testimonial1.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+        <h6 class="fw-bold">Mr. Gajaraj (Proud Customer of VGN Fairmont, Guindy)</h6>
+        <p class="fst-italic mb-0">"Professional and Dedicated to Building a Quality Home. Thanks to VGN Team for doing the best work."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-lg-4"  >
+      <div class="card border-0 rounded  mb-4 p-3 project-card">
+        <div>
+        <img class="mb-2" src="https://cdn.vgn.in/images/testimonial/10_Pic.jpg" alt="" style="width:150px;height:150px;margin-right:15px; float: left;">
+        <h6 class="fw-bold">Mr. G. Balakrishna (Proud Customer of VGN Stafford, Ambattur)</h6>
+        <p class="fst-italic mb-0">"I would like to thank entire VGN STAFFORD support team,and I request u all to keep same support to us in upcoming stages."</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-secondary">
+  <div class="container-lg pb-5 pt-3">
+    <h1 class="h1_title text-center text-white fw-bold">Contact Us</h1>
+    <div class="row ">
+      <div class="col-md-12 text-white text-center">
+        <h5 class="mb-2 text-white">VGN Projects Estates Pvt. Ltd.</h5>
+        <p class="text-white mb-5">Y - 222, VGN Kimberly Towers,<br>
+            2nd Avenue, Anna Nagar,<br>
+            Chennai - 600040.</p>
+          <h1 class="h1_title text-white fw-bold mb-3">Social Media</h1>
+          <ul class="social-media p-0">
+            <li class="d-inline-block" ><a href="https://www.facebook.com/VGNProjectsEstates" target="_blank" class="me-3"><i class="fa fa-facebook"></i></a></li>
+            <li class="d-inline-block"><a href="https://twitter.com/VGNProjects" target="_blank" class="me-3"><i class="fa fa-twitter"></i></a></li>
+            <li class="d-inline-block"><a href="https://www.youtube.com/user/vgndevelopers" target="_blank" class="me-3"><i class="fa fa-youtube"></i></a></li>
+            <li class="d-inline-block"><a href="https://www.instagram.com/vgn_projects_estates/" target="_blank" class="me-3"><i class="fa fa-instagram"></i></a></li>
+            <li class="d-inline-block"><a href="https://www.pinterest.ru/vgnprojectsestatespvtltd/" target="_blank" class="me-3"><i class="fa fa-pinterest-square"></i></a></li>
+            <li class="d-inline-block"><a href="https://www.linkedin.com/company/27106479" target="_blank" class="me-3"><i class="fa fa-linkedin-square"></i></a></li>
+            <li class="d-inline-block"><a href="https://plus.google.com/+VGNPropertyDevelopersPvtLimited" target="_blank" class="me-3"><i class="fa fa-google-plus-square"></i></a></li>
+          </ul> 
+      </div>
+      <!-- <div class="col-md-6">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7773.204499437169!2d80.248525!3d13.060971!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c9abb4bc5649a04!2sVGN%20Projects%20Estates%20Private%20Limited!5e0!3m2!1sen!2sus!4v1575716383142!5m2!1sen!2sus" frameborder="0" style="border:0;width: 100%;height:100%; min-height: 400px;" id="map" allowfullscreen="" class="img-responsive card googlemap"></iframe>
+      </div> -->
+    </div>
+  </div>
+</div> 
+
+
+
+<!-- <div class="container-fluid mb-3 bg-light">
+  <div class="container-lg pb-5 pt-3">
+    <h1 class="text-sm-left">TESTIMONIALS</h1>
+    <div> 
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://cdn.vgn.in/images/testimonial/1_Pic.jpg" alt="">
+      <div class="card-body">
+        <p class="card-title">"Dear CRM Team, </p>
+        <p class="card-text"> We thank you sincerely for your excellent facilitation and systematic support for the purchase of the property </p>
+      <p>Dr Lawrence Prabhakar Williams (Proud Customer of VGN Brent Park, Ambattur)</p>
+      </div>
+    </div>
+  </div>
+</div>  -->
+
+
+<!--  
+<div class="container-fluid p-0 m-0 mb-3">
+    <div slickContainer #slickController="slick" [slickConfig]="banner">
+      <ng-container *ngIf="slickController.initialize">
+        <picture  *ngFor="let url of allURL.banner;">
+          <source media="(max-width: 768px)"  srcset="{{url.mobile}}">
+          <source media="(min-width: 768px)"  srcset="{{url.desktop}}">
+          <img slickItem src="{{url.mobile}}" alt="VGN Home Building" title="VGN Home Building" style="width:auto;min-height:480px;max-height:600px;height:auto;">
+        </picture>
+      </ng-container>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid mb-5">
+    <div class="container-lg pt-3 ">
+      <h1 class="content-color">WHY VGN HOME BUILDING</h1>
+        <p class="content-color text-justify">
+          VGN Home Building is the home building division of VGN group , a multi million dollar real estate. VGN Home building specializes in the design and construction of customized individual homes, villas, independent bungalows, and row houses. We are a renowned home building company that provides your property with aesthetically pleasing architectural designs and a contemporary look to suit your needs. We are not only into designing and building your customized home but also facilitate Building permissions/approvals, Patta, Electricity connection from TNEB, Metro water connection and effectively executing construction within timelines and quality control parameters. We also provide DLP (Defect liability (period) for 12 months from the date of completion of your home. VGN Homebuilding has completed close to 200 independent houses , villas ranging from affordable , premium and luxury categories. VGN Homebuilding is part of a group that has resources of more than 20 design engineers, 200 execution civil enginners, 25 member project management team , in house procurement and 50 qulaity control engineers .  The best of these resources will meticulously work to ensure your dream home is delivered within the agreed timelines , cost and within the quality control parameters.
+        </p>
+    </div>
+  </div>
+
+  
+
+
+  <div class="container-fluid p-0 mb-5 bg-light">
+    <div class="container-lg pt-3 text-center">
+        <div class="row d-flex justify-content-center mb-5 text-center">
+            <div class="col-md-2 col-sm-2 me-md-5 mb-5 col-6" *ngFor='let url of allURL.titleicons'><img src="{{url.image}}" class="" alt="VGN Home Building" width="125" height="125"><h3 class="pt-3">{{url.text}}</h3></div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mb-3">
+    <div class="container-lg pt-3">
+      <h1 class="content-color">ABOUT VGN HOME BUILDING</h1>
+      <p>  VGN Homebuilding  builds your dream home as per your preference. VGN Homebuilding  team is proficient in the latest construction techniques and management tools, and as well as selecting the best-branded materials for your dream home.</p>
+      <h3 class="content-color text-justify">
+        VGN Homebuilding offers the following services as part of the homebuilding package :
+      </h3>
+      <ul>
+        <li>Obtaining patta</li>
+          <li>Soil test</li> 
+          <li>3 D rendered design</li> 
+          <li>Architectural design</li> 
+          <li>Structural Electrical , Plumbing design</li>
+          <li>Land survey</li> 
+          <li>Coordinating with government local bodies for planning and building approvals</li>
+          <li>Organising bank loans</li> 
+          <li>Building Construction</li> 
+          <li>Weekly progress updates</li> 
+          <li>Quality assurance and quality control monitoring</li>
+      </ul>
+    </div>
+  </div>  
+ 
+
+  <div class="container-fluid mb-3 bg-light">
+    <div class="container-lg pb-3 pt-5 mb-0">
+      <h1 class="content-color mb-3 text-sm-left text-md-center">VGN HOME BUILDING PACKAGES</h1>
+      <h3>VGN Homebuilding offers 3 packages to suit your requirements and budget.</h3>
+        <div class="row d-flex justify-content-center mb-5">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  SILVER PACKAGE
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body ">
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col"><h3>SPECIFICATION</h3></th>
+                          <th scope="col"><h3>DETAILS</h3></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><th scope="row">CP Fittings</th><td>Jaguar Continental	</td></tr>
+                        <tr><th scope="row">Sanitary fittings	</th><td>Parry ware / Hind ware (Basic)	</td></tr>
+                        <tr><th scope="row">Electrical switches	</th><td >Anchor rider</td></tr>
+                        <tr><th scope="row">Paint</th><td >Asian Tractor Emulsion	</td></tr>
+                        <tr><th scope="row">Main Doors shutter & frame	</th><td >Teak wood main door</td></tr>
+                        <tr><th scope="row">Other Doors shutter & Frame	</th><td >laminated doors	</td></tr>
+                        <tr><th scope="row">Windows</th><td >UPVC Sliding with Grill	</td></tr>
+                        <tr><th scope="row">Flooring</th><td >Verified tiles- Nano 2&#39;x2&#39;</td></tr>
+                        <tr><th scope="row">Staircase hand rail	</th><td >MS</td></tr>
+                        <tr><th scope="row">Balcony hand rail	</th><td >MS</td></tr>
+                        <tr><th scope="row">Inner Dry area Plastering	</th><td >Gyproc</td></tr>
+                        <tr><th scope="row">Inner wet area Plastering	</th><td >Cement plaster	</td></tr>
+                        <tr><th scope="row">Plumbing Supreme/ Astral	</th><td >Supreme / Astral	</td></tr>
+                        <tr><th scope="row">Terrace Tile	</th><td >Heat Resistant tile- Roco	</td></tr>
+                        <tr><th scope="row">Locks</th><td >Godrej</td></tr>
+                        <tr><th scope="row">Staircase tiles	</th><td >Step tile	</td></tr>
+                        <tr><th scope="row">Car parking area	</th><td >Cement Tile	</td></tr>
+                        <tr><th scope="row">kitchen</th><td >Granite counter with angle with glossy SS sink- parryware	</td></tr>
+                        <tr><th scope="row">Toilet floor tile	</th><td >1X1 Tile	</td></tr>
+                        <tr><th scope="row">Toilet wall tile	</th><td >1X1.5 Tile up to 7ft height	</td></tr>
+                        <tr><th scope="row">Floor Rising 	</th><td >Standard floor rising upto 3ft from existing ground level	</td></tr>
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  GOLD PACKAGE
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col"><h3>SPECIFICATION</h3></th>
+                          <th scope="col"><h3>DETAILS</h3></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><th scope="row">CP Fittings</th><td>Jaguar Florentine	</td></tr>
+                        <tr><th scope="row">Sanitary fittings	</th><td>Roca / Kohler (Basic)</td></tr>
+                        <tr><th scope="row">Electrical switches	</th><td >Anchor Roma	</td></tr>
+                        <tr><th scope="row">Paint</th><td >Asian Premium Emulsion	</td></tr>
+                        <tr><th scope="row">Main Doors shutter & frame	</th><td >Teak wood main door	</td></tr>
+                        <tr><th scope="row">Other Doors shutter & Frame	</th><td >laminated doors	</td></tr>
+                        <tr><th scope="row">Windows</th><td >UPVC Sliding with Grill	</td></tr>
+                        <tr><th scope="row">Flooring</th><td >Verified tiles- Double Charge 2&#39;x2&#39;	</td></tr>
+                        <tr><th scope="row">Staircase hand rail	</th><td >SS</td></tr>
+                        <tr><th scope="row">Balcony hand rail	</th><td >SS</td></tr>
+                        <tr><th scope="row">Inner Dry area Plastering	</th><td >Gyproc	</td></tr>
+                        <tr><th scope="row">Inner wet area Plastering	</th><td >Cement plaster	</td></tr>
+                        <tr><th scope="row">Plumbing Supreme/ Astral	</th><td >Supreme / Astral	</td></tr>
+                        <tr><th scope="row">Terrace Tile	</th><td >Heat Resistant tile- Roco	</td></tr>
+                        <tr><th scope="row">Locks</th><td >Godrej</td></tr>
+                        <tr><th scope="row">Staircase tiles	</th><td >Step tile	</td></tr>
+                        <tr><th scope="row">Car parking area	</th><td >Cement Tile	</td></tr>
+                        <tr><th scope="row">kitchen</th><td >Granite counter with angle with glossy carysil sink	</td></tr>
+                        <tr><th scope="row">Toilet floor tile	</th><td >1X1 tile	</td></tr>
+                        <tr><th scope="row">Toilet wall tile	</th><td >1X1.5 Tile up to 7ft height	</td></tr>
+                        <tr><th scope="row">Floor Rising 	</th><td >Standard floor rising upto 3ft from existing ground level	</td></tr>
+                        <tr><th scope="row">Additional Floor Rising 	</th><td >Additional floor rising upto 3ft	</td></tr>
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  DIAMOND PACKAGE
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col"><h3>SPECIFICATION</h3></th>
+                        <th scope="col"><h3>DETAILS</h3></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><th scope="row">CP Fittings</th><td>Grohe</td></tr>
+                      <tr><th scope="row">Sanitary fittings	</th><td>Toto (Basic)</td></tr>
+                      <tr><th scope="row">Electrical switches	</th><td >Schneider</td></tr>
+                      <tr><th scope="row">Paint</th><td >Asian Royale Emulsion </td></tr>
+                      <tr><th scope="row">Main Doors shutter & frame	</th><td >Teak wood main door with Architrave </td></tr>
+                      <tr><th scope="row">Other Doors shutter & Frame	</th><td >Veneer door with architrave </td></tr>
+                      <tr><th scope="row">Windows</th><td >UPVC sliding with mosquito net & Grill </td></tr>
+                      <tr><th scope="row">Flooring</th><td >Verified tiles-800mmX800mm Marble  series </td></tr>
+                      <tr><th scope="row">Staircase hand rail	</th><td >SS with Toughened Glass </td></tr>
+                      <tr><th scope="row">Balcony hand rail	</th><td >SS with Toughened Glass </td></tr>
+                      <tr><th scope="row">Inner Dry area Plastering	</th><td >Gyproc </td></tr>
+                      <tr><th scope="row">Inner wet area Plastering	</th><td >Cement plaster </td></tr>
+                      <tr><th scope="row">Plumbing Supreme/ Astral	</th><td >Supreme / Astral </td></tr>
+                      <tr><th scope="row">Terrace Tile	</th><td >Heat Resistant tile- Roco </td></tr>
+                      <tr><th scope="row">Locks</th><td >Godrej</td></tr>
+                      <tr><th scope="row">Staircase tiles	</th><td >Dark Granite </td></tr>
+                      <tr><th scope="row">Car parking area	</th><td >Basant Batton</td></tr>
+                      <tr><th scope="row">kitchen</th><td >Granite counter with angle with carysil sink matte finish </td></tr>
+                      <tr><th scope="row">Toilet floor tile	</th><td >1X1 tile </td></tr>
+                      <tr><th scope="row">Toilet wall tile	</th><td >1X2 Luxury Tile up to To full ceiling height </td></tr>
+                      <tr><th scope="row">Floor Rising 	</th><td >Standard floor rising upto 3ft from existing ground level </td></tr>
+                      <tr><th scope="row">Additional Floor Rising 	</th><td >Additional floor rising upto 3ft </td></tr>
+                      <tr><th scope="row">SUMP	</th><td >upto 2000liters </td></tr>
+                      <tr><th scope="row">Septic tank	</th><td >upto 2000liters </td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>    
+  </div> -->
+
+  
+  <!-- <div class="container-fluid mb-3 bg-light">
+      <div class="container-lg pb-5 pt-3">
+        <h1 class="text-sm-left text-md-center">A GLIMPSE OF SOME OF WORKS</h1>
+        <div slickContainer #slickController="slick" [slickConfig]="models">
+          <ng-container *ngIf="slickController.initialize">
+            <picture  *ngFor="let url of allURL.models;">
+              <source media="(max-width: 768px)" type="image/jpeg" srcset="{{url}}">
+              <source media="(min-width: 768px)" type="image/jpeg" srcset="{{url}}">
+              <img slickItem src="{{url}}" class="img-thumbnail" alt="VGN " title="VGN " >
+            </picture>
+          </ng-container>
+      </div>
+    </div>
+  </div> -->
+
+
+
+<!-- <div class="container-fluid mb-0">
+  <div class="container-lg pb-3 pt-3">
+    <h1 class="content-color">YOU DESERVE THE BEST HOME BUILDING</h1>
+      <p class="content-color text-justify">
+        When VGN Interiors takes up work, your desire for perfect and best interiors gets fulfilled as we employ state-of-the-art technology to provide a flawless finish and look that will last a long time.
+      </p>
+  </div>
+</div> -->
+
+<!-- <div class="container-fluid mb-3 pb-5 pt-3">
+  <h1 class="text-sm-left text-md-center ps-3">SOME OF THE BRANDS WE USE</h1>
+  <div slickContainer #slickController="slick" [slickConfig]="brand">
+    <ng-container *ngIf="slickController.initialize">
+      <picture  *ngFor="let url of allURL.brand;">
+        <source media="(max-width: 768px)" type="image/jpeg" srcset="{{url}}">
+        <source media="(min-width: 768px)" type="image/jpeg" srcset="{{url}}">
+        <img slickItem src="{{url}}" alt="VGN Interiors"  title="VGN Interiors" class="pe-5" style="width:0 auto;height:auto;">
+      </picture>
+    </ng-container>
+  </div>
+</div> -->
+
+
+<!-- <div class="container-fluid mb-5 pb-5 pt-3 ">
+  <div class="container">
+      <h1 class="text-sm-left text-md-center">SOME OF THE BRANDS WE USE</h1>
+      <div slickContainer #slickController="slick" [slickConfig]="brand">
+        <ng-container *ngIf="slickController.initialize">
+        <img slickItem *ngFor="let url of allURL.brand; let index = index" src="{{url}}" class="pe-5" style="width:auto;max-height: 115px;">
+        </ng-container>
+      </div>
+  </div>
+</div> -->
+
+<!-- 
+  <div class="container-fluid bg-light">
+    <div class="container-lg pb-2 pt-3 ">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="mb-5">ENQUIRY FORM</h2>
+          <form class="row" #interiorsLeadData="ngForm" (ngSubmit)="onSubmit(interiorsLeadData)">
+              <div class="mb-3 row ">
+                  <label for="" class="col-sm-3 col-form-label">Name :</label>
+                  <div class="col-sm-9">
+                  <input ngModel name="Name" type="text"  class="form-control"  id="">
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="" class="col-sm-3 col-form-label">Email id :</label>
+                  <div class="col-sm-9">
+                  <input ngModel name="Email" type="text" class="form-control"  id="">
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="" class="col-sm-3 col-form-label">Mobile no :</label>
+                  <div class="col-sm-9">
+                  <input ngModel name="Mobile" type="text" class="form-control"  id="">
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="" class="col-sm-3 col-form-label">Description :</label>
+                  <div class="col-sm-9">
+                  <textarea ngModel name="msg" class="form-control" id=""  rows="4" cols="50"></textarea>
+                  </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn mb-3" >Submit</button>
+              </div>
+          </form>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="mb-4">CONNECT WITH US</h2>
+              <h3 class="mb-0">VGN Home Building Pvt. Ltd.</h3>
+              <p>No.153, Wallace Garden, 2nd Street,<br>Nungambakkam,<br>Chennai - 600006.</p>
+            </div>
+            <div class="col-12">
+              <h2>TALK TO OUR TECHNICAL EXPERT NOW.</h2>
+              <h1><a href="tel:9840079815"><i style="font-size:28px" class="fa">&#xf095;</i> - 9840079815</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+

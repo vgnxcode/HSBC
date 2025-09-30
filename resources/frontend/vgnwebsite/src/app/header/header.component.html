@@ -1,0 +1,84 @@
+
+
+<nav class="navbar ">
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="#">Offcanvas navbar</a> -->
+    <a class="navbar-brand" routerLink="/home">
+      <img src="https://cdn.vgn.in/nodeserver/website/logo/vgn-logo.png" alt="VGN" width="" height="42" class="d-inline-block align-text-top p-0">
+    </a>
+    <button class="navbar-toggler header-menu__btn rounded-0 border-0 me-2 mt-3 mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" >
+      <span class="ms-3"> Menu</span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <!-- <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5> -->
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <ul class="navbar-nav justify-content-end flex-grow-1 ">
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" routerLink="/home"><i class="material-icons" style="font-size: 28px;color: #e21f25;">home</i></a>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link " routerLink="/aboutus"><i class="material-icons me-3 align-middle">edit</i>About Us</a>
+          </li>
+          <li class="nav-item dropdown mb-2" >
+            <a class="nav-link dropdown-toggle pt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons me-3 align-middle">business</i>Projects
+            </a>
+            <ul class="dropdown-menu border-0 shadow-lg shadow-none  rounded-0 ">
+              <li><a class="dropdown-item  ms-3" routerLink="/ongoingproject" data-bs-dismiss="offcanvas"><i class="material-icons me-2 align-middle">navigate_next</i>Ongoing</a></li>
+              <li><a class="dropdown-item  ms-3" routerLink="/readytomoveproject" data-bs-dismiss="offcanvas"><i class="material-icons me-2 align-middle">navigate_next</i>Ready to Move-in</a></li>
+              <li><a class="dropdown-item  ms-3" routerLink="/completedproject" data-bs-dismiss="offcanvas"><i class="material-icons me-2 align-middle">navigate_next</i>Completed</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" href="/landownersform"><i class="material-icons me-3 align-middle">people</i>For Land Owners</a>
+          </li>
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle pt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons me-3 align-middle">lock_open</i>Login
+            </a>
+            <ul class="dropdown-menu border-0 shadow-lg shadow-none  rounded-0 ">
+              <li><a class="dropdown-item  ms-3" href="/customerzone/customerlogin" ><i class="material-icons me-2 align-middle">navigate_next</i>Customer Login</a></li>
+              <li><a class="dropdown-item  ms-3" href="/employeezone/employeelogin"><i class="material-icons me-2 align-middle">navigate_next</i>Employee Login</a></li>
+              <li><a class="dropdown-item  ms-3" href="/vendorzone/vendorlogin"><i class="material-icons me-2 align-middle">navigate_next</i>Vendor Login</a></li>
+              <li><a class="dropdown-item  ms-3" href="/vendorzone/registration"><i class="material-icons me-2 align-middle">navigate_next</i>Vendor Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle pt-1" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons me-3 align-middle">add_circle_outline</i>Other Divisions
+            </a>
+            <ul class="dropdown-menu border-0 shadow-lg shadow-none rounded-0" aria-labelledby="offcanvasNavbarDropdown">
+              <li><a class="dropdown-item ms-3" href="https://interiorsone.vgn.in"><i class="material-icons me-2 align-middle">navigate_next</i>VGN Interiors</a></li>
+              <li><a class="dropdown-item ms-3" href="https://homebuilding.vgn.in"><i class="material-icons me-2 align-middle">navigate_next</i>VGN Home Building</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" routerLink="/investors"><i class="material-icons me-3 align-middle">work</i>Investors</a>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" routerLink="/search"><i class="material-icons me-3 align-middle">search</i>Search Projects</a>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" routerLink="/contactus"><i class="material-icons me-3 align-middle">local_phone</i>Contact Us</a>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" routerLink="/blog"><i class="material-icons me-3 align-middle">border_color</i>Blogs</a>
+          </li>
+          <li class="nav-item mb-2" data-bs-dismiss="offcanvas">
+            <a class="nav-link" target="_blank" href="{{ url()->full() }}/portal/employee-zone/career.php"><i class="material-icons me-3 align-middle">local_library</i>Career</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+.hero-caption span {
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 24px;
+  font-weight: 600;
+  padding-left: 95px;
+  position: relative;
+}
+.hero-caption span::before {
+  position: absolute;
+  content: "";
+  width: 75px;
+  height: 3px;
+  left: 0;
+  top: 52%;
+  transform: translateY(-50%);
+}
+.hero-caption h2 {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 700;
+}/*# sourceMappingURL=services.css.map */

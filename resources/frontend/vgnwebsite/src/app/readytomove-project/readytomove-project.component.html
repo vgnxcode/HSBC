@@ -1,0 +1,42 @@
+<div class="container-fluid p-0 m-0 mb-3" style="position: relative;">
+    <picture>
+        <source media="(max-width: 768px)"  srcset="https://cdn.vgn.in/nodeserver/website/banner/mobile/26.png">
+        <source media="(min-width: 768px)"  srcset="https://cdn.vgn.in/nodeserver/website/banner/26.png">
+        <img src="https://cdn.vgn.in/nodeserver/website/banner/mobile/26.png" alt="VGN" title="VGN" style="width:100%;min-height:480px;max-height:600px;height:auto;border-radius:0% 100% 0% 100% / 50% 0% 100% 15%;">
+    </picture>
+    <div class="text-center position-absolute ps-1" style="left:10px;top: 1rem;">
+      <a routerLink="/home" class="cta-btn--parent">
+      Home
+      </a>
+    </div>
+    <div class="centered banner_text text-center" role="search">
+      <h1 class="banner_text mb-4">Ready to Move Projects</h1>
+    </div>
+</div>
+
+<div class="container-fluid  mt-5 p-0 pt-3 pb-5">
+  <div class="container-lg d-flex flex-wrap ">
+    <!-- <h1 class="h1_title mb-4">Ongoing</h1> -->
+    <div class="row">
+      <ng-container *ngFor='let list of allURL'>
+          <div class="col-md-3" *ngIf="list.readytomove == '1'">
+            <div class="card border-0 rounded  mb-4 project-card" >
+                <img class="card-img-top mb-2" src="https://cdn.vgn.in/nodeserver/website/project_image_350*200/{{list.id}}.jpg" alt="{{list.Project_name}}">
+                <a  data-a2a-title="VGN {{list.Project_name}}" data-a2a-url="https://cdn.vgn.in/images/ebrochure/{{list.id}}/{{list.Project_name  | replaceUnderscore | lowercase }}.pdf" href="javascript:void(0)" class="a2a_dd position-absolute badge rounded-circle bg-white" (click)="share('https://cdn.vgn.in/images/ebrochure/{{list.id}}/{{list.Project_name  | replaceUnderscore | lowercase}}.pdf')">
+                  <span class="visually-show"><i class="fa fa-share-alt" aria-hidden="true" ></i></span>
+                </a>
+                <div class="card-body p-0" >
+                    <ul class="list-group border-0 list-group-flush ">
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0" >VGN {{list.Project_name}}</p></li>
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-map-marker d-inline-block me-3" aria-hidden="true"></i>{{list.Location}}</p></li>
+                      <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-building-o d-inline-block me-3" aria-hidden="true"></i>{{list.Type}}</p></li>
+                      <!-- <li class="list-group-item rounded border-0 p-2"><p class="d-inline-block ms-3 m-0"><i class="fa fa-inr d-inline-block me-3" aria-hidden="true"></i>3.33 Crore Onwards*</p></li> -->
+                      <li class="list-group-item rounded border-0 p-2 clearfix"><a class="d-inline-block ms-3 m-0 float-start view-more" href="/project/{{list.Project_name | replaceUnderscore  | lowercase}}">View More<i class="material-icons align-middle ms-2">exit_to_app</i></a><a class="d-inline-block me-3 m-0 float-end" target="_blank" href="https://cdn.vgn.in/images/ebrochure/{{list.id}}/{{list.Project_name | replaceUnderscore | lowercase}}.pdf"><i class="material-icons align-middle me-2">system_update_alt</i>Brochure</a></li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

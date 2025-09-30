@@ -1,0 +1,9 @@
+.footer_bg{
+    background-color: #2a3036;
+    font-size: 12px;
+    color: #7e8082;
+}
+.footer_bg a{
+    text-decoration: underline !important;
+    line-height: 20px;
+}

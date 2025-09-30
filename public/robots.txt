@@ -1,0 +1,32 @@
+Sitemap: https://www.vgn.in/sitemap.xml
+
+#User-agent: *
+#Allow: /
+#Disallow: /portal/*
+#Disallow: /lms_maintainance_assets/*
+#Disallow: /newcustomerzoneassets/*
+
+User-agent: *
+Allow: /
+Disallow: /api/*
+Disallow: /assets/*
+Disallow: /croppie/*
+Disallow: /customeridcards/*
+Disallow: /data_mnt/*
+Disallow: /files/*
+Disallow: /images/*
+Disallow: /lead_automation/*
+Disallow: /ltr/*
+Disallow: /mobileflag/*
+Disallow: /newcustomerzoneassets/*
+Disallow: /pdf/*
+Disallow: /pdffiles/*
+Disallow: /portal/*
+Disallow: /project/*
+Disallow: /resumes/*
+Disallow: /sharedfolder/*
+Disallow: /spini/*
+Disallow: /sulekha/*
+Disallow: /v2api/*
+Disallow: /vendorattachments/*
+Disallow: /weboomba/*

@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <title>VGN Seattle - Luxury 3 BHK Homes</title>
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+      integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <!-- Include CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"
+    />
+
+    <!-- Include JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+        <script defer src="https://www.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js" type="text/javascript"
+        data-bot="26632753"></script>
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="navbar">
+      <div class="container">
+        <a class="logo" href="/">
+          <img class="" src="./assets/seattle-logo.svg" alt="VGN Richmond" />
+        </a>
+        <div class="menu">
+          <a class="nav-menu" href="#About">About</a>
+          <a class="nav-menu" href="#Price">Price</a>
+          <a class="nav-menu" href="#Amenities">Amenities</a>
+          <a class="nav-menu" href="#Plans">Plans</a>
+          <a class="nav-menu" href="#Location">Location</a>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          ENQUIRE NOW
+        </button>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close text-right"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6 popup-form">
+                      <div>
+                        <h6>KINDLY FILL IN THE DETAILS</h6>
+                        <div>
+                          <img
+                            class="offers-popup"
+                            src="./assets/img/new-offer-unit-02.png"
+                            alt=""
+                          />
+                        </div>
+                        <!-- <h2>Book Now and Save upto ₹ 15 Lakhs!</h2> -->
+                      </div>
+                      <form
+                        action="/seattle-lead-google"
+                        method="post"
+                        id="enquiry-form"
+                        name="enquiry-form"
+                      >
+
+                      <input type="text" style="display: none;" class="csrf-token" name="_token" value="">
+                        <div>
+                          <label for="name">Name</label><br />
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label for="email">Email</label><br />
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email id"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label for="phone">Phone Number</label><br />
+                          <input
+                            class="fields mobile-input"
+                            type="tel"
+                            id="mobile-popup"
+                            name="mobile"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            placeholder="Phone Number"
+                            required
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="project"
+                          value="VGN Richmond TOWERS"
+                        />
+                        <input type="hidden" name="sourceId" value="50" />
+                        <input
+                          type="hidden"
+                          name="redirect"
+                          value="/richmond-towers-guindy/thank-you-page.html"
+                        />
+                        <div>
+                          <label for="interestedIn"
+                            >Which unit are you interested in?</label
+                          ><br />
+                          <div>
+                            <select
+                              class="pl-1"
+                              id="interestedIn"
+                              name="interested_in"
+                              required
+                            >
+                              <option value="" disabled selected>
+                                Select Preference
+                              </option>
+                              <!-- <option value="2BHK">2BHK Apartment</option> -->
+                              <option value="3BHK">3BHK Apartment</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <button type="submit" class="btn">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <img
+                        class="popup-img"
+                        src="./assets/img/popup-form-img.png"
+                        alt="VGN"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer d-none">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <main>
+      <!-- Hero Banner start -->
+      <section class="hero-banner">
+        <!-- <div class="banner-cont container">
+          <div class="hero-cont">
+            <h1>
+              THE CROWN <br class="desk-br" />
+              JEWEL OF <br class="desk-br" />
+              MOGAPPAIR
+            </h1>
+            <p>Luxury 3 BHK Homes</p>
+          </div>
+          <img
+            class=""
+            src="./assets/img/seattle-banner-img.png"
+            alt="hero-banner"
+          />
+        </div> -->
+        <!-- Hero Banner start -->
+        <img
+          class="hero-desk-banner"
+          src="./assets/vgn-seattle-banner.png"
+          alt="hero-banner"
+        />
+        <img
+          class="hero-mob-banner"
+          src="./assets/vgn-seattle-banner-resp.png"
+          alt="hero-banner"
+        />
+      </section>
+      <!-- Hero Banner End -->
+
+      <!-- About Richmond Section Starts -->
+      <div class="about-section">
+        <div class="container">
+          <div class="about-overlay">
+            <div class="content">
+              <img src="./assets/seattle-logo.svg" alt="" />
+              <h2>
+                A Lifestyle, Not <br class="desk-br" />
+                Just an Address
+              </h2>
+              <p>
+                Welcome to VGN Seattle, Mogappair - a landmark that redefines refined
+                urban living. This is more than just a residential address; it’s
+                where timeless elegance meets everyday convenience. Nestled in
+                one of the city’s most connected and promising neighborhoods,
+                VGN Seattle offers thoughtfully crafted 3 BHK residences
+                designed to elevate your lifestyle. Every space here is built
+                with an eye for detail, blending aesthetic sophistication with
+                functionality. From high-end specifications to Luxury home features, every element has been curated for those
+                who expect nothing less than exceptional.
+              </p>
+            </div>
+          </div>
+          <div class="about-img">
+            <img
+              src="./assets/img/seattle-overview-img.png"
+              alt="img"
+              class="about-image"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- About Richmond Section Ends -->
+
+      <!-- Clubhouse Section -->
+      <div class="ch-slider overflow-hidden" id="Amenities">
+        <div class="ch-slider-title">
+          <h2>
+            Luxury Redefined with <br class="desk-br" />
+            Signature Touches
+          </h2>
+          <p>
+            Step into a world where details enhance your lifestyle. At VGN
+            Seattle, modern <br class="desk-br" />
+            amenities blend with sophisticated design, offering convenience and
+            a statement of <br class="desk-br" />
+            luxury. Every touchpoint elevates your living - refined, effortless,
+            and elegant.
+          </p>
+        </div>
+        <div class="swiper clubhouseSwiper d-none d-lg-block d-md-block">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/bedroom_escape.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/dinning_charm.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/balcony_biss.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/bathroom_retreat.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/living_room_aura.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/kitchen_craft.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="swiper clubhouseSwiper d-lg-none d-md-none d-block">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/bedroom_escape_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/dining_charm_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/balcony_bliss_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/bathroom_retreat_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/living_room_aura_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/club-amenities/resp/kitchen_craft_resp.png"
+                alt="clubhouse-imgs"
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <!-- Clubhouse Section End -->
+	        <!-- Perfectly Positioned -->
+      <div class="pp-section">
+        <div class="container">
+          <div class="pp-overlay">
+            <div class="pp-content">
+              <h2>
+                At the core of <br />
+                Connectivity - Mogappair
+              </h2>
+            </div>
+            <div class="pp-cards">
+              <div class="pp-card">
+                <img
+                  class="pb-3"
+                  src="./assets/img/nearby-locations.png"
+                  alt=""
+                />
+                <h5>Nearby Locations</h5>
+                <ul>
+                  <li>Ampa Skyone Mall</li>
+                  <li>Anna Nagar</li>
+                  <li>Koyambedu Flyover</li>
+                  <li>Nexus Vijaya Mall</li>
+                  <li>VR Chennai Mall</li>
+                </ul>
+              </div>
+              <div class="pp-card">
+                <img
+                  class="pb-3"
+                  src="./assets/img/educational-institutes.png"
+                  alt=""
+                />
+                <h5>Top Educational Institutes</h5>
+                <ul>
+                  <li>D A V Senior Secondary School</li>
+                  <li>Dr. MGR Educational & Research Institute</li>
+                  <li>Thai Moogambigai Dental College</li>
+                </ul>
+              </div>
+              <div class="pp-card">
+                <img class="pb-3" src="./assets/img/metro-station.png" alt="" />
+                <h5>Metro Station</h5>
+                <ul>
+                  <li>CMBT Metro station</li>
+                  <li>Koyambedu Metro station</li>
+                </ul>
+              </div>
+              <div class="pp-card">
+                <img
+                  class="pb-3"
+                  src="./assets/img/renowned-hospitals.png"
+                  alt=""
+                />
+                <h5>Renowned Hospitals</h5>
+                <ul>
+                  <li>Frontier Lifeline Hospital</li>
+                  <li>The Madras Medical Mission Hospital</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Perfectly Positioned End -->
+      <!-- Location Section -->
+      <div id="Location" class="location">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4782.01975626741!2d80.18155167507831!3d13.077633887247535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5261db614c51c5%3A0x77578c5a6ee96ad4!2sVGN%20Seattle!5e1!3m2!1sen!2sin!4v1751950998736!5m2!1sen!2sin"
+                width="720"
+                height="530"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="col-lg-5">
+              <div class="location-cont">
+                <h2>Why Mogappair?</h2>
+                <p>
+                  Mogappair East is quickly rising as one of Chennai’s most
+                  sought-after residential and investment destinations. With its
+                  exceptional connectivity, strong infrastructure, and a vibrant
+                  social fabric, it brings together the best of convenience and
+                  calm.
+                </p>
+                <button
+                  class="btn"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  ENQUIRE NOW
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="location-nearby d-none">
+            <div class="location-nearby-cont">
+              <img src="./assets/icons/locations.svg" alt="icons" />
+              <br />
+              <h5>Nearby Locations</h5>
+              <p>Ampa Skyone Mall</p>
+              <p>Anna Nagar</p>
+              <p>Koyambedu Flyover</p>
+              <p>Nexus Vijaya Mall</p>
+              <p>VR Chennai Mall</p>
+            </div>
+            <div class="location-nearby-cont">
+              <img src="./assets/icons/institutes.svg" alt="icons" />
+              <br />
+              <h5>Top Educational Institutes</h5>
+              <p>D A V Senior Secondary School</p>
+              <p>Dr. MGR Educational & Research Institute</p>
+              <p>Thai Moogambigai Dental College</p>
+            </div>
+            <div class="location-nearby-cont">
+              <img src="./assets/icons/ststions.svg" alt="icons" />
+              <br />
+              <h5>Metro Station</h5>
+              <p>CMBT Metro station</p>
+              <p>Koyambedu Metro station</p>
+            </div>
+            <div class="location-nearby-cont">
+              <img src="./assets/icons/hospitals.svg" alt="icons" />
+              <br />
+              <h5>Renowned Hospitals</h5>
+              <p>Frontier Lifeline Hospital</p>
+              <p>The Madras Medical Mission Hospital</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Location Section End -->
+
+      <!-- Price Section -->
+      <div id="Price" class="price-slider overflow-hidden">
+        <div class="">
+          <h2>
+            Fine Tech, Ultimate <br class="desk-br" />
+            Security & Luxury Amenities
+          </h2>
+          <p>
+            Experience a home where innovation, comfort and security come
+            together effortlessly.<br class="desk-br" />
+            With state-of-the-art features and intelligent conveniences, every
+            moment at VGN <br class="desk-br" />
+            Seattle is designed to elevate your lifestyle.
+          </p>
+          <br />
+          <br />
+
+          <div class="">
+            <div class=""></div>
+            <div class="">
+              <div class="swiper interiorSwiper d-none d-lg-block d-md-block">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/smart_home-automation.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                      <!-- <button
+                        type="button"
+                        class="btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        Enquire now
+                      </button> -->
+                      <!-- <a onclick="downloadPDF()">DOWNLOAD BROCHURE</a> -->
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/EV_charging_point.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/sensor-based_lightings.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/FID_boom_barriers.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/lobby_access_control.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/3-level_security_access.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div>
+                  <img
+                    src="./assets/icons/arrow-left-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-prev"
+                  />
+                  <img
+                    src="./assets/icons/arrow-right-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-next"
+                  />
+                </div>
+              </div>
+
+              <div class="swiper interiorSwiper d-lg-none d-md-none d-block">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/smart_home_automation_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                      <!-- <button
+                        type="button"
+                        class="btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        Enquire now
+                      </button> -->
+                      <!-- <a onclick="downloadPDF()">DOWNLOAD BROCHURE</a> -->
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/EV_charging_point_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/senson-based_lighting_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/FID_boom_barriers_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/lobby_access_control_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/club-amenities/resp/3-level_security_resp.png"
+                      alt="interior-img"
+                    />
+                    <div class="price-details">
+                      <p>
+                        Luxury 3 BHK Homes starting <br />
+                        from <span style="padding-right: 4px">₹</span>1.84 Crs
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div>
+                  <img
+                    src="./assets/icons/arrow-left-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-prev"
+                  />
+                  <img
+                    src="./assets/icons/arrow-right-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-next"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Price Section End -->
+
+      <!-- Floor Plans Section -->
+      <div class="price-slider floor-plan overflow-hidden" id="Plans">
+        <div class="">
+          <h2>Project Plans</h2>
+          <p class="">
+            At VGN Seattle, discover spacious 3 BHK luxury apartments
+            thoughtfully <br class="desk-br" />
+            designed for elegance and comfort. 3 BHK – Ranging from 1364Sq. Ft.
+            to 1473 <br class="desk-br" />
+            Sq. Ft. Designed to provide an exclusive and sophisticated
+            lifestyle, every <br class="desk-br" />
+            home at VGN Seattle is a perfect blend of luxury, space and
+            convenience.
+          </p>
+          <br />
+          <br />
+
+          <div class="thumbs-lightbox">
+            <div class="container">
+              <div class="swiper interiorSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide active">
+                    <img
+                      src="./assets/floor-plan/Parking_Plan.png"
+                      onclick="openModal();currentSlide(1)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <p></p>
+                      <h3>Master Key Plan</h3>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/floor-plan/Floor_Plan.png"
+                      onclick="openModal();currentSlide(2)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <p>Stilt Floor Plan</p>
+                      <h3>No. of units in each ﬂoor: 4 nos</h3>
+                      <p>A - 1460, B - 1473, C - 1405, D - 1364</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/floor-plan/Flat_A.png"
+                      onclick="openModal();currentSlide(3)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <h3>Flat A: (3BHK)</h3>
+                      <p>Area: 1,460 sq.ft</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/floor-plan/Flat_B.png"
+                      onclick="openModal();currentSlide(4)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <h3>Flat B: (3BHK)</h3>
+                      <p>Area: 1,473 sq.ft</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/floor-plan/Flat_C.png"
+                      onclick="openModal();currentSlide(5)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <h3>Flat C: (3BHK)</h3>
+                      <p>Area: 1,405 sq.ft</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/floor-plan/Flat_D.png"
+                      onclick="openModal();currentSlide(6)"
+                      class="thumbs-img"
+                      alt="Floor Plan"
+                    />
+                    <div class="floor-details">
+                      <h3>Flat D: (3BHK)</h3>
+                      <p>Area: 1,364 sq.ft</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div>
+                  <img
+                    src="./assets/icons/arrow-left-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-prev"
+                  />
+                  <img
+                    src="./assets/icons/arrow-right-round.svg"
+                    alt="icons"
+                    class="navi-arrow swiper-btn-next"
+                  />
+                </div>
+              </div>
+
+              <div id="myModal" class="modal">
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="modal-content">
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Parking_Plan.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Parking_Plan.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Floor_Plan.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Floor_Plan.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Flat_A.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Flat_A.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Flat_B.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Flat_B.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Flat_C.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Flat_C.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <a
+                    class="mySlides"
+                    data-fancybox="gallery"
+                    href="./assets/floor-plan/Flat_D.png"
+                  >
+                    <img
+                      src="./assets/floor-plan/Flat_D.png"
+                      class="img-fluid"
+                    />
+                  </a>
+
+                  <!-- Next/previous controls -->
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Floor Plans Section End -->
+
+      <!-- Specifications Section -->
+      <div class="Specifications">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="heading">Specifications</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Super Structure
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        RCC framed structure as per the earthquake-resistant
+                      </p>
+                      <p>Design masonry with AAC blocks & plastering</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Flooring
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Living, bedrooms & kitchen - double charged - large size
+                        vitrified tiles - kajaria/rak or equivalent make
+                      </p>
+                      <p>
+                        Toilet flooring- anti skid vitrified tiles- kajaria/rak
+                        or equivalent make
+                      </p>
+                      <p>
+                        Toilet walls- large size vitrified tiles up to false
+                        ceiling level- kajaria/rak or equivalent make
+                      </p>
+                      <p>
+                        Balcony- anti skid premium wood finish vitrified tiles -
+                        kajaria/rak or equivalent make
+                      </p>
+                      <p>Common entrance lobby - polished marble</p>
+                      <p>
+                        Terrace Flooring-Premium anti-skid roof cool tiles –
+                        Roco/ Equivalent make
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Premium Sanitary Ware & CP Fittings
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        EWC & wash basin - wall mounted water closet with
+                        concealed tanks & wash basin with half
+                        pedestal-kohler/grohe/american standard/ or equivalent
+                        make
+                      </p>
+                      <p>
+                        CP & Sanitary fittings - kohler/grohe/american standard/
+                        or equivalent make
+                      </p>
+                      <p>
+                        Elegant glass shower partition with smooth sliding door,
+                        featuring sleek black trims for a modern touch, saint-
+                        gobain make in all toilets
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseFour"
+                    >
+                      Joinery
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Main door - teak wood frame with veneered shutters along
+                        with architraves on both sides, full jams covered with
+                        wooden trims & Dorma/Hafele fittings/equivalent
+                      </p>
+                      <p>
+                        Bedroom doors - polished wooden frame with veneered
+                        wooden flush door with architraves on both sides, full
+                        jams covered with wooden trims & Dorma/Hafele premium
+                        fittings/dorset
+                      </p>
+                      <p>
+                        Toilet doors - polished wooden frame with thick two-side
+                        laminated flush doors with architraves on both sides,
+                        full jams covered with wooden trims & Dorma/Hafele
+                        premium fittings/dorset
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFive"
+                      aria-expanded="false"
+                      aria-controls="collapseFive"
+                    >
+                      French Doors/Windows
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFive"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        French doors - french doors with mosquito fiber mesh
+                      </p>
+                      <p>
+                        Windows - sliding and openable window with clear glass,
+                        mosquito mesh and safety grill
+                      </p>
+                      <p>
+                        Ventilators - Top hung windows with frosted glass,
+                        mosquito mesh and safety grill
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix"
+                      aria-expanded="false"
+                      aria-controls="collapseSix"
+                    >
+                      Railing
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseSix"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Balcony railing - SS handrail with toughened/laminated
+                        glass- saint gobain make
+                      </p>
+                      <p>
+                        Staircase railing - MS handrail with premium enamel
+                        finish
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseEight"
+                      aria-expanded="false"
+                      aria-controls="collapseEight"
+                    >
+                      Kitchen
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseEight"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Counter - granite counter- top with polished & chambered
+                        edges
+                      </p>
+                      <p>
+                        Sink - matte finish single bowl with drain boardfutura/
+                        nirali/carysil SS sink/equivalent
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseNine"
+                      aria-expanded="false"
+                      aria-controls="collapseNine"
+                    >
+                      Painting & Finishes
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseNine"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Exterior finishes - texture putty-
+                        asian/dulux/equivalent make
+                      </p>
+                      <p>
+                        Exterior emulsion- weather proof exterior
+                        emulsion-asian/dulux/equivalent make
+                      </p>
+                      <p>
+                        Interior finishes - premium interior emulsionasian/
+                        dulux/equivalent make
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTen"
+                      aria-expanded="false"
+                      aria-controls="collapseTen"
+                    >
+                      Electrical
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTen"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>3-Phase electrical supply with required mcb & rccb</p>
+                      <p>
+                        Fire retard low smoke copper wires of
+                        polycab/orbit/finolex or equivalent make- concealed
+                        conduits
+                      </p>
+                      <p>
+                        Switches sockets and plate-modular switches - panasonic
+                        /legrand/havells or equivalent
+                      </p>
+                      <p>
+                        TV /Network/ Telephone plug-in points in Living room &
+                        Master bedrooms
+                      </p>
+                      <p>
+                        Home automation for lights/fan/ac- energy efficient
+                        smart homes powered by IOT(Internet of things) based
+                        systemsschneider electric/legrand
+                      </p>
+                      <p>
+                        Copper piping layout from IDU(Indoor Door Unit) to
+                        ODU(Outdoor Door Unit) for air conditioning units -
+                        bedroom and living
+                      </p>
+                      <p>
+                        Power points for Refrigerator, Chimney, Mixer/Grinder/
+                        Aqua Point in Kitchen
+                      </p>
+                      <p>
+                        Washing machine & dish washer power points in service
+                        area
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseEleven"
+                      aria-expanded="false"
+                      aria-controls="collapseEleven"
+                    >
+                      Plumbing
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseEleven"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        CPVC Plumbing for internal lines-
+                        astral/finolex/ashirvad or equivalent
+                      </p>
+                      <p>
+                        UPVC/PVC pipes for external lines-
+                        astral/finolex/ashirvad or equivalent
+                      </p>
+                      <p>
+                        Washing machine & dish washer provision in service area
+                      </p>
+                      <p>Pneumatic pressure pumping systems for water supply</p>
+                      <p>
+                        Automatic OHT (Over Head Tank) water level controllers
+                      </p>
+                      <p>
+                        Water proofing in Toilets, Balcony, Other Sunken area
+                        and Terrace/ private terrace- Sika/Fosroc/ equivalent
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwelve"
+                      aria-expanded="false"
+                      aria-controls="collapseTwelve"
+                    >
+                      DG Backup
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwelve"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>DG backup for 3BHK-1200 watts</p>
+                      <p>100% DG backup for Lifts & Common Area</p>
+                      <p>Make- cummins/koel green/ equivalent</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThirten"
+                      aria-expanded="false"
+                      aria-controls="collapseThirten"
+                    >
+                      Common Amenities
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThirten"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Dedicated EV charging points for individual flat
+                        parking spaces.
+                      </p>
+                      <p>
+                        3-Tier Security system with smart bell/video door
+                        phone/access-controlled lobbies/rfid boom
+                        barrier in entrance
+                      </p>
+                      <p>Piped gas facility to individual flats</p>
+                      <p>24x7 CCTV surveillance system</p>
+                      <p>Multipurpose Hall at Stilt floor</p>
+                      <p>Solar power system</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Specifications Section End -->
+
+      <!-- Why VGN Section starts -->
+      <div class="why-vgn-section">
+        <div class="content">
+          <img src="./assets/img/why-seattle.png" alt="" />
+          <!-- <h2>Why VGN?</h2> -->
+          <!-- <h2>
+            VGN Richmond Towers 2 & 3 BHK Luxury Homes in the Heart of Guindy
+          </h2> -->
+        </div>
+        <div class="reasons">
+          <div>
+            <h4>47+</h4>
+            <p>Awards won</p>
+          </div>
+          <div>
+            <h4>250+</h4>
+            <p>Completed Projects</p>
+          </div>
+          <div>
+            <h4>70000+</h4>
+            <p>Happy Families</p>
+          </div>
+        </div>
+      </div>
+      <!-- Why VGN Section ends -->
+
+      <!-- Footer Start -->
+      <footer class="footer overflow-hidden">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div class="foot-logo-numb">
+                <a class="foot-logo" href="/">
+                  <img class="" src="./assets/footer-logo.svg" alt="VGN" />
+                </a>
+                <div class="enqu">
+                  <!-- <img src="./assets/icons/phone-call.png" alt="" /> -->
+                  <a href="tel:+04443439999">044-4343 9999</a>
+                </div>
+              </div>
+              <div id="About" class="foot-cont">
+                <div>
+                  <h3>
+                    VGN – Creating timeless landmarks that shape the cityscape.
+                  </h3>
+                  <p>
+                    The VGN Group is one of Chennai's leading property
+                    developers, with over eight decades of expertise in
+                    residential buildings and plotted developments in Chennai.
+                    Instituted in 1947, the company has developed many landmark
+                    buildings and transformed the skyline of Chennai. VGN has
+                    successfully carved a niche for itself in the ever-dynamic
+                    real estate industry over the last 83 years. Since its
+                    inception, VGN has completed 250+ buildings, amounting to
+                    over 20 million sq. ft. of developed space across a diverse
+                    real estate portfolio. VGN assures best-in-class design and
+                    top-of-the-line facilities that exude elegance and
+                    sophistication. The residential developments include premium
+                    residences, luxury apartments, value homes, plotted
+                    developments, and mixed-use lifestyle enclaves and
+                    townships. Over the years, the projects have been
+                    one-of-a-kind in the sector; for example, VGN developed VGN
+                    Notting Hill, a luxury lifestyle enclave next to Hotel Taj
+                    Coromandel in Nungambakkam, and VGN Coasta, a luxury
+                    sea-facing apartment complex bang on ECR, Chennai. VGN also
+                    enjoys a reputation for developing over 600 acres of plotted
+                    developments, amongst a few developers in Chennai. The
+                    commercial segment has seen consistent growth over the last
+                    few years; hence, VGN is also venturing into office space,
+                    retail, and industrial warehouse under development.
+                  </p>
+                </div>
+
+                <p>
+                  Copyright © 2025 VGN Projects Estates Pvt. Ltd. - All Right
+                  Reserved.
+                </p>
+
+                <div class="footer-prom-img">
+                  <img src="./assets/img/footer-prom-img.png" alt="" />
+                </div>
+
+                <div class="social-icons">
+                  <a
+                    href="https://www.facebook.com/VGNProjectsEstates"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/facebook.svg" alt="VGN" />
+                  </a>
+                  <a
+                    href="https://twitter.com/VGNProjects"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/twitter.svg" alt="VGN" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/vgn_projects_estates/"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/instagram.svg" alt="VGN" />
+                  </a>
+                  <a
+                    href="https://ru.pinterest.com/vgnprojectsestatespvtltd/"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/pinterest.svg" alt="VGN" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F27106479"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/linkdin.svg" alt="VGN" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/user/vgndevelopers"
+                    rel="no-referrer"
+                    target="_blank"
+                  >
+                    <img class="" src="./assets/youtube.svg" alt="VGN" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-1"></div>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer End -->
+    </main>
+
+    <!-- JS Starts -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script> -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- FancyBox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".clubhouseSwiper", {
+        slidesPerView: 1,
+        centeredSlides: true,
+        spaceBetween: 20,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        loop: true,
+        autoplay: true,
+        breakpoints: {
+          480: {
+            slidesPerView: 1.3,
+          },
+        },
+      });
+
+      //   Price Swiper
+      var swiper = new Swiper(".interiorSwiper", {
+        slidesPerView: 1,
+        centeredSlides: true,
+        spaceBetween: 20,
+        // pagination: {
+        //   el: ".swiper-pagination",
+        //   clickable: true,
+        // },
+        loop: true,
+        autoplay: true,
+        navigation: {
+          nextEl: ".swiper-btn-next",
+          prevEl: ".swiper-btn-prev",
+        },
+        breakpoints: {
+          480: {
+            slidesPerView: 1.75,
+          },
+        },
+      });
+    </script>
+    <!-- JS Ends -->
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) =>
+        anchor.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute("href"));
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "start",
+          });
+        })
+      );
+    </script>
+
+    <script>
+      function downloadPDF() {
+        // Replace "path/to/your/pdf/document.pdf" with the actual path to your PDF document
+        var pdfUrl = "./assets/pdf/Richmond-brochure.pdf";
+
+        // Create an anchor element
+        var link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "Richmond-brochure.pdf"; // Name of the downloaded file
+
+        // Append the anchor element to the document body
+        document.body.appendChild(link);
+
+        // Trigger the click event of the anchor element
+        link.click();
+
+        // Remove the anchor element from the document body
+        document.body.removeChild(link);
+      }
+    </script>
+
+    <script>
+      // Open the Modal
+      function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+      }
+      // Close the Modal
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+      // For Lightbox
+      function openLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "flex";
+        lightbox.style.alignItems = "center";
+        lightbox.style.justifyContent = "center";
+        document.body.style.overflow = "hidden"; // Prevent scrolling when lightbox is open
+      }
+
+      const target = document.querySelector(this.getAttribute("href"));
+      target.scrollIntoView({
+        behavior: "smooth",
+      });
+
+      function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+        document.body.style.overflow = ""; // Re-enable scrolling when lightbox is closed
+      }
+    </script>
+
+    <script>
+      // Enable Fancybox for any element with the `data-fancybox` attribute
+      Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+      });
+
+      // Set custom options for elements with the `data-fancybox="gallery"` attribute
+      Fancybox.bind('[data-fancybox="gallery"]', {
+        // Your custom options
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#enquiry-form").validate({
+          errorElement: "div",
+          rules: {
+            name: "required",
+            email: {
+              required: true,
+              email: true,
+            },
+            mobile: {
+              required: true,
+            },
+          },
+          messages: {
+            name: "Please enter your full name",
+            email: {
+              required: "Please enter your email",
+            },
+            mobile: {
+              required: "Please enter your phone number",
+            },
+          },
+          submitHandler: function (form) {
+            $("#eq-bt-1").text("submitting...");
+            $("#eq-bt-1").prop("disabled", true);
+            $("#enquiry-form").submit();
+          },
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var phoneInputs = document.querySelectorAll(".mobile-input"); // Select all phone inputs
+
+        phoneInputs.forEach(function (input) {
+          var iti = window.intlTelInput(input, {
+            initialCountry: "in", // Default to India (+91)
+            separateDialCode: true, // Show country code separately
+            preferredCountries: ["in", "us", "gb", "au", "ca"], // Frequently used
+            utilsScript:
+              "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+          });
+
+          // Ensure the correct phone number is submitted
+          input.closest("form").addEventListener("submit", function () {
+            input.value = iti.getNumber(); // Convert to E.164 format before submitting
+          });
+        });
+      });
+    </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await fetch('/sanctum/csrf-cookie');
+    const response = await fetch('/csrf-token');
+    const data = await response.json();
+
+    // Get all elements with the class 'csrf-token'
+    const csrfInputs = document.getElementsByClassName('csrf-token');
+
+    // Loop through each element and set the CSRF token value
+    Array.from(csrfInputs).forEach(input => {
+      input.value = data.csrfToken;
+    });
+
+  } catch (error) {
+    console.error('Error fetching CSRF token:', error);
+  }
+});
+
+</script>
+
+
+  </body>
+</html>

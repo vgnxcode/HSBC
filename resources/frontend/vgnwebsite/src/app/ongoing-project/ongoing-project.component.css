@@ -1,0 +1,18 @@
+.ongoing{
+    /* min-width: 340px; */
+    width: auto;
+}
+.ongoing h4{
+    font-family: 'Assistant', sans-serif;
+    font-weight: 400;
+    line-height: 40px;
+    font-weight: bold;
+    letter-spacing: .6px;
+    font-size: 14px;
+    color:#0a2233 !important;
+}
+.ongoing i{
+    /* color:#707479 !important; */
+    color: #e21f25; 
+    font-size: 20px;
+}

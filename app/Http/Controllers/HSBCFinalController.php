@@ -1,0 +1,195 @@
+<?php
+
+namespace vgn\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HSBCFinalController extends Controller
+{
+    public function testkey(){
+
+        putenv("GNUPGHOME=/tmp");
+$pubkey = "-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2
+
+mQENBF6NU+oBCAC+KA4HDF+gtKS0L6D8tlTLJcPSOJspc1WEjuHUrZdyLKXWmoqw
+2yYO0rsmHYF9kwksRJPeMpDD3Lx3h8H8QTKYQ8deGC4l/3Il7eacLMoM9iVMlxOX
+ShD7GJXQC19U5vWHl7IlJajvMYddmfsD3ZR3zvE1d19mf9P1x3KUNCVDDPRgiHOi
+J/ZvlbBtmxCmalh5rCnFSBe2j8Q4MYv0X80r6jS2DRJNihgyH3kW5DVF9RlDU5Ku
+qznaOU4NK0OKFuTBsnUH1+tz6nzzT38wj47fZrWHr1Ff+8FDHyM5P4AgPBELpPtJ
+H6SfxG7mllyOA1ZVCA90SiZcs8y5msIFVVHXABEBAAG0NFZHTiBQcm9qZWN0cyBF
+c3RhdGVzIChIU0JDIEJhbmtpbmcpIDxuYXZlZW52QHZnbi5pbj6JAT8EEwEIACkF
+Al6NU+oCGwMFCQPCZwAHCwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB0PWJr
+a/GXUrzaB/9APRf6S3Gx++bLV4r9oS5k/rlWiQhIKZfs5LqIjSU6UiUJM4/NQUtd
+6um441noEpqnkWIHhW6u+d1oU/O+2KsA8VKqZJ/6fddfboIJ7X8xewnevwV+zWmz
+pUDl4QIkf2ePJlkzTBC8dWFOIm+aPXs6F04cT6cVvRwZg6aaUZtgUm8LEIVg6OSo
+ikmbBlKLkvr/hYShX9Sb2Mlcud7chD5XKXjsprKkRgTQdS9bFolYC47oCVWh6uFe
+nSO56ARPWZ/6UKEemAQZl158ZQF9E8MjstPP1y+KGUX9r017NK+ZKkyPgKJT3zgp
+0TrFg2C3MfGbHrIbHbNKrHSsu4+HRvBLuQENBF6NU+oBCACsWkKpvX+4kOiJpHGI
+YbYeGjdaBQIJHqQ20jIjBHSfn48UQbRagv75CR9T+0+xDTnD2CGmVZqaRnUMNspc
+fzz1vXLZ3/2OGdHSFNNqT4S50CODUP+K8tOrFno6fuRqFj7fYITKoZxnR/M1Qo68
+bcslFHC/ZtwcCrqCYI8MBdHpaWJJlR3leQoaVll9xqMhFnkK5pPUgavoq0ZUFZEK
+ZY/Lk7CUm4SkL/ssiB8nCZ4DBFZKAD2vbmyR2Nj6NGsx8ZFWl7TQDVh8JcS3aVrX
+fJS78+i+fkIYywsrDEQLEPwyU5lTyml9aT/sayqMdSdUdeEBEZXwT/r118mkluGh
+72frABEBAAGJASUEGAEIAA8FAl6NU+oCGwwFCQPCZwAACgkQdD1ia2vxl1INQwf/
+XD/awQ6EaU1Bs4/QsRRxk/+6yxGsP452Zo0vNcEe542K+jVTZ+BnZ0kNwIH8F/cW
+eywFU+JJXpV3wxzYTSeY/7i0Q7Ha/CWQCzZCw7RaIfqJeDJH7oFrEO3mQcauR9uT
+yLL4UA2TeUa+eclVyplZ8SSAIYaznvKy9DRwxw34xA7MbzqRaqcjejbjuJEMOoau
+iEM//56FxDEsJkXbgwWUKH756acggQYe/uzHuDRgLRyLjrV/f4WxPSWoZFFsLJiq
+Qa6Xv8JByIrTYaNyEuda3KfbnRf7PuiwaGIjWcc3ZGHR08b9hD30ZQ8VcDstuYJH
+Tr7YBzrZr1hctsgjB2aPpg==
+=/Lg5
+-----END PGP PUBLIC KEY BLOCK-----";
+
+$enc = (null);
+$res = gnupg_init();
+$rtv = gnupg_import($res, $pubkey);
+gnupg_addencryptkey($res,"3983A995A34EBC91C30848C8743D626B6BF19752");
+gnupg_addsignkey($res,"3983A995A34EBC91C30848C8743D626B6BF19752","Vgn@4321");
+$enc = gnupg_encryptsign($res, "just a test");
+dd($enc);
+	}
+
+      public function testkey1(){
+	
+	$res = gnupg_init();
+gnupg_addencryptkey($res,"3983A995A34EBC91C30848C8743D626B6BF19752");
+$enc = gnupg_encrypt($res, "just a test");
+dd($enc);
+      }
+
+
+ public function encryptSecret()
+ {
+     // Set GnuPG homedir to /tmp
+     putenv("GNUPGHOME=/root/.gnupg");
+$public_key = "-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBGYdJawBCADIdvPleDvr/lEJFQF/zHFFjFaZKcEkaflr9rRT3N5ERx/I38mh
+QlS18i+1JmddtQz7U/d8yfL50P3wrfEBeWyYoh47g1Q7nppeYglPtMl0XZPtyYFr
+udSAtAeg239t9l1rb6+UzXzlwiX1c+t/6OIP2mwXI8BsyDflm0eiyolAcCztIW0C
+ojvsuAWCdSxEzslA+fLqVLDJ21b0A3h1VcQujZnGVBqeB3ZC/XUOZeYH0CoiqTy6
+PIOAke4OKyRMDLXkqT3AJ8d5HuV8ejVPPT7i0oW69aKYi/ShYeW3SO4Cu3ILT4xj
+/P4Ejou39damoqdTn2itOfpkj0mcoDWdj5iVABEBAAG0Fm5hdmVlbiA8bmF2ZWVu
+QHZnbi5pbj6JAVcEEwEIAEEWIQTSUnThH9QajKNsDMpB4MR9sNUL3gUCZh0lrAIb
+IwUJA6+VvAULCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgAAKCRBB4MR9sNUL3nMj
+B/0ZCM09N1wOLK5DwyCJSYS59jPBOSYXgWI8ol78c0EiSBLg6pu7/onfEDKDOR/9
+Xxrfj/pInw3JpXKUGwfDu1b/YJcMcxRmELkMcfZ3B6WbM8hxzZV0ecPUfocjXFkP
+kDxbbACAF2rkwGW/nT+p8GVbWrhnTibBUO3P3GNI8vjtfNrKcbebuWnQ2FDadaHZ
+M5s1jATMStIy8Y5uICUQ60HkyzvWqDLdOqAs67b1fVlNvHuul6NTuwcPslXMO14Z
+G2cfZmYmu/84y9HIXHQEWVABlMajPLcyaTXZOMESNDe5ylzUx5un2GmPDWOA02FG
+ws0zzW8bcyYdTu1TyPl3oLI2uQENBGYdJawBCAC14d2ZB6jvGMaXMF7Hvb4Dfr5/
+RHS61+ZuiXbAfsGWR57AOQeg+d1QFtt76Tsd+JVgi0PAZFs0IFeW+jBpcmGpgkBL
+hzgXVlU0daTfpO9MtRTQl0ZA1nxE/wjvT8clJrPVy4iumZOeL72/0GYorsrHeSkF
+WCAEPBVESekWc84owaTvNImUjegSJBzu0wexb1iw2QITURwmmLZdfLMIl7dR+2Mf
+hmt+sijbIdIQthsBYE2CPuIx49qj+dqjFJ7YUkhwAA14RWzGiMVSBV0A+j/GZJ3n
+f06K5maFPKVCFwIyUh80kiOuxjniWwyFn8Ugk1lEOOEE6cvuSVtkhOkaKCO3ABEB
+AAGJATwEGAEIACYWIQTSUnThH9QajKNsDMpB4MR9sNUL3gUCZh0lrAIbDAUJA6+V
+vAAKCRBB4MR9sNUL3jNqB/9lV0YAwuongfE1NzHlfsxetavgQ+Us6TsHiSKbzXOG
+ueScF6k0/eiOLUWv+7nZETCys0GCyTNolqlmXSGET110fnO6zxzhb9R/Bd7jenmk
+IErnIExo9sIEW5m5dGbAuobuJUx2yLeMCQE0OzcB5JBrcHkxTktGqeicDjwbmwnA
+ysH0vc+5Fd96vkSUU4NpQL88zOv7bNej0pkgPGA2JJcDBHAExvjlA68u5Web57Yg
+nV3WdYJaYTRzoo8Kh0HDFc5oODXU2wtD/e5AmVsyIb+VQkoocvH+XE6DF12ZRebw
+mjK/lLUd012NC7oR2cLiOvcRh/HTrPGVGuV9GGxnKnqG
+=juM9
+-----END PGP PUBLIC KEY BLOCK-----";
+     // Create new GnuPG instance
+$enc = (null);     
+	$res = gnupg_init();
+$rtv = gnupg_import($res, $public_key);
+var_dump($rtv);
+echo "</br>";
+//$rtv = gnupg_addencryptkey($res,"8A769CC2248DA086442587AC9C6481EA98E91BFA");
+//var_dump($rtv);
+//echo "</br>";
+$ntv = gnupg_addsignkey($res,"8A769CC2248DA086442587AC9C6481EA98E91BFA","naveenv@vgn.in");
+$er=gnupg_geterror($res);
+var_dump($er);
+//var_dump($ntv);
+echo "</br>";
+$enc = gnupg_encrypt($res, "just a test");
+echo $enc;
+ }
+
+public function decryptSecret(){
+putenv("GNUPGHOME=/tmp");
+$private_key = "-----BEGIN PGP PRIVATE KEY BLOCK-----
+
+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
+=0jvz
+-----END PGP PRIVATE KEY BLOCK-----";
+
+$encrypted_text = "-----BEGIN PGP MESSAGE----- Version: GnuPG v2 hQEMA7Y9zHz3q2rNAQf8DvGU1JX+fl6flNSuRNP9weIsCtKZIaxHXSV3ZuTREty8 cy1oHiNkZa+CpYYLTpjXFc0cdGqSyQfEAuADNcKC5qaS+ZpM1zG9Bowcva2yguj7 NCBmK9kjVTh+A32KeQeTidl+oBnI3CuUCWRjhVcALG5l+xspNrnuea2Oinslg5tm f5nhU0q166qsp2JdIlcmONCSKMM8e+ISQXS7spDvaLbg+rqY19Vw/KC/cV+4oswI VIK3cY+0vO0JD7tuZqCgDVsc0kLLFATRU5FOPYhMfxpJ5/3PG3QxvwsbfNOeR2o/ Klbd+qBT3ROlmExQ7AfB3Ess8bE8yvgErr2AgO87jdJGAfLqnSukUqJMWFnaKqLB yfXHbg4lWH75zdDgFR7ZiYnSQYqGKSo07qHVSK+D+RLg6F5PYwRnX6B2dSdhFj4y +dsrrw6baw== =zb3j -----END PGP";
+$res = gnupg_init();
+$rtv = gnupg_import($res, $private_key);
+var_dump($rtv);
+//echo "<br/>";
+$rtv = gnupg_adddecryptkey($res,"3983A995A34EBC91C30848C8743D626B6BF19752","");
+var_dump($rtv);
+echo "<br/>";
+//gnupg_geterror($res);
+$plain = gnupg_decrypt($res,$encrypted_text);
+echo $plain;
+
+}
+
+
+
+
+}
+
+

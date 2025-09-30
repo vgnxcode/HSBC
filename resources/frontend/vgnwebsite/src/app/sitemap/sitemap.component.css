@@ -1,0 +1,61 @@
+.innerpage-header-bg h2 {
+    color: #FFF;
+    font-size: 45px;
+    font-family: 'Barlow';
+    text-transform: uppercase;
+    letter-spacing: 7px;
+}
+
+.innerpage-header-bg h3 {
+    color: transparent;
+    -webkit-text-stroke: 0.5px #cbcbcb;
+    /* text-stroke: 1px #cbcbcb; */
+    text-shadow: none;
+    opacity: 0.5;
+    font-size: 67px;
+    font-family: 'Barlow';
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    line-height: 31px;
+    padding-top: 33px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.innerpage-text p{
+    font-family: 'Noto Sans', sans-serif;
+    /* color : #3b1953 !important; */
+    font-size: 15px;
+    line-height: 24px;
+}
+.innerpage-text i{
+    color: #e21f25 ;
+}
+
+.innerpage-header-bg{
+    background-color:#e21f25 ;
+}
+
+.innerpage-text h3{
+    /* font-family: 'Noto Sans', sans-serif; */
+    /* font-family: 'Lora', serif; */
+    /* color: #e21f25 ; */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+a{
+    color: var(--bs-link-color) !important;
+    word-break: break-all;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: none !important;
+    color: var(--bs-table-striped-color);
+    border-bottom-width: 0px !important;
+}
+
+.table>:not(caption)>*>* {
+    padding: .5rem .5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 0px !important;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
