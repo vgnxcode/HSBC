@@ -6,9 +6,14 @@ Route::get('/csrf-token', function () {
     return response()->json(['csrfToken' => csrf_token()]);
 });
 
+
+Route::get('/', function () {
+    return redirect('/api/hsbc/hsbcfinalupdate_table');
+});
+
 //website Pages(front-end)
 Route::controller(PageController::class)->group(function () {
-    Route::get('/', 'home')->name('home');
+   // Route::get('/', 'home')->name('home');
     Route::get('/about-us', 'aboutus')->name('aboutus');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/investors', 'investors')->name('investors');

@@ -29,7 +29,7 @@ class HSBCController extends Controller
                 $getsapdata2 = $getsapdata1;
             }
 	   
-		dd($getsapdata2);
+		//dd($getsapdata2);
             $newarr = [];
             if (!empty($getsapdata2)) {
                 foreach ($getsapdata2 as $key => $value) {
@@ -64,7 +64,7 @@ class HSBCController extends Controller
             else{
                 dd('No Data to Process!');
             }
-            dd($newarr);
+            //dd($newarr);
 
             return view('HSBC.get_the_datafrom_sap_process')->with(['toprocess' => $newarr]);
             
@@ -73,7 +73,7 @@ class HSBCController extends Controller
     	else{
     		dd('No Data');
     	}
-    	dd($getsapdata2);
+    	//dd($getsapdata2);
     	
     	return view('HSBC.get_the_datafrom_sap_process')->with(['data' => $getsapdata1]);
     }
