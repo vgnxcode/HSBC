@@ -23,6 +23,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">HSBC API Hits</h1>
+        <a class="btn btn-sm btn-dark text-light" href="https://hsbc.vgn.in/api/hsbc/hsbc_getdatafromsap" target="_blank">Trigger now</a>
         <hr>
         <table id="dataTable" class="table table-sm table-responsive-sm table-bordered table-striped">
             <thead>
