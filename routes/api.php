@@ -216,7 +216,7 @@ Route::controller(AttendanceController::class)->group(function () {
 // Customerzone - BHK Details
 Route::post('/getcustomerbhk', 'CustomerzoneController@getbhkdetails_service');
 
-//get kaleyra sms log 
+//get kaleyra sms log ///
 Route::post('/kaleyra/sms-callback', 'KaleyraController@smsCallback');
 //get gupshup sms log 
 Route::post('/gupshup/sms-callback', 'KaleyraController@gupshup');
