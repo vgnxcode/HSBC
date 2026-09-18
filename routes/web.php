@@ -7,9 +7,15 @@ Route::get('/csrf-token', function () {
 });
 
 
+// Route::get('/', function () {
+//     // return redirect('/api/hsbc/hsbcfinalupdate_table');
+//     return view('HSBC.index');
+// });
+
+
 Route::get('/', function () {
-    return redirect('/api/hsbc/hsbcfinalupdate_table');
-});
+    return view('HSBC.index');
+})->name('home');
 
 //website Pages(front-end)
 Route::controller(PageController::class)->group(function () {

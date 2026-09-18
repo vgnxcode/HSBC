@@ -18,5 +18,5 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
-    protected $except = ['/selldo_4thapi','/selldo_5thapi','/newgeneratepaymentlink','/bps_response','/bps','/aadhaarverify/genotp','/aadhaarverify/submitotp','/checkvendorregfile','/manual_leave_quota','/msppercentageupdate','/projectdetails_crud','/projectdetails_crud_update','/projectsqftins_update','/msproject_fetchstetdate','/fairmont/Buy-luxury-flats-Guindy','/coasta/commercial','/fairmont/duplex','/homebuildingleadsform','/interiorsleadsform','/project-lead','/interior-lead','/kensington-towers-lead','/kensington-towers-lead-google','/kensington-towers-lead-google-blackmount'];
+    protected $except = ['/selldo_4thapi','/selldo_5thapi','/newgeneratepaymentlink','/bps_response','/bps','/aadhaarverify/genotp','/aadhaarverify/submitotp','/checkvendorregfile','/manual_leave_quota','/msppercentageupdate','/projectdetails_crud','/projectdetails_crud_update','/projectsqftins_update','/msproject_fetchstetdate','/fairmont/Buy-luxury-flats-Guindy','/coasta/commercial','/fairmont/duplex','/homebuildingleadsform','/interiorsleadsform','/project-lead','/interior-lead','/kensington-towers-lead','/kensington-towers-lead-google','/kensington-towers-lead-google-blackmount','/api/hsbc/hsbclogin',];
 }

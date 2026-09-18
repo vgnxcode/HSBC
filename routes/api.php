@@ -95,18 +95,226 @@ Route::prefix('ameyo')->controller(AmeyoController::class)->group(function () {
     
 });
 
-Route::prefix('hsbc')->controller(HSBCController::class)->group(function () {
-    Route::get('/hsbc_getdatafromsap', 'get_the_datafrom_sap_process');
-    Route::post('/posttohsbc_instant_receipt', 'posttohsbc_instant_receipt');
-    Route::get('/hsbccheckstatusforsentdata', 'hsbccheckstatusforsentdata');
-    Route::post('/hsbccheckstatusforsentdata', 'posthsbccheckstatusforsentdata');
-    Route::post('/hsbcfinalupdate', 'hsbcfinalupdate');
-    Route::post('/hsbcfinalupdate_decrypt', 'hsbcfinalupdate_decrypt');
-    Route::get('/hsbcfinalupdate_table', 'hsbcfinalupdate_table');
-    Route::post('/hsbcfinalencdec', 'hsbcfinalencdec');
-    Route::post('/gethsbcbankpaymentstatus', 'gethsbcbankpaymentstatus');
-    Route::post('/gethsbcbankpaymenttoprocess', 'gethsbcbankpaymenttoprocess');
-});
+// Route::prefix('hsbc')->controller(HSBCController::class)->group(function () {
+//     Route::post('/hsbclogin', 'hsbclogin')->name('hsbc.hsbclogin');
+//     Route::get('/hsbc_getdatafromsap', 'get_the_datafrom_sap_process');
+//     // Route::post('/posttohsbc_instant_receipt', 'posttohsbc_instant_receipt');
+//     // Route::get('/hsbccheckstatusforsentdata', 'hsbccheckstatusforsentdata');
+//     // Route::post('/hsbccheckstatusforsentdata', 'posthsbccheckstatusforsentdata');
+//     // Route::post('/hsbcfinalupdate', 'hsbcfinalupdate');
+//     // Route::post('/hsbcfinalupdate_decrypt', 'hsbcfinalupdate_decrypt');
+//     // Route::get('/hsbcfinalupdate_table', 'hsbcfinalupdate_table');
+//     // Route::post('/hsbcfinalencdec', 'hsbcfinalencdec');
+//     // Route::post('/gethsbcbankpaymentstatus', 'gethsbcbankpaymentstatus');
+//     // Route::post('/gethsbcbankpaymenttoprocess', 'gethsbcbankpaymenttoprocess');
+// });
+
+
+
+// Route::prefix('hsbc')
+//     ->controller(HSBCController::class)
+//     ->middleware(['web'])
+//     ->group(function () {
+
+//         // Login
+//         Route::post('/hsbclogin', 'hsbclogin')
+//             ->name('hsbc.hsbclogin');
+
+//         // Protected HSBC routes
+//         Route::middleware('hsbc.auth')->group(function () {
+
+//         Route::get(
+//             '/hsbcfinalupdate_table',
+//             'hsbcfinalupdate_table'
+//         )->name('hsbc.report');
+
+//          Route::post(
+//             '/hsbclogout',
+//             'hsbclogout'
+//         )->name('hsbc.logout');
+
+
+//          Route::get(
+//             '/hsbcprofile',
+//             'hsbcprofile'
+//         )->name('hsbc.profile');
+
+
+//         Route::put('/authuser/{id}', 'update')
+//     ->name('authuser.update');
+
+
+
+//        Route::get(
+//             '/hsbcpayment_quee',
+//             'hsbcpayment_quee'
+//         )->name('hsbc.paymentquee');
+
+
+        
+
+
+
+//             Route::post(
+//                 '/hsbc_getdatafromsap',
+//                 'get_the_datafrom_sap_process'
+//             )->name('hsbc.postquee');
+
+
+//             Route::post(
+//                 '/hsbc_manual_rjct',
+//                 'hsbc_manual_rjct'
+//             )->name('hsbc.rjctquee');
+
+
+
+//             Route::post('/posttohsbc_instant_receipt', 'posttohsbc_instant_receipt');
+
+//         Route::get(
+//             '/hsbccheckstatusforsentdata',
+//             'hsbccheckstatusforsentdata'
+//         );
+
+//         Route::post(
+//             '/hsbccheckstatusforsentdata',
+//             'posthsbccheckstatusforsentdata'
+//         );
+
+//         Route::post('/hsbcfinalupdate', 'hsbcfinalupdate');
+
+//         Route::post(
+//             '/hsbcfinalupdate_decrypt',
+//             'hsbcfinalupdate_decrypt'
+//         );
+
+//         Route::get(
+//             '/hsbcfinalupdate_table',
+//             'hsbcfinalupdate_table'
+//         );
+
+//         Route::post('/hsbcfinalencdec', 'hsbcfinalencdec');
+
+//         Route::post(
+//             '/gethsbcbankpaymentstatus',
+//             'gethsbcbankpaymentstatus'
+//         );
+
+//         Route::post(
+//             '/gethsbcbankpaymenttoprocess',
+//             'gethsbcbankpaymenttoprocess'
+//         );
+            
+
+//         });
+
+        
+//     });
+
+
+
+Route::prefix('hsbc')
+    ->controller(HSBCController::class)
+    ->middleware(['web'])
+    ->group(function () {
+
+        // Login
+        Route::post('/hsbclogin', 'hsbclogin')
+            ->name('hsbc.hsbclogin');
+
+        // Protected HSBC routes
+        Route::middleware('hsbc.auth')->group(function () {
+
+            // HSBC Report
+            Route::get(
+                '/hsbcfinalupdate_table',
+                'hsbcfinalupdate_table'
+            )->name('hsbc.report');
+
+            // Logout
+            Route::post(
+                '/hsbclogout',
+                'hsbclogout'
+            )->name('hsbc.logout');
+
+            // Profile
+            Route::get(
+                '/hsbcprofile',
+                'hsbcprofile'
+            )->name('hsbc.profile');
+
+            // Update User
+            Route::put(
+                '/authuser/{id}',
+                'update'
+            )->name('authuser.update');
+
+            // Payment Queue
+            Route::get(
+                '/hsbcpayment_quee',
+                'hsbcpayment_quee'
+            )->name('hsbc.paymentquee');
+
+            // Get SAP Data
+            Route::post(
+                '/hsbc_getdatafromsap',
+                'get_the_datafrom_sap_process'
+            )->name('hsbc.postquee');
+
+            // Manual Reject
+            Route::post(
+                '/hsbc_manual_rjct',
+                'hsbc_manual_rjct'
+            )->name('hsbc.rjctquee');
+
+            // HSBC Instant Receipt
+            Route::post(
+                '/posttohsbc_instant_receipt',
+                'posttohsbc_instant_receipt'
+            );
+
+            // Check Status
+            Route::get(
+                '/hsbccheckstatusforsentdata',
+                'hsbccheckstatusforsentdata'
+            );
+
+            Route::post(
+                '/hsbccheckstatusforsentdata',
+                'posthsbccheckstatusforsentdata'
+            );
+
+            // Final Update
+            Route::post(
+                '/hsbcfinalupdate',
+                'hsbcfinalupdate'
+            );
+
+            Route::post(
+                '/hsbcfinalupdate_decrypt',
+                'hsbcfinalupdate_decrypt'
+            );
+
+            // Final Encryption / Decryption
+            Route::post(
+                '/hsbcfinalencdec',
+                'hsbcfinalencdec'
+            );
+
+            // Bank Payment Status
+            Route::post(
+                '/gethsbcbankpaymentstatus',
+                'gethsbcbankpaymentstatus'
+            );
+
+            // Bank Payment To Process
+            Route::post(
+                '/gethsbcbankpaymenttoprocess',
+                'gethsbcbankpaymenttoprocess'
+            );
+        });
+    });
+
+    
 
 // Project Leads
 Route::post('/homes/leadpush', 'ProjectController@inserthomeslead');

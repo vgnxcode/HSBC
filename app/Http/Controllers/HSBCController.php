@@ -2,6 +2,7 @@
 
 namespace vgn\Http\Controllers;
 use vgn\hsbc_api_hit;
+use vgn\HsbcUser;
 use Illuminate\Http\Request;
 use vgn\Http\Traits\hsbctrait;
 use Response;
@@ -11,17 +12,235 @@ use Carbon\Carbon;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class HSBCController extends Controller
 {
 	use hsbctrait;
-    public function get_the_datafrom_sap_process()
+
+    //login moduel 
+
+    // public function hsbclogin(Request $request)
+    // {
+    //     /*
+    //     |--------------------------------------------------------------------------
+    //     | Validate Request
+    //     |--------------------------------------------------------------------------
+    //     */
+    //     $validator = Validator::make($request->all(), [
+    //         'emp_id'   => 'required|digits:6',
+    //         'password' => 'required|min:5',
+    //     ], [
+    //         'emp_id.required' => 'Employee ID is required',
+    //         'emp_id.digits'   => 'Employee ID must be exactly 6 digits',
+    //         'password.required' => 'Password is required',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return back()
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
+    // }
+
+    public function hsbclogin(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    $user = HsbcUser::where('email', $request->email)->first();
+
+    if (!$user) {
+        return back()->with('error', 'Invalid email or password.');
+    }
+
+    if (!Hash::check($request->password, $user->password)) {
+        return back()->with('error', 'Invalid email or password.');
+    }
+
+    // Login successful
+    $request->session()->regenerate();
+
+    $request->session()->put('hsbc_logged_in', true);
+    $request->session()->put('hsbcuser_id', $user->id);
+    $request->session()->put('hsbcuser_emp_id', $user->emp_id);
+    $request->session()->put('hsbcuser_email', $user->email);
+     $request->session()->put('hsbcuser_name', $user->name);
+
+    return redirect('/api/hsbc/hsbcfinalupdate_table');
+}
+
+
+public function hsbclogout(Request $request)
+{
+    $request->session()->forget([
+        'hsbc_logged_in',
+        'hsbcuser_id',
+        'hsbcuser_emp_id',
+        'hsbcuser_email',
+        'hsbcuser_name',
+    ]);
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('home');
+}
+
+public function hsbcprofile()
+{
+        $data = HsbcUser::orderBy('id', 'desc')->get();  
+        return view('HSBC.profile')->with('data', $data);
+}
+
+
+
+public function update(Request $request, $id)
+{
+    $user = HsbcUser::findOrFail($id);
+
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'emp_id' => 'required|string|max:100',
+        'email' => 'required|email|max:255',
+        'password' => 'nullable|string|min:6',
+    ]);
+
+    $user->name = $validated['name'];
+    $user->emp_id = $validated['emp_id'];
+    $user->email = $validated['email'];
+
+    // Update password only if a new password is entered
+    if (!empty($validated['password'])) {
+        $user->password = Hash::make($validated['password']);
+    }
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Employee details updated successfully.');
+}
+
+
+
+// public function hsbcpayment_quee()
+// {
+
+
+//         $getsapdata1 = [];
+//         $getsapdata2 = [];
+
+//         $getsapdata = $this->step1hsbcprocess();
+//     	if (array_key_exists('Beneficiary_Details', $getsapdata)) {
+//     		$getsapdata1 = $getsapdata['Beneficiary_Details'];
+//               // Skip first 58 payments
+//             $getsapdata1 = array_slice($getsapdata1, 58);
+//     		if (array_key_exists(0, $getsapdata1) === false) {
+//     			$getsapdata2[0] = $getsapdata1;
+//     		}
+//             else{
+//                 $getsapdata2 = $getsapdata1;
+//             }
+
+//             dd($getsapdata2);
+
+//               return view('HSBC.hsbcpayment_quee')->with(['toprocess' => $getsapdata2]);
+//         }
+
+
+// }
+
+
+
+public function hsbcpayment_quee()
+{
+    $getsapdata1 = [];
+    $getsapdata2 = [];
+
+    $getsapdata = $this->step1hsbcprocess();
+
+    if (array_key_exists('Beneficiary_Details', $getsapdata)) {
+
+        $getsapdata1 = $getsapdata['Beneficiary_Details'];
+
+        // Skip first 58 payments
+        $getsapdata1 = array_slice($getsapdata1, 58);
+
+        // Check whether payment data exists
+        if (!empty($getsapdata1)) {
+
+            if (array_key_exists(0, $getsapdata1)) {
+                $getsapdata2 = $getsapdata1;
+            } else {
+                $getsapdata2[] = $getsapdata1;
+            }
+
+        }
+    }
+
+    return view('HSBC.hsbcpayment_quee')
+        ->with([
+            'toprocess' => $getsapdata2
+        ]);
+}
+
+    public function get_the_datafrom_sap_process(Request $request)
     {
+        $payment_index=$request->payment_index; 
+
+
+
+
+        // dd($payment_index);
     	$getsapdata1 = [];
     	$getsapdata2 = [];
     	$getsapdata = $this->step1hsbcprocess();
     	if (array_key_exists('Beneficiary_Details', $getsapdata)) {
     		$getsapdata1 = $getsapdata['Beneficiary_Details'];
+              // Skip first 58 payments
+            $payment = array_slice($getsapdata1, 58);
+            $getsapdata1 = $payment[$payment_index];
+            //dd($getsapdata1['Message_Id']);
+
+            // dd($getsapdata1[''])
+            //insert the initial time with value = 9 
+
+            $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();
+            // dd($msgExists);
+            if (!$msgExists)			 
+            {
+                $hit_status = 9;
+              
+                // Insert data
+                $insertSuccess = hsbc_api_hit::create([
+                'Beneficiary_Name'=>$getsapdata1['Beneficiary_Name'],
+                'Beneficiary_Account_No'=>$getsapdata1['Beneficiary_Account_No'],
+                'Beneficiary_Bank_Name'=>$getsapdata1['Beneficiary_Bank_Name'],
+                'IFSC_Code'=>$getsapdata1['IFSC_Code'],
+                'Amount'=>$getsapdata1['Amount'],
+                'Transaction_type'=>$getsapdata1['Transaction_type'],
+                'Company_Account_No'=>$getsapdata1['Company_Account_No'],
+                'Company_Name'=>$getsapdata1['Company_Name'],
+                'msgid' => $getsapdata1['Message_Id'],
+                'hit_status' => $hit_status,
+                'referenceId' => null,
+                'statusCode' =>  null,
+                'description' =>  null,
+                'encdec_data' => null,                        
+                'Reversal_Code'  => null,
+                'UTR_NO'  => null,
+                'Message_Source' =>  null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                ]);
+            }
+
+            // dd();
+
+            // dd($getsapdata1);
     		if (array_key_exists(0, $getsapdata1) === false) {
     			$getsapdata2[0] = $getsapdata1;
     		}
@@ -29,7 +248,7 @@ class HSBCController extends Controller
                 $getsapdata2 = $getsapdata1;
             }
 	   
-	//	dd($getsapdata2);
+	    //    dd($getsapdata2);
             $newarr = [];
             if (!empty($getsapdata2)) {
                 foreach ($getsapdata2 as $key => $value) {
@@ -64,46 +283,44 @@ class HSBCController extends Controller
             else{
                 dd('No Data to Process!');
             }
-           // dd($newarr);
+         // dd($newarr);
 
-            return view('HSBC.get_the_datafrom_sap_process')->with(['toprocess' => $newarr]);
+        return view('HSBC.get_the_datafrom_sap_process')->with(['toprocess' => $newarr]);
             
 
     	}
     	else{
     		dd('No Data');
     	}
-    	//dd($getsapdata2);
+    	// dd($getsapdata2);
     	
-    	return view('HSBC.get_the_datafrom_sap_process')->with(['data' => $getsapdata1]);
+    return view('HSBC.get_the_datafrom_sap_process')->with(['data' => $getsapdata1]);
     }
 
     //not same date and >15 min payment rejection
     public function send_sap_for_rejection($msgid,$description)
     {
         
-        $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
-        if (!$msgExists)			 
+        // $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
+        $msgExists = hsbc_api_hit::where('msgid', $msgid)
+        ->where('hit_status', 0)
+        ->exists();
+        if ($msgExists)			 
         {
           
             $hit_status = 1;
-            $statusCode="RJCT";
-            // Insert data
-            $insertSuccess = hsbc_api_hit::create([
-            'msgid' => $msgid,
-            'hit_status' => $hit_status,
-            'referenceId' => null,
-            'statusCode' =>  $statusCode,
-            'description' =>  $description,
-            'encdec_data' => null,                        
-            'Reversal_Code'  => null,
-            'UTR_NO'  => null,
-            'Message_Source' =>  $description,
-            'created_at' => now(),
-            'updated_at' => now(),
+            $statusCode = "RJCT";
+
+            $updateSuccess = hsbc_api_hit::where('msgid', $msgid)
+            ->update([
+            'hit_status'  => $hit_status,
+            'statusCode'  => $statusCode,
+            'description' => $description,
+            'Message_Source' => $description,
+            'updated_at'  => now(),
             ]);
 
-            if ($insertSuccess) 
+            if ($updateSuccess) 
             {
               
                 $arr_one = [];
@@ -113,7 +330,7 @@ class HSBCController extends Controller
                 $arr_one['Transaction_Details']['Portal_Indicator'] = 'X';
 
                 $sendstatustosap = $this->step2hsbcprocess($arr_one);
-                Log::info('HSBC RJCT > 15 min step2hsbcprocess '.$sendstatustosap);
+                // Log::info('HSBC RJCT > 15 min step2hsbcprocess '.$sendstatustosap);
 
 
                
@@ -125,10 +342,103 @@ class HSBCController extends Controller
                 $arr_two['Reference_Details']['Payment_Time'] = '';
                 $arr_two['Reference_Details']['Message_Source'] = $description;       
                 $finalupdate = $this->step4hsbcprocess($arr_two);
-                Log::info('HSBC RJCT > 15 min step4hsbcprocess '.$finalupdate); 
+                // Log::info('HSBC RJCT > 15 min step4hsbcprocess '.$finalupdate); 
             }
         }
     }
+
+
+    //payment Manual Rejection
+
+    public function hsbc_manual_rjct(Request $request)
+    {
+
+        $payment_index=$request->payment_index; 
+
+        // dd($payment_index);
+        $getsapdata1 = [];
+        $getsapdata2 = [];
+        $getsapdata = $this->step1hsbcprocess();
+        if (array_key_exists('Beneficiary_Details', $getsapdata))
+        {
+            $getsapdata1 = $getsapdata['Beneficiary_Details'];
+            // Skip first 58 payments
+            $payment = array_slice($getsapdata1, 55);
+            $getsapdata1 = $payment[$payment_index];
+            // dd($getsapdata1);
+               $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();
+            // dd($msgExists);
+            if (!$msgExists)			 
+            {
+                $hit_status = 1;
+
+                 $statusCode="RJCT";
+                 $description="Manual Rejection";
+              
+                // Insert data
+                $insertSuccess = hsbc_api_hit::create([
+                'Beneficiary_Name'=>$getsapdata1['Beneficiary_Name'],
+                'Beneficiary_Account_No'=>$getsapdata1['Beneficiary_Account_No'],
+                'Beneficiary_Bank_Name'=>$getsapdata1['Beneficiary_Bank_Name'],
+                'IFSC_Code'=>$getsapdata1['IFSC_Code'],
+                'Amount'=>$getsapdata1['Amount'],
+                'Transaction_type'=>$getsapdata1['Transaction_type'],
+                'Company_Account_No'=>$getsapdata1['Company_Account_No'],
+                'Company_Name'=>$getsapdata1['Company_Name'],
+                'msgid' => $getsapdata1['Message_Id'],
+                'hit_status' => $hit_status,
+                'referenceId' => null,
+                'statusCode' =>  $statusCode,
+                'description' =>  $description,
+                'encdec_data' => null,                        
+                'Reversal_Code'  => null,
+                'UTR_NO'  => null,
+                'Message_Source' =>  null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                ]);
+          
+
+            
+            if ($insertSuccess) 
+            {
+
+                $statusCode="RJCT";
+                $description="Manual Rejection";
+              
+                $arr_one = [];
+                $arr_one['Transaction_Details']['Message_ID'] = $getsapdata1['Message_Id'];
+                $arr_one['Transaction_Details']['Reference_ID'] = '';
+                $arr_one['Transaction_Details']['Status_Code'] = $statusCode;
+                $arr_one['Transaction_Details']['Portal_Indicator'] = 'X';
+
+                $sendstatustosap = $this->step2hsbcprocess($arr_one);
+                // Log::info('HSBC RJCT > 15 min step2hsbcprocess '.$sendstatustosap);
+
+
+               
+                $arr_two = [];       
+                $arr_two['Reference_Details']['Message_ID'] = $getsapdata1['Message_Id'];
+                $arr_two['Reference_Details']['Reversal_Code'] ='';
+                $arr_two['Reference_Details']['UTR_NO'] = ''; 
+                $arr_two['Reference_Details']['Payment_Date'] = '';
+                $arr_two['Reference_Details']['Payment_Time'] = '';
+                $arr_two['Reference_Details']['Message_Source'] = $description;       
+                $finalupdate = $this->step4hsbcprocess($arr_two);
+                // Log::info('HSBC RJCT > 15 min step4hsbcprocess '.$finalupdate); 
+            }
+
+            }
+
+
+
+            return redirect('/api/hsbc/hsbcfinalupdate_table');
+        }
+
+ 
+
+    }
+
     public function posttohsbc_instant_receipt(Request $request)
     {
         if (!empty($request->datatopass))
@@ -168,32 +478,28 @@ class HSBCController extends Controller
                           //this is less then 15 min                          
                             sleep(2);
                             // Check if msgid already exists
-                            $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
+                            // $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
+                            $msgExists = hsbc_api_hit::where('msgid', $msgid)
+                            ->where('hit_status', 0)
+                            ->exists();
                             if (!$msgExists)				 
                             {
-                                $hit_status = 0;
-                                // Insert data
-                                $insertSuccess = hsbc_api_hit::create([
-                                    'msgid' => $msgid,
-                                    'hit_status' => $hit_status,
-                                    'referenceId' => null,
-                                    'statusCode' => null,
-                                    'description' => null,
-                                    'encdec_data' => null,                        
-                                    'Reversal_Code'  => null,
-                                    'UTR_NO'  => null,
-                                    'Message_Source' => null,
-                                    'created_at' => now(),
-                                    'updated_at' => now(),
+                                $hit_status = 0;                   
+                              
+                                $updateSuccess = hsbc_api_hit::where('msgid', $msgid)
+                                ->update([
+                                'hit_status'  => $hit_status,
+                                'updated_at'  => now(),
                                 ]);
 
-                                if ($insertSuccess) 
+
+                                if ($updateSuccess) 
                                 {
                                     Log::info('HSBC hit status insertSuccess '.$insertSuccess);
                                     
                                     $curl = curl_init();
                                     curl_setopt_array($curl, array(
-                                        CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
+                                       CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_ENCODING => "",
                                         CURLOPT_MAXREDIRS => 10,
@@ -591,13 +897,5 @@ if ($err) {
             return response()->json([]);
         }
         
-    } 
-    
-    
-
-
-
-
-
-
+    }
 }

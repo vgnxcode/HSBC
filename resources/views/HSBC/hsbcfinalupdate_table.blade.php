@@ -22,13 +22,103 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">HSBC API Hits</h1>
-        <a class="btn btn-sm btn-dark text-light" href="https://hsbc.vgn.in/api/hsbc/hsbc_getdatafromsap" target="_blank">Trigger now</a>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <!-- Left -->
+        <h1 class="mb-0">HSBC API Hits</h1>
+
+        <!-- Right -->
+        <div class="dropdown">
+
+            <button
+                class="btn btn-light dropdown-toggle"
+                type="button"
+                id="userDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+
+                Hi, {{ session('hsbcuser_name') ?? 'User' }}
+
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="userDropdown">
+
+
+
+                 <li>
+                    <a class="dropdown-item" href="{{ route('hsbc.paymentquee') }}">
+                        <i class="bi bi-bank me-2"></i>
+                        Payment
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+
+                 <li>
+                    <a class="dropdown-item" href="{{ route('hsbc.report') }}">
+                        <i class="bi bi-map me-2"></i>
+                        Report
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+
+
+                <li>
+                    <a class="dropdown-item" href="{{ route('hsbc.profile') }}">
+                        <i class="bi bi-person me-2"></i>
+                        Profile
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+                    <form action="{{ route('hsbc.logout') }}" method="POST">
+                        @csrf
+
+                        <button type="submit" class="dropdown-item">
+                            <i class="bi bi-box-arrow-right me-2"></i>
+                            Logout
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+
+        {{-- <h1 class="mb-4">HSBC API Hits</h1>
+        {{ session('hsbcuser_name') ?? 'NOT SET' }} --}}
+       {{-- <a class="btn btn-sm btn-dark text-light" href="https://hsbc.vgn.in/api/hsbc/hsbc_getdatafromsap" target="_blank">Trigger now</a> --}}
         <hr>
         <table id="dataTable" class="table table-sm table-responsive-sm table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Beneficiary_Name</th>
+                    <th>Beneficiary_Account_No</th>
+                    <th>Beneficiary_Bank_Name</th>
+                    <th>IFSC_Code</th>
+                    <th>Amount</th>
+                    <th>Transaction_type</th>
+                    <th>Company_Account_No</th>
+                    <th>Company_Name</th>
                     <th>Message ID</th>
                     <th>Hit Status</th>
                     <th>Reference ID</th>
@@ -47,6 +137,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
                 @foreach ($data as $item)                
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                         <td>{{ $item->Beneficiary_Name }}</td>
+                         <td>{{ $item->Beneficiary_Account_No }}</td>
+                         <td>{{ $item->Beneficiary_Bank_Name }}</td>
+                         <td>{{ $item->IFSC_Code }}</td>
+                         <td>{{ $item->Amount }}</td>
+                         <td>{{ $item->Transaction_type }}</td>
+                         <td>{{ $item->Company_Account_No }}</td>
+                         <td>{{ $item->Company_Name }}</td>
                         <td>{{ $item->msgid }}</td>
                         <td>{{ $item->hit_status }}</td>
                         <td>{{ $item->referenceId }}</td>
@@ -73,6 +171,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
             </tbody>
         </table>
     </div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="/assets/libs/openpgp/dist/openpgp.min.js" ></script>
     <!-- Initialize DataTables -->
     <script>
@@ -260,7 +362,7 @@ $(document).on("click",".encdec",function(){
     var id=$(this).attr("data-id");  
     var msg_id=$(this).attr("data-msg_id");  
     // alert(id+msg_id);  
-    $.post('/api/hsbcfinalencdec', {_token:"{{csrf_token()}}",id: id,'msgid': msg_id }, function(data){
+    $.post('/api/hsbc/hsbcfinalencdec', {_token:"{{csrf_token()}}",id: id,'msgid': msg_id }, function(data){
         //alert(data);
         // console.log(data);
         console.log("ready!");
@@ -328,7 +430,7 @@ $(document).on("click",".encdec",function(){
                             // console.log(rpaymentdate);
                             // console.log(error_code + "-" + AddtlInf);
 
-                            $.post('/api/hsbcfinalupdate_decrypt', {
+                            $.post('/api/hsbc/hsbcfinalupdate_decrypt', {
                                 _token: "{{ csrf_token() }}",
                                 statuscode: statuscode,
                                 GrpSts: GrpSts,
