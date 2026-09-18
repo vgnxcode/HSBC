@@ -316,9 +316,9 @@ var str_toencrypt = xmldata;
 var encodedString = btoa(encrypted);
 
 
-// $.post('/api/hsbc/posttohsbc_instant_receipt', {_token:"{{csrf_token()}}",datatopass: encodedString,'msgid': msgid  }, function(data){
-//     			console.log(data);
-//     		});
+$.post('/api/hsbc/posttohsbc_instant_receipt', {_token:"{{csrf_token()}}",datatopass: encodedString,'msgid': msgid  }, function(data){
+    			console.log(data);
+    		});
        return encrypted;   
 
     });
