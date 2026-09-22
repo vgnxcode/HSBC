@@ -3,6 +3,7 @@
 namespace vgn\Http\Controllers;
 use vgn\hsbc_api_hit;
 use vgn\HsbcUser;
+use vgn\SliceHit;
 use Illuminate\Http\Request;
 use vgn\Http\Traits\hsbctrait;
 use Response;
@@ -166,8 +167,9 @@ public function hsbcpayment_quee()
 
         $getsapdata1 = $getsapdata['Beneficiary_Details'];
 
-        // Skip first 58 payments
-        $getsapdata1 = array_slice($getsapdata1, 58);
+        // Skip 
+        $skip = SliceHit::value('SliceHit');
+        $getsapdata1 = array_slice($getsapdata1, $skip);
 
         // Check whether payment data exists
         if (!empty($getsapdata1)) {
@@ -200,8 +202,9 @@ public function hsbcpayment_quee()
     	$getsapdata = $this->step1hsbcprocess();
     	if (array_key_exists('Beneficiary_Details', $getsapdata)) {
     		$getsapdata1 = $getsapdata['Beneficiary_Details'];
-              // Skip first 58 payments
-            $payment = array_slice($getsapdata1, 58);
+            // Skip
+            $skip = SliceHit::value('SliceHit');
+            $payment = array_slice($getsapdata1,$skip);
             $getsapdata1 = $payment[$payment_index];
             //dd($getsapdata1['Message_Id']);
 
@@ -362,8 +365,9 @@ public function hsbcpayment_quee()
         if (array_key_exists('Beneficiary_Details', $getsapdata))
         {
             $getsapdata1 = $getsapdata['Beneficiary_Details'];
-            // Skip first 58 payments
-            $payment = array_slice($getsapdata1, 55);
+            // Skip 
+             $skip = SliceHit::value('SliceHit');
+            $payment = array_slice($getsapdata1,$skip);
             $getsapdata1 = $payment[$payment_index];
             // dd($getsapdata1);
                $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();
