@@ -271,7 +271,7 @@ public function hsbcpayment_quee()
 
             $messageId = $item['Message_Id'] ?? '';
 
-            // Extract YYYYMMDDHHMMSS
+            // Extract YYYYMMDDHHMMSS //
             preg_match('/(20\d{12})/', $messageId, $matches);
 
             return $matches[1] ?? '99999999999999';
