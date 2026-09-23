@@ -53,6 +53,8 @@ class HSBCController extends Controller
         'password' => 'required',
     ]);
 
+
+
     $user = HsbcUser::where('email', $request->email)->first();
 
     if (!$user) {
@@ -156,31 +158,88 @@ public function update(Request $request, $id)
 
 
 
+// public function hsbcpayment_quee()
+// {
+//     $getsapdata1 = [];
+//     $getsapdata2 = [];
+
+//     $getsapdata = $this->step1hsbcprocess();
+
+//  $getsapdat0a = collect($getsapdata)
+//     ->flatten(1)
+//     ->sortBy(function ($item) {
+
+//         $messageId = $item['Message_Id'] ?? '';
+
+//         // Extract YYYYMMDDHHMMSS from Message_Id
+//         preg_match('/(20\d{12})/', $messageId, $matches);
+
+//         return $matches[1] ?? '99999999999999';
+//     })
+//     ->values()
+//     ->toArray();
+
+//    // dd($getsapdat0a);
+
+//     if (array_key_exists('Beneficiary_Details', $getsapdat0a)) {
+
+//         $getsapdata1 = $getsapdat0a['Beneficiary_Details'];
+
+//         // Skip 
+//         $skip = SliceHit::value('SliceHit');
+//        $getsapdata1 = array_slice($getsapdata1, $skip);
+//        // $getsapdata1 = array_slice($getsapdata1, 0, 0);
+//         dd($getsapdata1);
+
+//         // Check whether payment data exists
+//         if (!empty($getsapdata1)) {
+
+//             if (array_key_exists(0, $getsapdata1)) {
+//                 $getsapdata2 = $getsapdata1;
+//             } else {
+//                 $getsapdata2[] = $getsapdata1;
+//             }
+
+//         }
+//     }
+
+//     return view('HSBC.hsbcpayment_quee')
+//         ->with([
+//             'toprocess' => $getsapdata2
+//         ]);
+// }
+
+
 public function hsbcpayment_quee()
 {
-    $getsapdata1 = [];
     $getsapdata2 = [];
 
     $getsapdata = $this->step1hsbcprocess();
 
-    if (array_key_exists('Beneficiary_Details', $getsapdata)) {
+    // Flatten and sort all payments by Message_Id date/time
+    $getsapdata1 = collect($getsapdata)
+        ->flatten(1)
+        ->sortBy(function ($item) {
 
-        $getsapdata1 = $getsapdata['Beneficiary_Details'];
+            $messageId = $item['Message_Id'] ?? '';
 
-        // Skip 
-        $skip = SliceHit::value('SliceHit');
-        $getsapdata1 = array_slice($getsapdata1, $skip);
+            // Extract YYYYMMDDHHMMSS
+            preg_match('/(20\d{12})/', $messageId, $matches);
 
-        // Check whether payment data exists
-        if (!empty($getsapdata1)) {
+            return $matches[1] ?? '99999999999999';
+        })
+        ->values()
+        ->toArray();
 
-            if (array_key_exists(0, $getsapdata1)) {
-                $getsapdata2 = $getsapdata1;
-            } else {
-                $getsapdata2[] = $getsapdata1;
-            }
+    // Get number of already processed payments
+    $skip = SliceHit::value('SliceHit') ?? 0;
 
-        }
+    // Skip processed payments
+    $getsapdata1 = array_slice($getsapdata1, $skip);
+
+    // Remaining payments
+    if (!empty($getsapdata1)) {
+        $getsapdata2 = $getsapdata1;
     }
 
     return view('HSBC.hsbcpayment_quee')
@@ -193,19 +252,42 @@ public function hsbcpayment_quee()
     {
         $payment_index=$request->payment_index; 
 
-
-
-
-        // dd($payment_index);
+         //dd($payment_index);
     	$getsapdata1 = [];
     	$getsapdata2 = [];
     	$getsapdata = $this->step1hsbcprocess();
+
+       // dd($getsapdata);
+
+
     	if (array_key_exists('Beneficiary_Details', $getsapdata)) {
     		$getsapdata1 = $getsapdata['Beneficiary_Details'];
+
+
+            // Flatten and sort all payments by Message_Id date/time
+            $getsapdata0 = collect($getsapdata)
+            ->flatten(1)
+            ->sortBy(function ($item) {
+
+            $messageId = $item['Message_Id'] ?? '';
+
+            // Extract YYYYMMDDHHMMSS
+            preg_match('/(20\d{12})/', $messageId, $matches);
+
+            return $matches[1] ?? '99999999999999';
+            })
+            ->values()
+            ->toArray();
+
+            //dd($getsapdata0);
+
+
             // Skip
             $skip = SliceHit::value('SliceHit');
-            $payment = array_slice($getsapdata1,$skip);
+            $payment = array_slice($getsapdata0,$skip); 
+           
             $getsapdata1 = $payment[$payment_index];
+             //dd($getsapdata1);
             //dd($getsapdata1['Message_Id']);
 
             // dd($getsapdata1[''])
@@ -300,6 +382,137 @@ public function hsbcpayment_quee()
     return view('HSBC.get_the_datafrom_sap_process')->with(['data' => $getsapdata1]);
     }
 
+
+//     public function get_the_datafrom_sap_process(Request $request)
+// {
+//     $payment_index = $request->payment_index;
+
+//     $getsapdata = $this->step1hsbcprocess();
+
+//     if (array_key_exists('Beneficiary_Details', $getsapdata)) {
+
+//         $getsapdata1 = $getsapdata['Beneficiary_Details'];
+
+//         // Sort payments by Message_Id date/time
+//         $getsapdata1 = collect($getsapdata1)
+//             ->sortBy(function ($item) {
+
+//                 $messageId = $item['Message_Id'] ?? '';
+
+//                 // Extract YYYYMMDDHHMMSS from Message_Id
+//                 preg_match('/(20\d{12})/', $messageId, $matches);
+
+//                 return $matches[1] ?? '99999999999999';
+//             })
+//             ->values()
+//             ->toArray();
+
+//         // Skip already processed payments
+//         $skip = SliceHit::value('SliceHit') ?? 0;
+
+//         $payment = array_slice($getsapdata1, $skip);
+
+//         dd($payment);
+
+//         // Check requested payment index exists
+//         if (!isset($payment[$payment_index])) {
+//             dd('No Data to Process!');
+//         }
+
+//         // Get selected payment
+//         $getsapdata1 = $payment[$payment_index];
+
+//         // Check Message ID
+//         if (empty($getsapdata1['Message_Id'])) {
+//             dd('Message ID not found!');
+//         }
+
+//         // Check whether already processed
+//         $msgExists = hsbc_api_hit::where(
+//             'msgid',
+//             $getsapdata1['Message_Id']
+//         )->exists();
+
+//         if (!$msgExists) {
+
+//             $hit_status = 9;
+
+//             hsbc_api_hit::create([
+//                 'Beneficiary_Name'      => $getsapdata1['Beneficiary_Name'],
+//                 'Beneficiary_Account_No'=> $getsapdata1['Beneficiary_Account_No'],
+//                 'Beneficiary_Bank_Name' => $getsapdata1['Beneficiary_Bank_Name'],
+//                 'IFSC_Code'             => $getsapdata1['IFSC_Code'],
+//                 'Amount'                => $getsapdata1['Amount'],
+//                 'Transaction_type'      => $getsapdata1['Transaction_type'],
+//                 'Company_Account_No'    => $getsapdata1['Company_Account_No'],
+//                 'Company_Name'          => $getsapdata1['Company_Name'],
+//                 'msgid'                 => $getsapdata1['Message_Id'],
+//                 'hit_status'            => $hit_status,
+//                 'referenceId'           => null,
+//                 'statusCode'            => null,
+//                 'description'           => null,
+//                 'encdec_data'           => null,
+//                 'Reversal_Code'         => null,
+//                 'UTR_NO'                => null,
+//                 'Message_Source'        => null,
+//                 'created_at'            => now(),
+//                 'updated_at'            => now(),
+//             ]);
+//         }
+
+//         // Convert selected payment into array for existing processing
+//         $getsapdata2 = [
+//             $getsapdata1
+//         ];
+
+//         $newarr = [];
+
+//         foreach ($getsapdata2 as $key => $value) {
+
+//             if (empty($value['Message_Id'])) {
+//                 continue;
+//             }
+
+//             $msg_id_year = substr($value['Message_Id'], 12, 4);
+//             $msg_id_code = substr($value['Message_Id'], 0, 2);
+//             $msg_id_docno = substr($value['Message_Id'], 2, 10);
+
+//             $payrefid = $msg_id_year . $msg_id_docno . $msg_id_code;
+//             $instrid  = $msg_id_year . $msg_id_code . $msg_id_docno;
+
+//             $newarr[$key] = $value;
+
+//             $newarr[$key]['current_date'] = Carbon::now()->toDateString();
+//             $newarr[$key]['current_time'] = Carbon::now()->toTimeString();
+//             $newarr[$key]['payrefid'] = $payrefid;
+//             $newarr[$key]['instrid'] = $instrid;
+
+//             if ($value['Transaction_type'] == 'NEFT') {
+//                 $hsbctr_type = 'URNS';
+//             } elseif ($value['Transaction_type'] == 'IFT') {
+//                 $hsbctr_type = 'IMPO';
+//             } elseif ($value['Transaction_type'] == 'RTGS') {
+//                 $hsbctr_type = 'URGP';
+//             } else {
+//                 $hsbctr_type = null;
+//             }
+
+//             $newarr[$key]['hsbc_trans_type'] = $hsbctr_type;
+//         }
+
+//         if (empty($newarr)) {
+//             dd('No Data to Process!');
+//         }
+
+//         return view('HSBC.get_the_datafrom_sap_process')
+//             ->with([
+//                 'toprocess' => $newarr
+//             ]);
+//     }
+
+//     dd('No Data');
+// }
+
     //not same date and >15 min payment rejection
     public function send_sap_for_rejection($msgid,$description)
     {
@@ -365,11 +578,31 @@ public function hsbcpayment_quee()
         if (array_key_exists('Beneficiary_Details', $getsapdata))
         {
             $getsapdata1 = $getsapdata['Beneficiary_Details'];
+
+
+                        // Flatten and sort all payments by Message_Id date/time
+            $getsapdata0 = collect($getsapdata)
+            ->flatten(1)
+            ->sortBy(function ($item) {
+
+            $messageId = $item['Message_Id'] ?? '';
+
+            // Extract YYYYMMDDHHMMSS
+            preg_match('/(20\d{12})/', $messageId, $matches);
+
+            return $matches[1] ?? '99999999999999';
+            })
+            ->values()
+            ->toArray();
+
             // Skip 
              $skip = SliceHit::value('SliceHit');
-            $payment = array_slice($getsapdata1,$skip);
+            $payment = array_slice($getsapdata0,$skip);
             $getsapdata1 = $payment[$payment_index];
-            // dd($getsapdata1);
+
+            //dd($getsapdata1['Message_Id']);
+
+            //dd($getsapdata1);
                $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();
             // dd($msgExists);
             if (!$msgExists)			 
@@ -448,7 +681,9 @@ public function hsbcpayment_quee()
         if (!empty($request->datatopass))
         {
             $datatopass = $request->datatopass;
+            
             Log::info('HSBC SEND DATA '.$datatopass);
+            // dd($datatopass);
             $msgid = $request->msgid;		
             
             if (!empty($msgid))
@@ -503,7 +738,7 @@ public function hsbcpayment_quee()
                                     
                                     $curl = curl_init();
                                     curl_setopt_array($curl, array(
-                                       CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
+                                        CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_ENCODING => "",
                                         CURLOPT_MAXREDIRS => 10,
