@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+    <title>encrypt</title>
 </head>
 <body>
 
@@ -318,6 +318,7 @@ var encodedString = btoa(encrypted);
 
 $.post('/api/hsbc/posttohsbc_instant_receipt', {_token:"{{csrf_token()}}",datatopass: encodedString,'msgid': msgid  }, function(data){
     			console.log(data);
+                window.location.href = '/api/hsbc/hsbcfinalupdate_table';
     		});
        return encrypted;   
 

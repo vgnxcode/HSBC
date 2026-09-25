@@ -676,157 +676,1041 @@ public function hsbcpayment_quee()
 
     }
 
-    public function posttohsbc_instant_receipt(Request $request)
-    {
-        if (!empty($request->datatopass))
-        {
-            $datatopass = $request->datatopass;
+    // public function posttohsbc_instant_receipt(Request $request)
+    // {
+    //     if (!empty($request->datatopass))
+    //     {
+    //         $datatopass = $request->datatopass;
             
-            Log::info('HSBC SEND DATA '.$datatopass);
-            // dd($datatopass);
-            $msgid = $request->msgid;		
+    //         Log::info('HSBC SEND DATA '.$datatopass);
+    //         // dd($datatopass);
+    //         $msgid = $request->msgid;		
             
-            if (!empty($msgid))
-            {   
-                //split the data and time from message id
-                $payment_date=substr($msgid,16,8); //20260402
-                $payment_time=substr($msgid,24,6); //115926              
-                // Current IST time
-                $current = Carbon::now('Asia/Kolkata');
-                $current_date = $current->format('Ymd');
+    //         if (!empty($msgid))
+    //         {   
+    //             //split the data and time from message id
+    //             $payment_date=substr($msgid,16,8); //20260402
+    //             $payment_time=substr($msgid,24,6); //115926              
+    //             // Current IST time
+    //             $current = Carbon::now('Asia/Kolkata');
+    //             $current_date = $current->format('Ymd');
 
-                //check payment date and time if its is current date is equal to payment date processed further
-                if ($current_date === $payment_date)
-                {
-                        // Calculate difference in seconds                       
-                        $payment_datetime = Carbon::createFromFormat(
-                        'Ymd His',
-                        $payment_date . ' ' . $payment_time,
-                        'Asia/Kolkata'
-                        );
+    //             //check payment date and time if its is current date is equal to payment date processed further
+    //             if ($current_date === $payment_date)
+    //             {
+    //                     // Calculate difference in seconds                       
+    //                     $payment_datetime = Carbon::createFromFormat(
+    //                     'Ymd His',
+    //                     $payment_date . ' ' . $payment_time,
+    //                     'Asia/Kolkata'
+    //                     );
 
-                        //Get difference (absolute to avoid negative issue)
-                        $diff_seconds = abs($current->diffInSeconds($payment_datetime, false));
+    //                     //Get difference (absolute to avoid negative issue)
+    //                     $diff_seconds = abs($current->diffInSeconds($payment_datetime, false));
 
-                        // Convert to minutes + seconds
-                        $minutes = floor($diff_seconds / 60);
-                        $seconds = $diff_seconds % 60;
+    //                     // Convert to minutes + seconds
+    //                     $minutes = floor($diff_seconds / 60);
+    //                     $seconds = $diff_seconds % 60;
 
-                        if ($diff_seconds <= 900) 
-                        {
-                          //this is less then 15 min                          
-                            sleep(2);
-                            // Check if msgid already exists
-                            // $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
-                            $msgExists = hsbc_api_hit::where('msgid', $msgid)
-                            ->where('hit_status', 0)
-                            ->exists();
-                            if (!$msgExists)				 
-                            {
-                                $hit_status = 0;                   
+    //                     if ($diff_seconds <= 900) 
+    //                     {
+    //                       //this is less then 15 min                          
+    //                         sleep(2);
+    //                         // Check if msgid already exists
+    //                         // $msgExists = hsbc_api_hit::where('msgid', $msgid)->exists();
+    //                         $msgExists = hsbc_api_hit::where('msgid', $msgid)
+    //                         ->where('hit_status', 0)
+    //                         ->exists();
+    //                         if (!$msgExists)				 
+    //                         {
+    //                             $hit_status = 0;                   
                               
-                                $updateSuccess = hsbc_api_hit::where('msgid', $msgid)
-                                ->update([
-                                'hit_status'  => $hit_status,
-                                'updated_at'  => now(),
-                                ]);
+    //                             $updateSuccess = hsbc_api_hit::where('msgid', $msgid)
+    //                             ->update([
+    //                             'hit_status'  => $hit_status,
+    //                             'updated_at'  => now(),
+    //                             ]);
 
 
-                                if ($updateSuccess) 
-                                {
-                                    Log::info('HSBC hit status insertSuccess '.$insertSuccess);
+    //                             if ($updateSuccess) 
+    //                             {
+    //                                 Log::info('HSBC hit status insertSuccess '.$insertSuccess);
                                     
-                                    $curl = curl_init();
-                                    curl_setopt_array($curl, array(
-                                        CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
-                                        CURLOPT_RETURNTRANSFER => true,
-                                        CURLOPT_ENCODING => "",
-                                        CURLOPT_MAXREDIRS => 10,
-                                        CURLOPT_TIMEOUT => 30,
-                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                                        CURLOPT_CUSTOMREQUEST => "POST",
-                                        CURLOPT_POSTFIELDS => "{  \r\n\"paymentBase64\":\"$datatopass\"\r\n}",
-                                        CURLOPT_HTTPHEADER => array(
-                                            "Content-Type: application/json",
-                                            "Postman-Token: 9a70d690-ca28-4d85-b4f4-bff6e4102b7e",
-                                            "cache-control: no-cache",
-                                            "x-hsbc-client-id: ec461fa7b71a48908af15212613f63a6",
-                                            "x-hsbc-client-secret: 9F89EF165DB242c8A890E7008658543A",
-                                            "x-hsbc-profile-id: PC000000746",
-                                            "x-payload-type: pain.001.001.03",
-                                            "x-hsbc-country-code: IN",
-                                            "x-trans-type: bulk"
-                                        ),
-                                    ));
+    //                                 $curl = curl_init();
+    //                                 curl_setopt_array($curl, array(
+    //                                     CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
+    //                                     CURLOPT_RETURNTRANSFER => true,
+    //                                     CURLOPT_ENCODING => "",
+    //                                     CURLOPT_MAXREDIRS => 10,
+    //                                     CURLOPT_TIMEOUT => 30,
+    //                                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    //                                     CURLOPT_CUSTOMREQUEST => "POST",
+    //                                     CURLOPT_POSTFIELDS => "{  \r\n\"paymentBase64\":\"$datatopass\"\r\n}",
+    //                                     CURLOPT_HTTPHEADER => array(
+    //                                         "Content-Type: application/json",
+    //                                         "Postman-Token: 9a70d690-ca28-4d85-b4f4-bff6e4102b7e",
+    //                                         "cache-control: no-cache",
+    //                                         "x-hsbc-client-id: ec461fa7b71a48908af15212613f63a6",
+    //                                         "x-hsbc-client-secret: 9F89EF165DB242c8A890E7008658543A",
+    //                                         "x-hsbc-profile-id: PC000000746",
+    //                                         "x-payload-type: pain.001.001.03",
+    //                                         "x-hsbc-country-code: IN",
+    //                                         "x-trans-type: bulk"
+    //                                     ),
+    //                                 ));
                                     
-                                    $response = curl_exec($curl);
-                                    Log::info('HSBC RESPONCE DATA '.$response);
-                                    $err = curl_error($curl);
-                                    curl_close($curl);
+    //                                 $response = curl_exec($curl);
+    //                                 Log::info('HSBC RESPONCE DATA '.$response);
+    //                                 $err = curl_error($curl);
+    //                                 curl_close($curl);
                                     
-                                    if ($err)
-                                    {
-                                        echo "cURL Error #:" . $err;
-                                    } 
-                                    else
-                                    {	
-                                        $response_encode=json_encode($response);
-                                        $decoded = json_decode($response);
+    //                                 if ($err)
+    //                                 {
+    //                                     echo "cURL Error #:" . $err;
+    //                                 } 
+    //                                 else
+    //                                 {	
+    //                                     $response_encode=json_encode($response);
+    //                                     $decoded = json_decode($response);
 
-                                        // Check if response contains expected fields
-                                        if (isset($decoded->referenceId, $decoded->statusCode, $decoded->statusDesc))
-                                        {
-                                            // Update record
-                                            $hsbcApiHit = hsbc_api_hit::where('msgid', $msgid)->first();
-                                            if ($hsbcApiHit) {
-                                                $hsbcApiHit->hit_status = 1;
-                                                $hsbcApiHit->referenceId = $decoded->referenceId;
-                                                $hsbcApiHit->statusCode = $decoded->statusCode;
-                                                $hsbcApiHit->description = $decoded->statusDesc;
-                                                // Only store encdec_data if statusCode is 'RJCT'
-                                                if ($decoded->statusCode === 'RJCT')
-                                                {
-                                                    $hsbcApiHit->encdec_data = $response_encode;
-                                                }                                   
-                                                $hsbcApiHit->updated_at = now();
-                                                $hsbcApiHit->save();
-                                                Log::info('HSBC hsbc_api_hit Update '.$hsbcApiHit);
-                                            }
+    //                                     // Check if response contains expected fields
+    //                                     if (isset($decoded->referenceId, $decoded->statusCode, $decoded->statusDesc))
+    //                                     {
+    //                                         // Update record
+    //                                         $hsbcApiHit = hsbc_api_hit::where('msgid', $msgid)->first();
+    //                                         if ($hsbcApiHit) {
+    //                                             $hsbcApiHit->hit_status = 1;
+    //                                             $hsbcApiHit->referenceId = $decoded->referenceId;
+    //                                             $hsbcApiHit->statusCode = $decoded->statusCode;
+    //                                             $hsbcApiHit->description = $decoded->statusDesc;
+    //                                             // Only store encdec_data if statusCode is 'RJCT'
+    //                                             if ($decoded->statusCode === 'RJCT')
+    //                                             {
+    //                                                 $hsbcApiHit->encdec_data = $response_encode;
+    //                                             }                                   
+    //                                             $hsbcApiHit->updated_at = now();
+    //                                             $hsbcApiHit->save();
+    //                                             Log::info('HSBC hsbc_api_hit Update '.$hsbcApiHit);
+    //                                         }
 
-                                            $arr = [];
-                                            $arr['Transaction_Details']['Message_ID'] = $msgid;
-                                            $arr['Transaction_Details']['Reference_ID'] = $decoded->referenceId;
-                                            $arr['Transaction_Details']['Status_Code'] = $decoded->statusCode;
-                                            $arr['Transaction_Details']['Portal_Indicator'] = 'X';
+    //                                         $arr = [];
+    //                                         $arr['Transaction_Details']['Message_ID'] = $msgid;
+    //                                         $arr['Transaction_Details']['Reference_ID'] = $decoded->referenceId;
+    //                                         $arr['Transaction_Details']['Status_Code'] = $decoded->statusCode;
+    //                                         $arr['Transaction_Details']['Portal_Indicator'] = 'X';
 
-                                            $sendstatustosap = $this->step2hsbcprocess($arr);
-                                            Log::info('HSBC step2hsbcprocess '.$sendstatustosap);
-                                            // $response_encode=json_encode($response);
-                                            echo $response_encode;
-                                            // return view('HSBC.decrypt_js')->with(['toprocess' => $response_encode]);                             
+    //                                         $sendstatustosap = $this->step2hsbcprocess($arr);
+    //                                         Log::info('HSBC step2hsbcprocess '.$sendstatustosap);
+    //                                         // $response_encode=json_encode($response);
+    //                                         echo $response_encode;
+    //                                         // return view('HSBC.decrypt_js')->with(['toprocess' => $response_encode]);                             
                                                 
-                                        }
-                                        else
-                                        {
-                                            Log::error("Missing expected data in Decoded response: " . json_decode($response));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {                  
-                        $description="Time exceeded {$minutes} min {$seconds} sec";
-                        $this->send_sap_for_rejection($msgid, $description);
-                        }
-                }
-                else
-                {   $description="Date Not Matched";
-                    $this->send_sap_for_rejection($msgid, $description);
-                }                    
-            }
+    //                                     }
+    //                                     else
+    //                                     {
+    //                                         Log::error("Missing expected data in Decoded response: " . json_decode($response));
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                     else
+    //                     {                  
+    //                     $description="Time exceeded {$minutes} min {$seconds} sec";
+    //                     $this->send_sap_for_rejection($msgid, $description);
+    //                     }
+    //             }
+    //             else
+    //             {   $description="Date Not Matched";
+    //                 $this->send_sap_for_rejection($msgid, $description);
+    //             }                    
+    //         }
+    //     }
+    // }
+
+
+
+
+
+
+
+public function posttohsbc_instant_receipt(Request $request)
+{
+    Log::info('========== HSBC INSTANT RECEIPT START ==========');
+
+    try
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 1: CHECK DATATOPASS
+        |--------------------------------------------------------------------------
+        */
+
+        if (empty($request->datatopass))
+        {
+            Log::error('HSBC STOPPED: datatopass is empty');
+
+            return response()->json([
+                'status' => false,
+                'message' => 'datatopass is empty'
+            ], 400);
         }
+
+        $datatopass = $request->datatopass;
+
+        Log::info('HSBC SEND DATA', [
+            'datatopass_length' => strlen($datatopass),
+            'datatopass' => $datatopass
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 2: GET MSGID
+        |--------------------------------------------------------------------------
+        */
+
+        $msgid = $request->msgid;
+
+        Log::info('HSBC MSGID RECEIVED', [
+            'msgid' => $msgid,
+            'msgid_length' => strlen($msgid ?? '')
+        ]);
+
+        if (empty($msgid))
+        {
+            Log::error('HSBC STOPPED: MSGID IS EMPTY');
+
+            return response()->json([
+                'status' => false,
+                'message' => 'msgid is empty'
+            ], 400);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 3: GET PAYMENT DATE AND TIME FROM MSGID
+        |--------------------------------------------------------------------------
+        */
+
+        $payment_date = substr($msgid, 16, 8);
+        $payment_time = substr($msgid, 24, 6);
+
+        Log::info('HSBC PAYMENT DATE/TIME', [
+            'msgid' => $msgid,
+            'payment_date' => $payment_date,
+            'payment_time' => $payment_time
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 4: CURRENT IST DATE/TIME
+        |--------------------------------------------------------------------------
+        */
+
+        $current = Carbon::now('Asia/Kolkata');
+
+        $current_date = $current->format('Ymd');
+
+        Log::info('HSBC CURRENT DATE/TIME', [
+            'current_date' => $current_date,
+            'current_datetime' => $current->format('Y-m-d H:i:s')
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 5: GET DB RECORD
+        |--------------------------------------------------------------------------
+        */
+
+        $hsbcApiHit = hsbc_api_hit::where('msgid', $msgid)->first();
+
+        if (!$hsbcApiHit)
+        {
+            Log::error('HSBC STOPPED: MSGID NOT FOUND IN DATABASE', [
+                'msgid' => $msgid
+            ]);
+
+            return response()->json([
+                'status' => false,
+                'message' => 'MSGID not found in hsbc_api_hit'
+            ], 404);
+        }
+
+        Log::info('HSBC DB RECORD FOUND', [
+            'id' => $hsbcApiHit->id,
+            'msgid' => $msgid,
+            'hit_status' => $hsbcApiHit->hit_status,
+            'referenceId' => $hsbcApiHit->referenceId,
+            'statusCode' => $hsbcApiHit->statusCode
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 6: ONLY STATUS 9 CAN START PROCESSING
+        |
+        | 9 = Initial
+        | 0 = Processing
+        | 1 = API processing completed
+        |--------------------------------------------------------------------------
+        */
+
+        if ((int) $hsbcApiHit->hit_status !== 9)
+        {
+            Log::warning('HSBC STOPPED: STATUS IS NOT 9', [
+                'id' => $hsbcApiHit->id,
+                'msgid' => $msgid,
+                'hit_status' => $hsbcApiHit->hit_status
+            ]);
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Payment already processed or currently processing',
+                'hit_status' => $hsbcApiHit->hit_status
+            ]);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 7: DATE CHECK
+        |--------------------------------------------------------------------------
+        */
+
+        if ($current_date !== $payment_date)
+        {
+            $description = 'Date Not Matched';
+
+            Log::warning('HSBC REJECTED: DATE NOT MATCHED', [
+                'msgid' => $msgid,
+                'payment_date' => $payment_date,
+                'current_date' => $current_date
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | UPDATE DB
+            |--------------------------------------------------------------------------
+            */
+
+            $hsbcApiHit->statusCode = 'RJCT';
+            $hsbcApiHit->description = $description;
+            $hsbcApiHit->updated_at = now();
+            $hsbcApiHit->save();
+
+
+            Log::info('HSBC DATE REJECTION DB UPDATED', [
+                'id' => $hsbcApiHit->id,
+                'msgid' => $msgid,
+                'hit_status' => $hsbcApiHit->hit_status,
+                'statusCode' => $hsbcApiHit->statusCode,
+                'description' => $hsbcApiHit->description
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | SEND REJECTION TO SAP
+            |--------------------------------------------------------------------------
+            */
+
+            $arr = [];
+
+            $arr['Transaction_Details']['Message_ID'] = $msgid;
+            $arr['Transaction_Details']['Reference_ID'] = '';
+            $arr['Transaction_Details']['Status_Code'] = 'RJCT';
+            $arr['Transaction_Details']['Portal_Indicator'] = 'X';
+
+
+            Log::info('HSBC CALLING STEP2HSBCPROCESS - DATE REJECTION', [
+                'msgid' => $msgid,
+                'statusCode' => 'RJCT'
+            ]);
+
+            $sendstatustosap = $this->step2hsbcprocess($arr);
+
+            Log::info('HSBC STEP2HSBCPROCESS RESPONSE - DATE REJECTION', [
+                'msgid' => $msgid,
+                'response' => $sendstatustosap
+            ]);
+
+
+            Log::info('========== HSBC END - DATE REJECTED ==========');
+
+            return response()->json([
+                'status' => false,
+                'message' => $description
+            ]);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 8: CREATE PAYMENT DATETIME
+        |--------------------------------------------------------------------------
+        */
+
+        try
+        {
+            $payment_datetime = Carbon::createFromFormat(
+                'Ymd His',
+                $payment_date . ' ' . $payment_time,
+                'Asia/Kolkata'
+            );
+        }
+        catch (\Throwable $e)
+        {
+            Log::error('HSBC INVALID PAYMENT DATETIME', [
+                'msgid' => $msgid,
+                'payment_date' => $payment_date,
+                'payment_time' => $payment_time,
+                'error' => $e->getMessage()
+            ]);
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid payment date/time'
+            ], 400);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 9: CHECK TIME DIFFERENCE
+        |--------------------------------------------------------------------------
+        */
+
+        $diff_seconds = abs(
+            $current->diffInSeconds(
+                $payment_datetime,
+                false
+            )
+        );
+
+        $minutes = floor($diff_seconds / 60);
+        $seconds = $diff_seconds % 60;
+
+        Log::info('HSBC TIME CHECK', [
+            'msgid' => $msgid,
+            'payment_datetime' => $payment_datetime->format('Y-m-d H:i:s'),
+            'current_datetime' => $current->format('Y-m-d H:i:s'),
+            'diff_seconds' => $diff_seconds,
+            'minutes' => $minutes,
+            'seconds' => $seconds
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 10: TIME EXCEEDED 24 HR
+        |--------------------------------------------------------------------------
+        */
+
+        if ($diff_seconds > 86400)
+        {
+            $description = "Time exceeded {$minutes} min {$seconds} sec";
+
+            Log::warning('HSBC REJECTED: TIME EXCEEDED', [
+                'msgid' => $msgid,
+                'description' => $description,
+                'diff_seconds' => $diff_seconds
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | UPDATE DB
+            |--------------------------------------------------------------------------
+            */
+
+            $hsbcApiHit->statusCode = 'RJCT';
+            $hsbcApiHit->description = $description;
+            $hsbcApiHit->updated_at = now();
+            $hsbcApiHit->save();
+
+
+            Log::info('HSBC TIME REJECTION DB UPDATED', [
+                'id' => $hsbcApiHit->id,
+                'msgid' => $msgid,
+                'hit_status' => $hsbcApiHit->hit_status,
+                'statusCode' => $hsbcApiHit->statusCode,
+                'description' => $hsbcApiHit->description
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | SEND REJECTION TO SAP
+            |--------------------------------------------------------------------------
+            */
+
+            $arr = [];
+
+            $arr['Transaction_Details']['Message_ID'] = $msgid;
+            $arr['Transaction_Details']['Reference_ID'] = '';
+            $arr['Transaction_Details']['Status_Code'] = 'RJCT';
+            $arr['Transaction_Details']['Portal_Indicator'] = 'X';
+
+
+            Log::info('HSBC CALLING STEP2HSBCPROCESS - TIME REJECTION', [
+                'msgid' => $msgid,
+                'statusCode' => 'RJCT'
+            ]);
+
+            $sendstatustosap = $this->step2hsbcprocess($arr);
+
+            Log::info('HSBC STEP2HSBCPROCESS RESPONSE - TIME REJECTION', [
+                'msgid' => $msgid,
+                'response' => $sendstatustosap
+            ]);
+
+
+            Log::info('========== HSBC END - TIME REJECTED ==========');
+
+            return response()->json([
+                'status' => false,
+                'message' => $description
+            ]);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 11:
+        |
+        | VALID PAYMENT
+        |
+        | CHANGE STATUS 9 -> 0
+        |--------------------------------------------------------------------------
+        */
+
+        Log::info('HSBC STATUS CHANGE 9 -> 0 START', [
+            'id' => $hsbcApiHit->id,
+            'msgid' => $msgid
+        ]);
+
+        $hsbcApiHit->hit_status = 0;
+        $hsbcApiHit->updated_at = now();
+
+        $statusUpdate = $hsbcApiHit->save();
+
+
+        Log::info('HSBC STATUS CHANGE 9 -> 0 COMPLETE', [
+            'id' => $hsbcApiHit->id,
+            'msgid' => $msgid,
+            'save_result' => $statusUpdate,
+            'hit_status' => $hsbcApiHit->hit_status
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 12: WAIT 2 SECONDS
+        |--------------------------------------------------------------------------
+        */
+
+        sleep(2);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 13: HSBC API CALL
+        |
+        | YOUR ORIGINAL API SETTINGS ARE KEPT EXACTLY
+        |--------------------------------------------------------------------------
+        */
+
+        Log::info('HSBC CALLING INSTANT RECEIPT API', [
+            'id' => $hsbcApiHit->id,
+            'msgid' => $msgid,
+            'hit_status' => $hsbcApiHit->hit_status
+        ]);
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://corporate-api.hsbc.com/cmb-connect-payments-pa-payment-prod-proxy/v1/payments/instant-receipt",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "{  \r\n\"paymentBase64\":\"$datatopass\"\r\n}",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Postman-Token: 9a70d690-ca28-4d85-b4f4-bff6e4102b7e",
+                "cache-control: no-cache",
+                "x-hsbc-client-id: ec461fa7b71a48908af15212613f63a6",
+                "x-hsbc-client-secret: 9F89EF165DB242c8A890E7008658543A",
+                "x-hsbc-profile-id: PC000000746",
+                "x-payload-type: pain.001.001.03",
+                "x-hsbc-country-code: IN",
+                "x-trans-type: bulk"
+            ),
+        ));
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 14: EXECUTE HSBC API
+        |--------------------------------------------------------------------------
+        */
+
+        $response = curl_exec($curl);
+
+        $err = curl_error($curl);
+
+        $http_code = curl_getinfo(
+            $curl,
+            CURLINFO_HTTP_CODE
+        );
+
+        curl_close($curl);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 15: LOG RESPONSE
+        |--------------------------------------------------------------------------
+        */
+
+        Log::info('HSBC API RESPONSE RECEIVED', [
+            'msgid' => $msgid,
+            'http_code' => $http_code,
+            'curl_error' => $err,
+            'response' => $response
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 16: CURL ERROR
+        |--------------------------------------------------------------------------
+        */
+
+        if ($err)
+        {
+            Log::error('HSBC CURL ERROR', [
+                'msgid' => $msgid,
+                'error' => $err,
+                'http_code' => $http_code
+            ]);
+
+
+            /*
+            | API was not successfully completed.
+            | Reset 0 -> 9 so it can be retried.
+            */
+
+            $hsbcApiHit->hit_status = 9;
+            $hsbcApiHit->description = 'cURL Error: ' . $err;
+            $hsbcApiHit->updated_at = now();
+            $hsbcApiHit->save();
+
+
+            Log::warning('HSBC STATUS RESET 0 -> 9', [
+                'id' => $hsbcApiHit->id,
+                'msgid' => $msgid
+            ]);
+
+
+            return response()->json([
+                'status' => false,
+                'message' => $err
+            ], 500);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 17: DECODE HSBC RESPONSE
+        |--------------------------------------------------------------------------
+        */
+
+        $response_encode = json_encode($response);
+
+        $decoded = json_decode($response);
+
+
+        Log::info('HSBC DECODED RESPONSE', [
+            'msgid' => $msgid,
+            'decoded' => $decoded
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 18: CHECK RESPONSE
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            isset(
+                $decoded->referenceId,
+                $decoded->statusCode,
+                $decoded->statusDesc
+            )
+        )
+        {
+
+            /*
+            |--------------------------------------------------------------------------
+            | API COMPLETED
+            |
+            | CHANGE 0 -> 1
+            |--------------------------------------------------------------------------
+            */
+
+            $hsbcApiHit->hit_status = 1;
+
+            $hsbcApiHit->referenceId =
+                $decoded->referenceId;
+
+            $hsbcApiHit->statusCode =
+                $decoded->statusCode;
+
+            $hsbcApiHit->description =
+                $decoded->statusDesc;
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | STORE RESPONSE IF REJECTED
+            |--------------------------------------------------------------------------
+            */
+
+            if ($decoded->statusCode === 'RJCT')
+            {
+                $hsbcApiHit->encdec_data =
+                    $response_encode;
+
+                Log::warning('HSBC API RETURNED RJCT', [
+                    'msgid' => $msgid,
+                    'referenceId' => $decoded->referenceId,
+                    'statusCode' => $decoded->statusCode,
+                    'statusDesc' => $decoded->statusDesc
+                ]);
+            }
+            else
+            {
+                Log::info('HSBC API RETURNED STATUS', [
+                    'msgid' => $msgid,
+                    'referenceId' => $decoded->referenceId,
+                    'statusCode' => $decoded->statusCode,
+                    'statusDesc' => $decoded->statusDesc
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | STEP 19: SAVE 0 -> 1
+            |--------------------------------------------------------------------------
+            */
+
+            $saveSuccess = $hsbcApiHit->save();
+
+
+            Log::info('HSBC DB UPDATED 0 -> 1', [
+                'saveSuccess' => $saveSuccess,
+                'id' => $hsbcApiHit->id,
+                'msgid' => $msgid,
+                'hit_status' => $hsbcApiHit->hit_status,
+                'referenceId' => $hsbcApiHit->referenceId,
+                'statusCode' => $hsbcApiHit->statusCode,
+                'description' => $hsbcApiHit->description
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | STEP 20: SEND RESPONSE TO SAP
+            |--------------------------------------------------------------------------
+            */
+
+            $arr = [];
+
+            $arr['Transaction_Details']['Message_ID'] =
+                $msgid;
+
+            $arr['Transaction_Details']['Reference_ID'] =
+                $decoded->referenceId;
+
+            $arr['Transaction_Details']['Status_Code'] =
+                $decoded->statusCode;
+
+            $arr['Transaction_Details']['Portal_Indicator'] =
+                'X';
+
+
+            Log::info('HSBC CALLING STEP2HSBCPROCESS', [
+                'msgid' => $msgid,
+                'referenceId' => $decoded->referenceId,
+                'statusCode' => $decoded->statusCode
+            ]);
+
+
+            $sendstatustosap =
+                $this->step2hsbcprocess($arr);
+
+
+            Log::info('HSBC STEP2HSBCPROCESS RESPONSE', [
+                'msgid' => $msgid,
+                'response' => $sendstatustosap
+            ]);
+
+
+            Log::info('========== HSBC INSTANT RECEIPT END SUCCESS ==========');
+
+
+            return response()->json([
+                'status' => true,
+                'msgid' => $msgid,
+                'referenceId' => $decoded->referenceId,
+                'statusCode' => $decoded->statusCode,
+                'description' => $decoded->statusDesc
+            ]);
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STEP 21: HSBC RESPONSE MISSING EXPECTED FIELDS
+        |--------------------------------------------------------------------------
+        */
+
+        Log::error('HSBC RESPONSE MISSING EXPECTED FIELDS', [
+            'msgid' => $msgid,
+            'response' => $response,
+            'decoded' => $decoded
+        ]);
+
+
+        $hsbcApiHit->description =
+            'HSBC response missing expected fields';
+
+        $hsbcApiHit->updated_at = now();
+        $hsbcApiHit->save();
+
+
+        return response()->json([
+            'status' => false,
+            'message' => 'HSBC response missing expected fields',
+            'response' => $decoded
+        ], 500);
     }
+    catch (\Throwable $e)
+    {
+        Log::error('========== HSBC INSTANT RECEIPT EXCEPTION ==========', [
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return response()->json([
+            'status' => false,
+            'message' => $e->getMessage()
+        ], 500);
+    }
+}
+
+
+
+
+
+
+//     public function posttohsbc_instant_receipt(Request $request)
+// {
+//     Log::info('========== HSBC INSTANT RECEIPT START ==========');
+
+//     Log::info('HSBC Request Data', [
+//         'all_request' => $request->all(),
+//     ]);
+
+//     if (!empty($request->datatopass))
+//     {
+//         $datatopass = $request->datatopass;
+
+//         Log::info('HSBC SEND DATA', [
+//             'datatopass_length' => strlen($datatopass),
+//             'datatopass' => $datatopass,
+//         ]);
+
+//         $msgid = $request->msgid;
+
+//         Log::info('HSBC MSGID RECEIVED', [
+//             'msgid' => $msgid,
+//             'msgid_empty' => empty($msgid),
+//         ]);
+
+//         if (!empty($msgid))
+//         {
+//             Log::info('HSBC STEP 1: MSGID IS NOT EMPTY');
+
+//             $payment_date = substr($msgid, 16, 8);
+//             $payment_time = substr($msgid, 24, 6);
+
+//             Log::info('HSBC MESSAGE DATE/TIME', [
+//                 'msgid' => $msgid,
+//                 'payment_date' => $payment_date,
+//                 'payment_time' => $payment_time,
+//             ]);
+
+//             $current = Carbon::now('Asia/Kolkata');
+//             $current_date = $current->format('Ymd');
+
+//             Log::info('HSBC CURRENT DATE', [
+//                 'current_date' => $current_date,
+//                 'payment_date' => $payment_date,
+//                 'date_match' => ($current_date === $payment_date),
+//             ]);
+
+//             if ($current_date === $payment_date)
+//             {
+//                 Log::info('HSBC STEP 2: PAYMENT DATE MATCHED');
+
+//                 try {
+
+//                     $payment_datetime = Carbon::createFromFormat(
+//                         'Ymd His',
+//                         $payment_date . ' ' . $payment_time,
+//                         'Asia/Kolkata'
+//                     );
+
+//                     Log::info('HSBC PAYMENT DATETIME CREATED', [
+//                         'payment_datetime' => $payment_datetime->format('Y-m-d H:i:s'),
+//                         'current_datetime' => $current->format('Y-m-d H:i:s'),
+//                     ]);
+
+//                     $diff_seconds = abs(
+//                         $current->diffInSeconds($payment_datetime, false)
+//                     );
+
+//                     $minutes = floor($diff_seconds / 60);
+//                     $seconds = $diff_seconds % 60;
+
+//                     Log::info('HSBC TIME DIFFERENCE', [
+//                         'diff_seconds' => $diff_seconds,
+//                         'minutes' => $minutes,
+//                         'seconds' => $seconds,
+//                     ]);
+
+//                     if ($diff_seconds <= 900)
+//                     {
+//                         Log::info('HSBC STEP 3: WITHIN 15 MINUTES');
+
+//                         sleep(2);
+
+//                         Log::info('HSBC CHECKING EXISTING MSGID', [
+//                             'msgid' => $msgid,
+//                         ]);
+
+//                         $msgExists = hsbc_api_hit::where('msgid', $msgid)
+//                             ->where('hit_status', 0)
+//                             ->exists();
+
+//                         Log::info('HSBC EXISTING MSGID RESULT', [
+//                             'msgid' => $msgid,
+//                             'msgExists' => $msgExists,
+//                         ]);
+
+//                         if (!$msgExists)
+//                         {
+//                             Log::info('HSBC STEP 4: MSGID NOT FOUND WITH hit_status=0');
+
+//                             $hit_status = 0;
+
+//                             $updateSuccess = hsbc_api_hit::where('msgid', $msgid)
+//                                 ->update([
+//                                     'hit_status' => $hit_status,
+//                                     'updated_at' => now(),
+//                                 ]);
+
+//                             Log::info('HSBC DB UPDATE RESULT', [
+//                                 'msgid' => $msgid,
+//                                 'updateSuccess' => $updateSuccess,
+//                             ]);
+
+//                             if ($updateSuccess)
+//                             {
+//                                 Log::info('HSBC STEP 5: DB UPDATE SUCCESS');
+
+//                                 // API call starts here
+
+//                                 Log::info('HSBC ABOUT TO CALL INSTANT RECEIPT API');
+
+//                                 // your curl code...
+//                             }
+//                             else
+//                             {
+//                                 Log::error('HSBC DB UPDATE FAILED', [
+//                                     'msgid' => $msgid,
+//                                 ]);
+//                             }
+//                         }
+//                         else
+//                         {
+//                             Log::warning('HSBC API SKIPPED: MSGID ALREADY EXISTS WITH hit_status=0', [
+//                                 'msgid' => $msgid,
+//                             ]);
+//                         }
+//                     }
+//                     else
+//                     {
+//                         $description = "Time exceeded {$minutes} min {$seconds} sec";
+
+//                         Log::warning('HSBC API SKIPPED: TIME EXCEEDED', [
+//                             'msgid' => $msgid,
+//                             'description' => $description,
+//                         ]);
+
+//                         $this->send_sap_for_rejection($msgid, $description);
+//                     }
+//                 }
+//                 catch (\Throwable $e)
+//                 {
+//                     Log::error('HSBC INSTANT RECEIPT EXCEPTION', [
+//                         'message' => $e->getMessage(),
+//                         'file' => $e->getFile(),
+//                         'line' => $e->getLine(),
+//                         'trace' => $e->getTraceAsString(),
+//                     ]);
+//                 }
+//             }
+//             else
+//             {
+//                 $description = "Date Not Matched";
+
+//                 Log::warning('HSBC API SKIPPED: DATE NOT MATCHED', [
+//                     'msgid' => $msgid,
+//                     'current_date' => $current_date,
+//                     'payment_date' => $payment_date,
+//                 ]);
+
+//                 $this->send_sap_for_rejection($msgid, $description);
+//             }
+//         }
+//         else
+//         {
+//             Log::error('HSBC API STOPPED: MSGID IS EMPTY');
+//         }
+//     }
+//     else
+//     {
+//         Log::error('HSBC API STOPPED: DATATOPASS IS EMPTY');
+//     }
+
+//     Log::info('========== HSBC INSTANT RECEIPT END ==========');
+// }
+
 
     public function hsbcfinalencdec(Request $request)
     {    

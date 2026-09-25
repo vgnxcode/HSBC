@@ -51,6 +51,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
                 aria-labelledby="userDropdown">
 
 
+                   <li>
+                    <a class="dropdown-item" href="{{ route('hsbc.paymentquee') }}">
+                        <i class="bi bi-bank me-2"></i>
+                        Payment
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
                  <li>
                     <a class="dropdown-item" href="{{ route('hsbc.report') }}">
                         <i class="bi bi-map me-2"></i>

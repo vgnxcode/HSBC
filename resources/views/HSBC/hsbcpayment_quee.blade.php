@@ -28,26 +28,53 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 <body>
 
 
-    <style>
-        .attendance-table-wrapper {
-    max-height: 70vh;
-    overflow-y: auto;
-}
+    
 
-.attendance-table thead th {
-    white-space: nowrap;
-    vertical-align: middle;
-}
 
-.attendance-table tbody td {
-    vertical-align: middle;
-    white-space: nowrap;
-}
-    </style>
+   <style>
+    .attendance-table-wrapper {
+        max-height: 70vh;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .attendance-table thead th {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .attendance-table tbody td {
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    /* Keep the top navigation above the table */
+    .page-header {
+        position: relative;
+        z-index: 1050;
+    }
+
+    /* Keep sticky table header below the dropdown */
+    .attendance-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    /* Dropdown should appear above the table */
+    .page-header .dropdown {
+        position: relative;
+        z-index: 1100;
+    }
+
+    .page-header .dropdown-menu {
+        z-index: 1200;
+    }
+</style>
 
     <div class="container mt-5">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-4 page-header">
 
         <!-- Left -->
         <h1 class="mb-0">HSBC SAP Proxy</h1>
