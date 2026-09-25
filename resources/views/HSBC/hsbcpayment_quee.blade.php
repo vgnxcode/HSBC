@@ -151,6 +151,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 
     </div>
 
+            <p class="text-danger" ><strong>Notes:</strong>
+            <br>
+            <span class="text-dark">Once the payment is released from SAP, it must be processed within 24 hours. If you attempt to process the payment after 24 hours from the SAP release time, the payment will be rejected.
+</span>
+ </p>
 
 
         <div class="table-responsive attendance-table-wrapper">
