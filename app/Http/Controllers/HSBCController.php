@@ -217,7 +217,7 @@ public function hsbcpayment_quee()
     $getsapdata = $this->step1hsbcprocess();
 
     // Flatten and sort all payments by Message_Id date/time
-    $getsapdata1 = collect($getsapdata)
+    /*$getsapdata1 = collect($getsapdata)
         ->flatten(1)
         ->sortBy(function ($item) {
 
@@ -229,13 +229,52 @@ public function hsbcpayment_quee()
             return $matches[1] ?? '99999999999999';
         })
         ->values()
-        ->toArray();
+        ->toArray();*/
 
     // Get number of already processed payments
-    $skip = SliceHit::value('SliceHit') ?? 0;
+    //$skip = SliceHit::value('SliceHit') ?? 0;
 
     // Skip processed payments
-    $getsapdata1 = array_slice($getsapdata1, $skip);
+    //$getsapdata1 = array_slice($getsapdata1, $skip);
+
+
+
+         $today = date('Ymd');
+        // $today ='20261008';      
+
+        // 1. Get today's SAP payments and sort them
+        $payments = collect($getsapdata)
+        ->flatten(1)
+        ->filter(function ($item) use ($today) {
+        $id = $item['Message_Id'] ?? '';
+        return preg_match('/(\d{14})$/', $id, $m)
+        && substr($m[1], 0, 8) === $today;
+        })
+        ->sortBy(fn($item) => substr($item['Message_Id'], -14))
+        ->values();
+
+        // 2. Get today's payment IDs
+        $messageIds = $payments
+        ->pluck('Message_Id')
+        ->unique()
+        ->values();
+
+        // 3. Query the database once for matching processed payments
+        $processedIds = hsbc_api_hit::whereIn('msgid', $messageIds)
+        ->where('hit_status', 1)
+        ->whereNotNull('referenceId')
+        ->where('referenceId', '!=', '')
+        ->whereNotNull('statusCode')
+        ->where('statusCode', '!=', '')
+        ->pluck('msgid')
+        ->flip();
+
+        // 4. Remove payments already processed successfully
+        $getsapdata1 = $payments
+        ->reject(fn($item) => $processedIds->has($item['Message_Id'] ?? ''))
+        ->values()
+        ->toArray();
+
 
     // Remaining payments
     if (!empty($getsapdata1)) {
@@ -265,7 +304,7 @@ public function hsbcpayment_quee()
 
 
             // Flatten and sort all payments by Message_Id date/time
-            $getsapdata0 = collect($getsapdata)
+            /*$getsapdata0 = collect($getsapdata)
             ->flatten(1)
             ->sortBy(function ($item) {
 
@@ -277,20 +316,63 @@ public function hsbcpayment_quee()
             return $matches[1] ?? '99999999999999';
             })
             ->values()
-            ->toArray();
+            ->toArray();*/
 
             //dd($getsapdata0);
 
 
             // Skip
-            $skip = SliceHit::value('SliceHit');
-            $payment = array_slice($getsapdata0,$skip); 
+           // $skip = SliceHit::value('SliceHit');
+            //$payment = array_slice($getsapdata0,$skip); 
            
-            $getsapdata1 = $payment[$payment_index];
+            // $getsapdata1 = $payment[$payment_index];
              //dd($getsapdata1);
             //dd($getsapdata1['Message_Id']);
 
             // dd($getsapdata1[''])
+
+
+               $today = date('Ymd');
+        // $today ='20261008';      
+
+        // 1. Get today's SAP payments and sort them
+        $payments = collect($getsapdata)
+        ->flatten(1)
+        ->filter(function ($item) use ($today) {
+        $id = $item['Message_Id'] ?? '';
+        return preg_match('/(\d{14})$/', $id, $m)
+        && substr($m[1], 0, 8) === $today;
+        })
+        ->sortBy(fn($item) => substr($item['Message_Id'], -14))
+        ->values();
+
+        // 2. Get today's payment IDs
+        $messageIds = $payments
+        ->pluck('Message_Id')
+        ->unique()
+        ->values();
+
+        // 3. Query the database once for matching processed payments
+        $processedIds = hsbc_api_hit::whereIn('msgid', $messageIds)
+        ->where('hit_status', 1)
+        ->whereNotNull('referenceId')
+        ->where('referenceId', '!=', '')
+        ->whereNotNull('statusCode')
+        ->where('statusCode', '!=', '')
+        ->pluck('msgid')
+        ->flip();
+
+        // 4. Remove payments already processed successfully
+        $getsapdata1 = $payments
+        ->reject(fn($item) => $processedIds->has($item['Message_Id'] ?? ''))
+        ->values()
+        ->toArray();
+
+
+       $getsapdata1 = $getsapdata1[$payment_index];
+
+    //    dd($getsapdata1);
+
             //insert the initial time with value = 9 
 
             $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();
@@ -581,7 +663,7 @@ public function hsbcpayment_quee()
 
 
                         // Flatten and sort all payments by Message_Id date/time
-            $getsapdata0 = collect($getsapdata)
+           /* $getsapdata0 = collect($getsapdata)
             ->flatten(1)
             ->sortBy(function ($item) {
 
@@ -598,9 +680,49 @@ public function hsbcpayment_quee()
             // Skip 
              $skip = SliceHit::value('SliceHit');
             $payment = array_slice($getsapdata0,$skip);
-            $getsapdata1 = $payment[$payment_index];
+            $getsapdata1 = $payment[$payment_index];*/
 
             //dd($getsapdata1['Message_Id']);
+
+
+         $today = date('Ymd');
+        // $today ='20261008';      
+
+        // 1. Get today's SAP payments and sort them
+        $payments = collect($getsapdata)
+        ->flatten(1)
+        ->filter(function ($item) use ($today) {
+        $id = $item['Message_Id'] ?? '';
+        return preg_match('/(\d{14})$/', $id, $m)
+        && substr($m[1], 0, 8) === $today;
+        })
+        ->sortBy(fn($item) => substr($item['Message_Id'], -14))
+        ->values();
+
+        // 2. Get today's payment IDs
+        $messageIds = $payments
+        ->pluck('Message_Id')
+        ->unique()
+        ->values();
+
+        // 3. Query the database once for matching processed payments
+        $processedIds = hsbc_api_hit::whereIn('msgid', $messageIds)
+        ->where('hit_status', 1)
+        ->whereNotNull('referenceId')
+        ->where('referenceId', '!=', '')
+        ->whereNotNull('statusCode')
+        ->where('statusCode', '!=', '')
+        ->pluck('msgid')
+        ->flip();
+
+        // 4. Remove payments already processed successfully
+        $getsapdata1 = $payments
+        ->reject(fn($item) => $processedIds->has($item['Message_Id'] ?? ''))
+        ->values()
+        ->toArray();
+
+
+       $getsapdata1 = $getsapdata1[$payment_index];
 
             //dd($getsapdata1);
                $msgExists = hsbc_api_hit::where('msgid', $getsapdata1['Message_Id'])->exists();

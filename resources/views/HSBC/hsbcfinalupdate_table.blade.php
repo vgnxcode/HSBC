@@ -103,10 +103,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 
 
 
+
+
+
+
         {{-- <h1 class="mb-4">HSBC API Hits</h1>
         {{ session('hsbcuser_name') ?? 'NOT SET' }} --}}
        {{-- <a class="btn btn-sm btn-dark text-light" href="https://hsbc.vgn.in/api/hsbc/hsbc_getdatafromsap" target="_blank">Trigger now</a> --}}
-        <hr>
+       <p class="text-danger" ><strong>Notes:</strong> <br>
+            <span class="text-dark">After sending the payment, if the status is not displayed, kindly click the **Get Status** button to retrieve the status of the payment that has not yet been received.This Feature only works for last 24hr.
+</span>
+       </p>
+       <button type="button" class="btn btn-sm btn-primary" onclick="location.reload()">
+    <i class="fa fa-refresh"></i> Get Status
+</button>
+       
+       <hr>
         <table id="dataTable" class="table table-sm table-responsive-sm table-bordered table-striped">
             <thead>
                 <tr>
